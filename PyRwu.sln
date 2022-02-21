@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PyRwu", "PyRwu\PyRwu.pyproj", "{8F6CFF57-84CD-4869-BF1D-0DCE40B1C15F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F6CFF57-84CD-4869-BF1D-0DCE40B1C15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F6CFF57-84CD-4869-BF1D-0DCE40B1C15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EF494BA-2A36-4DD0-BB61-FB1CD856527D}
+	EndGlobalSection
+EndGlobal
