@@ -1,0 +1,5 @@
+Cython==0.29.28
+numpy==1.22.2
+pip==22.0.3
+pyworld==0.3.0
+setuptools==60.9.3
