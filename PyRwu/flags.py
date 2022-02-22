@@ -32,8 +32,8 @@ class Flag:
     _isBool: bool = False
     _min: 0
     _max: 100
-    _flag: bool
-    _value: int
+    _flag: bool = False
+    _value: int = 50
     _default_bool :bool = False
     _default_value :int = 50
 
@@ -93,7 +93,7 @@ class Flag:
         if self._isBool:
             warnings.warn("flag is boolean. name:{}".format(self._name))
         elif self._min> value:
-            warnings.warn("value's out of range.key:{},min:{}, value:{}".format(self._name, self._min, value))
+            warnings.warn("value's out of range.key:{}, min:{}, value:{}".format(self._name, self._min, value))
         elif self._max< value:
             warnings.warn("value's out of range.key:{}, max:{}, value:{}".format(self._name, self._max, value))
         else:
@@ -117,7 +117,7 @@ class Flag:
         if not self._isBool:
             warnings.warn("flag is not boolean. name:{}".format(self._name))
         else:
-            self._flag = flag
+            self._flag = value
 
 
     def __init__(self, name, descriptions=[], isBool=False, min=0, max=100, default_bool=False, default_value=50):
@@ -146,6 +146,8 @@ class Flag:
         self._max = max
         self._flag = default_bool
         self._value = default_value
+        self._default_value = default_value
+        self._default_bool = default_bool
 
 class Flags:
     '''Flags
