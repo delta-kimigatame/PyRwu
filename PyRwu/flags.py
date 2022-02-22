@@ -34,8 +34,8 @@ class Flag:
     _max: 100
     _flag: bool
     _value: int
-    _default_bool :bool
-    _default_value :int
+    _default_bool :bool = False
+    _default_value :int = 50
 
     @property
     def name(self) -> str:
@@ -72,6 +72,7 @@ class Flag:
     @property
     def default_value(self) -> int:
         return self._default_value
+
     @value.setter
     def value(self, value: int):
         '''
@@ -188,12 +189,12 @@ class Flags:
         description: str = ""
 
         for flag in self._params.values():
-            description += flag.name + "\t:\t"
+            description += "\t"+flag.name + "\t"
             if not flag.isBool:
-                description += str(flag.min) + " ～ " + str(flag.max) + "\t default:" + str(flag.default_value) + "\n    "
+                description += str(flag.min) + " ～ " + str(flag.max) + "\t default:" + str(flag.default_value) + "\n\t\t"
             else:
-                description += "\t\t default:" + str(flag.default_bool) + "\n    "
-            description += "\n    ".join(flag.descriptions)+"\n"
+                description += "\t\t default:" + str(flag.default_bool) + "\n\t\t"
+            description += "\n\t\t".join(flag.descriptions)+"\n\n"
         return description
 
 
