@@ -12,6 +12,14 @@ tests.test\_flags module
    :undoc-members:
    :show-inheritance:
 
+tests.test\_wave\_io module
+---------------------------
+
+.. automodule:: tests.test_wave_io
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

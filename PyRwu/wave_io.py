@@ -10,7 +10,7 @@ from typing import Tuple
 
 import numpy as np
 
-def read(input_path: str, offset: float, end_ms: float) -> Tuple[np.ndarray, float]:
+def read(input_path: str, offset: float, end_ms: float) -> Tuple[np.ndarray, int]:
     '''
 
     指定された範囲のwavファイルを読み込み、データとサンプルレートを返します。
@@ -77,3 +77,48 @@ def read(input_path: str, offset: float, end_ms: float) -> Tuple[np.ndarray, flo
         data = data [::2]
         
     return data/ 2**(sampwidth*8-1), framerate
+
+def write(output_path: str,data: np.ndarray, framerate:int=44100, sampwidth: int=2):
+    '''
+    | waveファイルを保存します。
+    | すでにwavファイルがある場合、上書きします。
+    | もし、output_pathにいたるフォルダがなければ、再帰的に作成します。
+
+    Parameters
+    ----------
+    output_path: str
+        保存するwavのパス
+    data: np.ndarray of np.float64
+        保存するwavの波形データ
+    framerate: int, default 44100
+        保存するwavのサンプリング周波数
+    sampwidth: int, default 2
+        保存するwavのbit深度をバイト数で表したもの
+
+    Raises
+    ------
+    OSError
+        wavを書き出しする際、書き込み権限がなかった時。
+    '''
+    os.makedirs(os.path.dirname(output_path), exists_ok=True)
+    byte_data: bytes = b""
+    data = data * 2**(sampwidth*8-1)
+    if sampwidth==1:
+        data = data.astype("int8")
+    elif sampwidth==2:
+        data = data.astype("int16")
+    elif sampwidth==3:
+        data = data.astype("int32")
+        for x in data:
+            byte_data += x.to_bytes(3, "little", signed=True)
+    elif sampwidth==4:
+        data = data.astype("int32")
+    with wave.open(output_path, "wb") as ww:
+        ww.setnchannels = 1 #出力はモノラル固定
+        ww.getframerate = framerate
+        ww.getsampwidth = sampwidth
+        if sampwidth != 3:
+            ww.writeframes(data.tobytes())
+        else:
+            ww.writeframes(byte_data)
+
