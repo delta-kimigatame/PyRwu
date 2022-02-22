@@ -39,7 +39,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PyRwu module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PyRwu module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -75,6 +78,105 @@
 Windows向けに作成された歌声合成ソフトウェア「UTAU」に同梱されている、
 wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプロジェクトです。</p></li>
 </ul>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="このヘッドラインへのパーマリンク"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">usage</span><span class="p">:</span> <span class="n">PyRwu</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">flag</span><span class="p">]</span>
+<span class="go">                input_path output_path target_tone velocity [flags] [offset] [target_ms] [fixed_ms] [end_ms]</span>
+<span class="go">                [volume] [modulation] [pitchbend]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param input_path</dt>
+<dd class="field-odd"><p>原音のファイル名</p>
+</dd>
+<dt class="field-even">type input_path</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">param output_path</dt>
+<dd class="field-odd"><p>wavファイルの出力先パス</p>
+</dd>
+<dt class="field-even">type output_path</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">param target_tone</dt>
+<dd class="field-odd"><p>音高名(A4=440Hz)。
+半角上げは#もしくは♯
+半角下げはbもしくは♭で与えられます。</p>
+</dd>
+<dt class="field-even">type target_tone</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">param velocity</dt>
+<dd class="field-odd"><p>子音速度</p>
+</dd>
+<dt class="field-even">type velocity</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">param flags</dt>
+<dd class="field-odd"><p>フラグ(省略可)</p>
+</dd>
+<dt class="field-even">type flags</dt>
+<dd class="field-even"><p>str, default &quot;&quot;</p>
+</dd>
+<dt class="field-odd">param offset</dt>
+<dd class="field-odd"><p>入力ファイルの読み込み開始位置(ms)</p>
+</dd>
+<dt class="field-even">type offset</dt>
+<dd class="field-even"><p>float, default 0</p>
+</dd>
+<dt class="field-odd">param target_ms</dt>
+<dd class="field-odd"><p>出力ファイルの長さ(ms)
+UTAUでは通常50ms単位に丸めた値が渡される。</p>
+</dd>
+<dt class="field-even">type target_ms</dt>
+<dd class="field-even"><p>float, default 0</p>
+</dd>
+<dt class="field-odd">param fixed_ms</dt>
+<dd class="field-odd"><p>offsetからみて通常伸縮しない長さ(ms)</p>
+</dd>
+<dt class="field-even">type fixed_ms</dt>
+<dd class="field-even"><p>float, default 0</p>
+</dd>
+<dt class="field-odd">param end_ms</dt>
+<dd class="field-odd"><p>入力ファイルの読み込み終了位置(ms)(省略可 default:0)
+正の数の場合、ファイル末尾からの時間
+負の数の場合、offsetからの時間</p>
+</dd>
+<dt class="field-even">type end_ms</dt>
+<dd class="field-even"><p>float, default 0</p>
+</dd>
+<dt class="field-odd">param volume</dt>
+<dd class="field-odd"><p>音量。0～200(省略可)</p>
+</dd>
+<dt class="field-even">type volume</dt>
+<dd class="field-even"><p>int, default 100</p>
+</dd>
+<dt class="field-odd">param modulation</dt>
+<dd class="field-odd"><p>モジュレーション。0～200(省略可)</p>
+</dd>
+<dt class="field-even">type modulation</dt>
+<dd class="field-even"><p>int, default 0</p>
+</dd>
+<dt class="field-odd">param pitchbend</dt>
+<dd class="field-odd"><p>ピッチベンド。(省略可)
+-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、
+同じ数字が続く場合ランレングス圧縮したもの</p>
+</dd>
+<dt class="field-even">type pitchbend</dt>
+<dd class="field-even"><p>str, default &quot;&quot;</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="PyRwu.ShowFlagAction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PyRwu.</span></span><span class="sig-name descname"><span class="pre">ShowFlagAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option_strings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PyRwu.ShowFlagAction" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.Action</span></code></p>
+<p>--show-flagオプションで実行された際に、フラグの詳細を表示します。</p>
+<p class="rubric">メモ</p>
+<p><strong>TODO</strong></p>
+<p>__call__にフラグの設定ファイルを読み込んで出力する仕組みを作成</p>
+</dd></dl>
+
+</section>
 </section>
 
 
