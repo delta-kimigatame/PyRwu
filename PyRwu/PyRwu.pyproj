@@ -35,6 +35,9 @@
     <Compile Include="tests\test_flags.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tests\test_wave_io.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -55,9 +58,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="tests\testdata\inputwav\mono44_1-16.wav" />
+    <Content Include="tests\testdata\inputwav\mono44_1-24.wav" />
+    <Content Include="tests\testdata\inputwav\mono48-16.wav" />
+    <Content Include="tests\testdata\inputwav\mono8-8.wav" />
+    <Content Include="tests\testdata\inputwav\mono96k-32.wav" />
+    <Content Include="tests\testdata\inputwav\notwav.txt">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="tests\testdata\inputwav\stereo44_1-16.wav" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tests\" />
+    <Folder Include="tests\testdata\" />
+    <Folder Include="tests\testdata\inputwav\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
