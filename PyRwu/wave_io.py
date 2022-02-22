@@ -30,7 +30,7 @@ def read(input_path: str, offset: float, end_ms: float) -> Tuple[np.ndarray, int
     -------
     data: np.ndarray or np.float64
         指定された区間のwaveのデータ。1次元
-    framerate: float
+    framerate: int
         wavのサンプリング周波数
 
     Raises
@@ -100,7 +100,7 @@ def write(output_path: str,data: np.ndarray, framerate:int=44100, sampwidth: int
     OSError
         wavを書き出しする際、書き込み権限がなかった時。
     '''
-    os.makedirs(os.path.dirname(output_path), exists_ok=True)
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     byte_data: bytes = b""
     data = data * 2**(sampwidth*8-1)
     if sampwidth==1:
@@ -114,9 +114,8 @@ def write(output_path: str,data: np.ndarray, framerate:int=44100, sampwidth: int
     elif sampwidth==4:
         data = data.astype("int32")
     with wave.open(output_path, "wb") as ww:
-        ww.setnchannels = 1 #出力はモノラル固定
-        ww.getframerate = framerate
-        ww.getsampwidth = sampwidth
+        ww.setparams((1, sampwidth, framerate, data.shape[0] * sampwidth, "NONE", "not compressed"))
+
         if sampwidth != 3:
             ww.writeframes(data.tobytes())
         else:

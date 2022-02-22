@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /PyRwu/env
 /PyRwu/test.wav
+/PyRwu/tests/testdata/outputwav

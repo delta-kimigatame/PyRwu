@@ -6,7 +6,6 @@ import shutil
 import wave
 import numpy as np
 import pyworld
-import soundfile as sf
 
 import wave_io
 
@@ -100,3 +99,44 @@ class TestWaveRead(unittest.TestCase):
         self.assertEqual(data2.shape[0], 2000)
         self.assertEqual(data[4000], data2[0])
         self.assertEqual(data[6000-1], data2[-1])
+        
+class TestWaveWrite(unittest.TestCase):
+    def setUp(self):
+        if os.path.isdir(os.path.join("tests","testdata","outputwav")):
+            shutil.rmtree(os.path.join("tests","testdata","outputwav"))
+
+    def test_read_44100_16_mono(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","mono44_1-16.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","mono44_1-16.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","mono44_1-16.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","mono44_1-16.wav")))
+        
+    def test_read_48000_16_mono(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","mono48-16.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","mono48-16.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","mono48-16.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","mono48-16.wav")))
+
+    def test_read_96000_32_mono(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","mono96k-32.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","mono96k-32.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","mono96k-32.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","mono96k-32.wav")))
+        
+    def test_read_44100_24_mono(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","mono44_1-24.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","mono44_1-24.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","mono44_1-24.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","mono44_1-24.wav")))
+        
+    def test_read_8000_8_mono(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","mono8-8.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","mono8-8.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","mono8-8.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","mono8-8.wav")))
+        
+    def test_read_44100_16_stereo(self):
+        data, fs = wave_io.read(os.path.join("tests","testdata","inputwav","stereo44_1-16.wav"),0,0)
+        self.assertFalse(os.path.isfile(os.path.join("tests","testdata","outputwav","stereo44_1-16.wav")))
+        wave_io.write(os.path.join("tests","testdata","outputwav","stereo44_1-16.wav"),data, fs, 2)
+        self.assertTrue(os.path.isfile(os.path.join("tests","testdata","outputwav","stereo44_1-16.wav")))
