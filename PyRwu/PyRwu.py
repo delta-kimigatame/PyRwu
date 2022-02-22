@@ -51,16 +51,13 @@ import sys
 import os.path
 import argparse
 
+import settings
+
 class ShowFlagAction(argparse.Action):
     '''ShowFlagAction
 
     --show-flagオプションで実行された際に、フラグの詳細を表示します。
 
-    Notes
-    -----
-    **TODO**
-    
-    __call__にフラグの設定ファイルを読み込んで出力する仕組みを作成
     '''
     def __init__(self, option_strings, dest, **kwargs):
         super(ShowFlagAction, self).__init__(option_strings, dest=dest, nargs=0, help="使用できるフラグの詳細を表示", **kwargs)
@@ -68,7 +65,7 @@ class ShowFlagAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         #TODO
         #フラグの設定ファイルを読み込んで出力する仕組み
-        print("hello")
+        print(settings.FLAGS.getDetail())
         parser.exit()
 
 if __name__ == "__main__":

@@ -6,3 +6,4 @@ PyRwu
 
    PyRwu
    flags
+   settings

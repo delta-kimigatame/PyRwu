@@ -12,6 +12,7 @@ Welcome to PyRwu's documentation!
 
    PyRwu
    flags
+   settings
 
 
 
