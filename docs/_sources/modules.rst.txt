@@ -7,3 +7,5 @@ PyRwu
    PyRwu
    flags
    settings
+   tests
+   wave_io

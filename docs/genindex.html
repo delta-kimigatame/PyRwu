@@ -38,6 +38,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="PyRwu.html">PyRwu module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
@@ -77,8 +78,11 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  | <a href="#モ"><strong>モ</strong></a>
  
 </div>
@@ -206,6 +210,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="flags.html#flags.Flags.parse">parse() (flags.Flags のメソッド)</a>
+</li>
       <li>
     PyRwu
 
@@ -213,6 +219,14 @@
         <li><a href="PyRwu.html#module-PyRwu">モジュール</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="wave_io.html#wave_io.read">read() (wave_io モジュール)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -228,8 +242,76 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tests.html#tests.test_flags.TestFlags.setUp">setUp() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
       <li><a href="PyRwu.html#PyRwu.ShowFlagAction">ShowFlagAction (PyRwu のクラス)</a>
 </li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_bool">test_change_bool() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_bool_missing_reason_not_bool">test_change_bool_missing_reason_not_bool() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_value">test_change_value() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_value_missing_reason_bool">test_change_value_missing_reason_bool() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_value_missing_reason_overflow">test_change_value_missing_reason_overflow() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_change_value_missing_reason_underflow">test_change_value_missing_reason_underflow() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_default_init">test_default_init() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_getDetail">test_getDetail() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_init">test_init() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_init_bool">test_init_bool() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_init_bool_and_default">test_init_bool_and_default() (tests.test_flags.TestFlag のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_bool_simple">test_parse_bool_simple() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_bool_with_number">test_parse_bool_with_number() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_multi">test_parse_multi() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_Multi">test_parse_range_Multi() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_Multi_with_bool">test_parse_range_Multi_with_bool() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_negative">test_parse_range_negative() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_not_match_only_character">test_parse_range_not_match_only_character() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_positive">test_parse_range_positive() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_simple">test_parse_range_simple() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag">TestFlag (tests.test_flags のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlags">TestFlags (tests.test_flags のクラス)</a>
+</li>
+      <li>
+    tests
+
+      <ul>
+        <li><a href="tests.html#module-tests">モジュール</a>
+</li>
+      </ul></li>
+      <li>
+    tests.test_flags
+
+      <ul>
+        <li><a href="tests.html#module-tests.test_flags">モジュール</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -240,6 +322,19 @@
 
       <ul>
         <li><a href="flags.html#flags.Flag.value">(flags.Flag の属性)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    wave_io
+
+      <ul>
+        <li><a href="wave_io.html#module-wave_io">モジュール</a>
 </li>
       </ul></li>
   </ul></td>
@@ -257,6 +352,12 @@
         <li><a href="PyRwu.html#module-PyRwu">PyRwu</a>
 </li>
         <li><a href="settings.html#module-settings">settings</a>
+</li>
+        <li><a href="tests.html#module-tests">tests</a>
+</li>
+        <li><a href="tests.html#module-tests.test_flags">tests.test_flags</a>
+</li>
+        <li><a href="wave_io.html#module-wave_io">wave_io</a>
 </li>
       </ul></li>
   </ul></td>

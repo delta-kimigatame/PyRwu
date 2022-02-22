@@ -11,6 +11,7 @@ Welcome to PyRwu's documentation!
    :caption: Contents:
 
    PyRwu
+   wave_io
    flags
    settings
 
