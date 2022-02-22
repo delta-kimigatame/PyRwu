@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{353E064F-20DD-4223-BDB7-4FE1F9815576}"
 	ProjectSection(SolutionItems) = preProject
 		docsource\conf.py = docsource\conf.py
+		docsource\flags.rst = docsource\flags.rst
 		docsource\index.rst = docsource\index.rst
 		docsource\make.bat = docsource\make.bat
 		docsource\Makefile = docsource\Makefile

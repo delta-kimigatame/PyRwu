@@ -5,3 +5,4 @@ PyRwu
    :maxdepth: 4
 
    PyRwu
+   flags
