@@ -11,6 +11,7 @@ set SOURCEDIR=.
 set BUILDDIR=_build
 
 if "%1" == "" goto help
+if "%1" == "apidoc" goto apidoc
 
 %SPHINXBUILD% >NUL 2>NUL
 if errorlevel 9009 (
@@ -25,14 +26,21 @@ if errorlevel 9009 (
 	exit /b 1
 )
 
+
 :html
 %SPHINXBUILD% -b html %SOURCEDIR% "../docs" %SPHINXOPTS% %O%
 goto end
+
+:apidoc
+sphinx-apidoc -f -o %SOURCEDIR% "../PyRwu"
+goto end
+
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
 goto end
 
 :help
 %SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+
 
 :end
 popd
