@@ -1,4 +1,5 @@
-﻿import warnings
+﻿import re
+import warnings
 
 class Flag:
     '''Flag
@@ -200,5 +201,23 @@ class Flags:
         return description
 
 
+    def parse(self, value: str):
+        '''
+        フラグ文字列をパースして、各フラグの値を更新する。
 
+        Parameters
+        ----------
+        value: str
+            フラグ文字列。B50、g-5B30、eg+5B70Aなどのように、与えられる。
+        '''
+        keys = sorted(self.params.keys(),key=len, reverse==True) #文字数が長い順にキーを並べる
+        for k in keys:
+            if k not in value:
+                continue
+            m = re.search(k + r'+?(-?[0-9]*)', value) #boolタイプのフラグにも後ろに文字があれば、ほかのフラグの異常値を避けるために抽出する。
+            if self.params[k].isBool:
+                self.params[k].flag = True
+            else:
+                self.params[k].value = int(m.group(1))
+            value = value.replace(m.group(0),"")
 
