@@ -70,3 +70,13 @@ class TestWorldLoop(unittest.TestCase):
         np.testing.assert_array_equal(new_f0, np.array([0,1,2,3,4]))
         self.assertEqual(new_sp.shape[0], 5)
         self.assertEqual(new_sp.shape[1], 12)
+
+class TestVelocity(unittest.TestCase):
+    def test_velocity_100(self):
+        self.assertEqual(stretch.calc_velocity_rate(100), 1)
+        
+    def test_velocity_0(self):
+        self.assertEqual(stretch.calc_velocity_rate(0), 2)
+
+    def test_velocity_200(self):
+        self.assertEqual(stretch.calc_velocity_rate(200), 0.5)

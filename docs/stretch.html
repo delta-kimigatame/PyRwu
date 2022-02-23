@@ -77,6 +77,30 @@
 <p>stretch</p>
 <p>音声データの時間伸縮を扱います。</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="stretch.calc_velocity_rate">
+<span class="sig-prename descclassname"><span class="pre">stretch.</span></span><span class="sig-name descname"><span class="pre">calc_velocity_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#stretch.calc_velocity_rate" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">子音速度から、固定範囲の長さをどのように変更するか求めます。</div>
+<div class="line">velocity=200で0.5、velocity=0で2、velocity=100で1を返します。</div>
+</div>
+<p class="rubric">メモ</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rate</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">((</span><span class="mi">100</span><span class="o">-</span><span class="n">velocity</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>velocity</strong> (<em>int</em>) -- 子音速度(0～200)</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>rate</strong></p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="stretch.world_loop">
 <span class="sig-prename descclassname"><span class="pre">stretch.</span></span><span class="sig-name descname"><span class="pre">world_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#stretch.world_loop" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">

@@ -7,6 +7,28 @@
 import numpy as np
 from typing import Tuple
 
+def calc_velocity_rate(velocity: int) -> float:
+    '''
+    | 子音速度から、固定範囲の長さをどのように変更するか求めます。
+    | velocity=200で0.5、velocity=0で2、velocity=100で1を返します。
+
+    Notes
+    -----
+
+    >>> rate = 2 ** ((100-velocity)/100)
+
+    Parameters
+    ----------
+    velocity: int
+        子音速度(0～200)
+
+    Returns
+    -------
+    rate: float
+    '''
+    return 2 ** ((100-velocity)/100)
+
+
 def world_stretch(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     '''
 
