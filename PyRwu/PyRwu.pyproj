@@ -35,6 +35,9 @@
     <Compile Include="settings.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="stretch.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests\test_flags.py">
       <SubType>Code</SubType>
     </Compile>

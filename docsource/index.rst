@@ -14,6 +14,7 @@ Welcome to PyRwu's documentation!
    resamp
    wave_io
    flags
+   stretch
    settings
 
 
