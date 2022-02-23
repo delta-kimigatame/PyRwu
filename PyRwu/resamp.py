@@ -388,6 +388,6 @@ class Resamp:
                                                   self._sp[input_fix_frames:],
                                                   self._ap[input_fix_frames:])
 
-        self._f0 = np.concatenate()[vel_f0, s_f0], axis=0)
-        self._sp = np.concatenate()[vel_sp, s_sp], axis=0)
-        self._ap = np.concatenate()[vel_ap, s_ap], axis=0)
+        self._f0 = np.concatenate([vel_f0, s_f0], axis=0)
+        self._sp = np.concatenate([vel_sp, s_sp], axis=0)
+        self._ap = np.concatenate([vel_ap, s_ap], axis=0)
