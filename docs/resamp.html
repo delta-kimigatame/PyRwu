@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>resamp module &mdash; PyRwu 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="wave_io module" href="wave_io.html" />
+    <link rel="prev" title="PyRwu module" href="PyRwu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyRwu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PyRwu.html">PyRwu module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">resamp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyRwu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>resamp module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/resamp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-resamp">
+<span id="resamp-module"></span><h1>resamp module<a class="headerlink" href="#module-resamp" title="このヘッドラインへのパーマリンク"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="resamp.Resamp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">resamp.</span></span><span class="sig-name descname"><span class="pre">Resamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="m"><span class="pre">100</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modulation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitchbend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
+<div class="line">伸縮機の実際の動作を規定します。</div>
+<div class="line">処理の順序は下記の通り</div>
+</div>
+<ol class="arabic">
+<li><p>フラグをパース</p></li>
+<li><p>入力ファイルのworldパラメータを取得</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>wavファイルの読み込み</p></li>
+<li><p>harvestでf0取得</p></li>
+<li><p>stonemaskでf0補正</p></li>
+<li><p>cheaptrickでスペクトル包絡取得</p></li>
+<li><p>d4cで非周期性指標取得</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>worldパラメータの伸縮(長さ)</p></li>
+<li><p>音高・モジュレーションの適用(ピッチ)</p></li>
+<li><p>ピッチの適用</p></li>
+<li><p>worldパラメーター用の加工処理</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>f0に影響するフラグ(tフラグ)</p></li>
+<li><p>スペクトル包絡に影響するフラグ(gフラグ)</p></li>
+<li><p>非周期性指標に影響するフラグ(Bフラグ)</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>音声合成</p></li>
+<li><p>wav波形の加工処理</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>音量に関するフラグ(Pフラグ)</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>音量の適用</p></li>
+<li><p>wavファイルの出力</p></li>
+</ol>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.input_path">
+<span class="sig-name descname"><span class="pre">input_path</span></span><a class="headerlink" href="#resamp.Resamp.input_path" title="この定義へのパーマリンク"></a></dt>
+<dd><p>原音のファイル名</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.input_data">
+<span class="sig-name descname"><span class="pre">input_data</span></span><a class="headerlink" href="#resamp.Resamp.input_data" title="この定義へのパーマリンク"></a></dt>
+<dd><p>wavから読み込んだ波形データ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.framerate">
+<span class="sig-name descname"><span class="pre">framerate</span></span><a class="headerlink" href="#resamp.Resamp.framerate" title="この定義へのパーマリンク"></a></dt>
+<dd><p>wavのサンプリング周波数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.f0">
+<span class="sig-name descname"><span class="pre">f0</span></span><a class="headerlink" href="#resamp.Resamp.f0" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">wavのf0(音高)データの1次元配列。</div>
+<div class="line">settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.t">
+<span class="sig-name descname"><span class="pre">t</span></span><a class="headerlink" href="#resamp.Resamp.t" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">各フレームの時間的位置(sec)</div>
+<div class="line">settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">例えば、settings.PYWORLD_PERIOD=5のとき、t[100]=0.5</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.sp">
+<span class="sig-name descname"><span class="pre">sp</span></span><a class="headerlink" href="#resamp.Resamp.sp" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">wavのスペクトル包絡(声質)データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.ap">
+<span class="sig-name descname"><span class="pre">ap</span></span><a class="headerlink" href="#resamp.Resamp.ap" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">wavの非周期性指標データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.output_data">
+<span class="sig-name descname"><span class="pre">output_data</span></span><a class="headerlink" href="#resamp.Resamp.output_data" title="この定義へのパーマリンク"></a></dt>
+<dd><p>worldのパラメータから合成した波形データ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.output_path">
+<span class="sig-name descname"><span class="pre">output_path</span></span><a class="headerlink" href="#resamp.Resamp.output_path" title="この定義へのパーマリンク"></a></dt>
+<dd><p>wavファイルの出力先パス</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.target_tone">
+<span class="sig-name descname"><span class="pre">target_tone</span></span><a class="headerlink" href="#resamp.Resamp.target_tone" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">音高名(A4=440Hz)。</div>
+<div class="line">半角上げは#もしくは♯</div>
+<div class="line">半角下げはbもしくは♭で与えられます。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.target_frq">
+<span class="sig-name descname"><span class="pre">target_frq</span></span><a class="headerlink" href="#resamp.Resamp.target_frq" title="この定義へのパーマリンク"></a></dt>
+<dd><p>音高の周波数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.velocity">
+<span class="sig-name descname"><span class="pre">velocity</span></span><a class="headerlink" href="#resamp.Resamp.velocity" title="この定義へのパーマリンク"></a></dt>
+<dd><p>子音速度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.flag_value">
+<span class="sig-name descname"><span class="pre">flag_value</span></span><a class="headerlink" href="#resamp.Resamp.flag_value" title="この定義へのパーマリンク"></a></dt>
+<dd><p>フラグ(省略可)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, default &quot;&quot;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><a class="headerlink" href="#resamp.Resamp.flags" title="この定義へのパーマリンク"></a></dt>
+<dd><p>入力されたフラグをパースしたもの</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="flags.html#flags.Flags" title="flags.Flags">flags.Flags</a>, default settings.FLAGS</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#resamp.Resamp.offset" title="この定義へのパーマリンク"></a></dt>
+<dd><p>入力ファイルの読み込み開始位置(ms)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.target_ms">
+<span class="sig-name descname"><span class="pre">target_ms</span></span><a class="headerlink" href="#resamp.Resamp.target_ms" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">出力ファイルの長さ(ms)</div>
+<div class="line">UTAUでは通常50ms単位に丸めた値が渡される。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.fixed_ms">
+<span class="sig-name descname"><span class="pre">fixed_ms</span></span><a class="headerlink" href="#resamp.Resamp.fixed_ms" title="この定義へのパーマリンク"></a></dt>
+<dd><p>offsetからみて通常伸縮しない長さ(ms)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.end_ms">
+<span class="sig-name descname"><span class="pre">end_ms</span></span><a class="headerlink" href="#resamp.Resamp.end_ms" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">入力ファイルの読み込み終了位置(ms)(省略可 default:0)</div>
+<div class="line">正の数の場合、ファイル末尾からの時間</div>
+<div class="line">負の数の場合、offsetからの時間</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><a class="headerlink" href="#resamp.Resamp.volume" title="この定義へのパーマリンク"></a></dt>
+<dd><p>音量。0～200(省略可)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int, default 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.modulation">
+<span class="sig-name descname"><span class="pre">modulation</span></span><a class="headerlink" href="#resamp.Resamp.modulation" title="この定義へのパーマリンク"></a></dt>
+<dd><p>モジュレーション。0～200(省略可)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.pitchbend">
+<span class="sig-name descname"><span class="pre">pitchbend</span></span><a class="headerlink" href="#resamp.Resamp.pitchbend" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">ピッチベンド。(省略可)</div>
+<div class="line">-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、</div>
+<div class="line">同じ数字が続く場合ランレングス圧縮したもの</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str, default &quot;&quot;</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="resamp.Resamp.pitches">
+<span class="sig-name descname"><span class="pre">pitches</span></span><a class="headerlink" href="#resamp.Resamp.pitches" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">与えられたピッチ配列をworldのパラメータの時間軸にあわせたもの</div>
+<div class="line">時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id0" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end_ms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id1" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id2">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">f0</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id2" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fixed_ms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id3" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id4">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flag_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id4" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="flags.html#flags.Flags" title="flags.Flags"><span class="pre">flags.Flags</span></a></em><a class="headerlink" href="#id5" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id6">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">framerate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id6" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="resamp.Resamp.getInputData">
+<span class="sig-name descname"><span class="pre">getInputData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f0_floor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">71.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0_ceil</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">800.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">0.15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.85</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.getInputData" title="この定義へのパーマリンク"></a></dt>
+<dd><p>入力された音声データからworldパラメータを取得し、self._input_data, self._framerate, self._f0, self._sp, self._apを更新します。</p>
+<p class="rubric">メモ</p>
+<div class="line-block">
+<div class="line">音声データの取得方法を変更したい場合、このメソッドをオーバーライドしてください。</div>
+<div class="line">オーバーライドする際、self._input_dataはこれ以降の処理で使用しないため、更新しなくても問題ありません。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f0_floor</strong> (<em>float</em><em>, </em><em>default settings.PYWORLD_F0_FLOOR</em>) -- <div class="line-block">
+<div class="line">worldでの分析するf0の下限</div>
+<div class="line">デフォルトでは71.0</div>
+</div>
+</p></li>
+<li><p><strong>f0_ceil</strong> (<em>float</em><em>, </em><em>default settings.PYWORLD_F0_CEIL</em>) -- <div class="line-block">
+<div class="line">worldでの分析するf0の上限</div>
+<div class="line">デフォルトでは800.0</div>
+</div>
+</p></li>
+<li><p><strong>frame_period</strong> (<em>float</em><em>, </em><em>default settings.PYWORLD_PERIOD</em>) -- <div class="line-block">
+<div class="line">worldデータの1フレーム当たりの時間(ms)</div>
+<div class="line">初期設定では5.0</div>
+</div>
+</p></li>
+<li><p><strong>q1</strong> (<em>float</em><em>, </em><em>default settings.PYWORLD_Q1</em>) -- <div class="line-block">
+<div class="line">worldでスペクトル包絡抽出時の補正値</div>
+<div class="line">通常は変更不要</div>
+<div class="line">初期設定では-15.0</div>
+</div>
+</p></li>
+<li><p><strong>threshold</strong> (<em>float</em><em>, </em><em>default settings.PYWORLD_THRESHOLD</em>) -- <div class="line-block">
+<div class="line">worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)</div>
+<div class="line">値が0の場合、音声のあるフレームを全て有声と判定します。</div>
+<div class="line">値が0超の場合、一部のフレームを無声音として判断します。</div>
+<div class="line">初期値0.85はharvestと組み合わせる前提で調整されています。</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">例外</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> -- input_pathにファイルがなかったとき</p></li>
+<li><p><strong>TypeError</strong> -- input_pathで指定したファイルがwavではなかったとき</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id7">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id7" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id8">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">input_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id8" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">modulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id9" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id10" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id11" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id12" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="resamp.Resamp.parseFlags">
+<span class="sig-name descname"><span class="pre">parseFlags</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.parseFlags" title="この定義へのパーマリンク"></a></dt>
+<dd><p>与えられたフラグをパースし、self.flagsを更新します。</p>
+<p class="rubric">メモ</p>
+<p>フラグの取得方法を変更したい場合、このメソッドをオーバーライドしてください。</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pitchbend</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pitches</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id14" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id15" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id16" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id17">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_frq</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id17" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id18">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target_ms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id18" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">velocity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id19" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id20">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volume</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id20" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="PyRwu.html" class="btn btn-neutral float-left" title="PyRwu module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wave_io.html" class="btn btn-neutral float-right" title="wave_io module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, delta_kimigatame.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

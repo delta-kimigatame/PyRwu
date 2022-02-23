@@ -3,11 +3,40 @@
 
 Attributes
 ----------
-FLAGS : flags.Flags
+FLAGS: flags.Flags
     使用するフラグの設定。
+
+PYWORLD_F0_FLOOR: float, default pw.default_f0_floor
+
+    | worldでの分析するf0の下限
+    | デフォルトでは71.0
+
+PYWORLD_F0_CEIL: float, default pw.default_f0_ceil
+
+    | worldでの分析するf0の上限
+    | デフォルトでは800.0
+
+PYWORLD_PERIOD: float, default pw.default_frame_period
+
+    | worldデータの1フレーム当たりの時間(ms)
+    | デフォルトでは5.0
+
+PYWORLD_Q1:float default -0.15
+
+    | worldでスペクトル包絡抽出時の補正値
+    | 通常は変更不要
+    
+PYWORLD_THRESHOLD: float, default 0.85
+
+    | worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)
+    | 値が0の場合、音声のあるフレームを全て有声と判定します。
+    | 値が0超の場合、一部のフレームを無声音として判断します。
+    | 初期値0.85はharvestと組み合わせる前提で調整されています。
+
 '''
 
 import flags
+import pyworld as pw
 
 FLAGS = flags.Flags()
 FLAGS.add(flags.Flag("B",
@@ -47,3 +76,8 @@ FLAGS.add(flags.Flag("e",
                      default_bool=False))
 
 
+PYWORLD_PERIOD: float = pw.default_frame_period
+PYWORLD_F0_FLOOR: float = pw.default_f0_floor
+PYWORLD_F0_CEIL: float = pw.default_f0_ceil
+PYWORLD_Q1: float = -0.15
+PYWORLD_THRESHOLD: float = 0.85

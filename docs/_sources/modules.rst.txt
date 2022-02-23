@@ -6,6 +6,7 @@ PyRwu
 
    PyRwu
    flags
+   resamp
    settings
    tests
    wave_io

@@ -63,8 +63,6 @@ class ShowFlagAction(argparse.Action):
         super(ShowFlagAction, self).__init__(option_strings, dest=dest, nargs=0, help="使用できるフラグの詳細を表示", **kwargs)
 
     def __call__(self, parser, namespace, values, option_string=None):
-        #TODO
-        #フラグの設定ファイルを読み込んで出力する仕組み
         print(settings.FLAGS.getDetail())
         parser.exit()
 
