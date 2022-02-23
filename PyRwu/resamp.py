@@ -4,6 +4,7 @@ import pyworld as pw
 import flags
 import wave_io
 import stretch
+import pitch
 import settings
 class Resamp:
     '''Resamp
@@ -391,3 +392,25 @@ class Resamp:
         self._f0 = np.concatenate([vel_f0, s_f0], axis=0)
         self._sp = np.concatenate([vel_sp, s_sp], axis=0)
         self._ap = np.concatenate([vel_ap, s_ap], axis=0)
+
+    def pitchShift(self):
+        '''
+        | self._tone, self._modulationを使用して、self._target_frq,self._f0を更新します。
+
+        Notes
+        -----
+        | ノートの音程およびモジュレーションに関する処理を変更したい場合、このメソッドをオーバーライドしてください。
+        | オーバーライドする際、self._target_frqはこれ以降の処理で使用しないため、更新しなくても問題ありません。
+        
+        Raises
+        ------
+        ValueError
+            toneの書式が適正でない場合
+        '''
+
+        average_frq: float = np.average(self._f0)
+        self._target_frq = pitch.getFrqFromStr(self._tone)
+        self._f0 = self._f0 / average_frq * self._target_frq
+        if self._modulation != 0:
+            mod_f0: np.ndarray = np.stack([self._f0, np.full(self._f0.shape[0], self._target_frq)])
+            self._f0 = np.average(mod_f0, axis=0, weight=[1-self._modulation, self._modulation])
