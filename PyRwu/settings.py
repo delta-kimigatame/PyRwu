@@ -33,6 +33,15 @@ PYWORLD_THRESHOLD: float, default 0.85
     | 値が0超の場合、一部のフレームを無声音として判断します。
     | 初期値0.85はharvestと組み合わせる前提で調整されています。
 
+A4FRQ: float, default 440
+    基準となる音高
+
+TONE_NUM: dict
+    
+    | UTAUから渡される音高名をnotenumに変換するための辞書
+    | notenumはC1=24、C#1=25...B7=107で、以下の式で与えられる。
+
+    >>> notenum = (octave+1) * 12 + TONE_NUM[key]
 '''
 
 import flags
@@ -81,3 +90,12 @@ PYWORLD_F0_FLOOR: float = pw.default_f0_floor
 PYWORLD_F0_CEIL: float = pw.default_f0_ceil
 PYWORLD_Q1: float = -0.15
 PYWORLD_THRESHOLD: float = 0.85
+
+A4FRQ: float = 440.0
+TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
+                  "D":2, "D#":3, "D♯":3, "Eb":3, "D♭":3,
+                  "E":4, 
+                  "F":5, "F#":6, "F♯":6, "Gb":6, "G♭":6,
+                  "G":7, "G#":8, "G♯":8, "Ab":8, "A♭":8,
+                  "A":9, "A#":10, "A♯":10, "Bb":10, "B♭":10,
+                  "B":11}

@@ -6,6 +6,7 @@ PyRwu
 
    PyRwu
    flags
+   pitch
    resamp
    settings
    stretch

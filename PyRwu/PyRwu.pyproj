@@ -28,6 +28,9 @@
     <Compile Include="flags.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="pitch.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PyRwu.py" />
     <Compile Include="resamp.py">
       <SubType>Code</SubType>

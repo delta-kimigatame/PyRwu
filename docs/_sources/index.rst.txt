@@ -15,6 +15,7 @@ Welcome to PyRwu's documentation!
    wave_io
    flags
    stretch
+   pitch
    settings
 
 
