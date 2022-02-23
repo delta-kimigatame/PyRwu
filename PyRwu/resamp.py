@@ -3,6 +3,7 @@ import pyworld as pw
 
 import flags
 import wave_io
+import stretch
 import settings
 class Resamp:
     '''Resamp
@@ -100,9 +101,15 @@ class Resamp:
 
         | 出力ファイルの長さ(ms)
         | UTAUでは通常50ms単位に丸めた値が渡される。
+        
+    target_frames: int
+        target_msをworld仕様のフレーム数に変換したもの
 
     fixed_ms: float, default 0
         offsetからみて通常伸縮しない長さ(ms)
+
+    fixed_frames: int
+        worldパラメータのうち、前から何フレームが固定範囲に入るか?
 
     end_ms: float, default 0
 
@@ -149,6 +156,9 @@ class Resamp:
     _sp: np.ndarray
     _ap: np.ndarray
 
+    _target_frames :int
+    _fixed_frames :int
+
     _output_data: np.ndarray
 
     _target_frq: float
@@ -180,11 +190,19 @@ class Resamp:
     @property
     def target_ms(self) -> float:
         return self._target_ms
+    
+    @property
+    def target_frames(self) -> int:
+        return self._target_frames
 
     @property
     def fixed_ms(self) -> float:
         return self._fixed_ms
     
+    @property
+    def fixed_frames(self) -> int:
+        return self._fixed_frames
+
     @property
     def end_ms(self) -> float:
         return self._end_ms
@@ -324,3 +342,52 @@ class Resamp:
         self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
         self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor, frame_period=frame_period)
         self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+
+    def stretch(self):
+        '''
+        | self._target_ms, self._fixed_ms, self._velocityに基づいて、self._f0,self._sp,self._apを更新します。
+        | 計算途中結果のうち、後ほど活用できそうなself._target_framesとself._fixed_framesも記憶します。
+
+        Notes
+        -----
+        | 音声の伸縮方法を変更したい場合、このメソッドをオーバーライドしてください。
+        '''
+
+        vel_f0 :np.ndarray
+        vel_sp :np.ndarray
+        vel_ap :np.ndarray
+        
+        s_f0 :np.ndarray
+        s_sp :np.ndarray
+        s_ap :np.ndarray
+
+        self._target_frames = int(self._target_ms / settings.PYWORLD_PERIOD)
+        input_fix_frames: int = int(self._fixed_ms / settings.PYWORLD_PERIOD)
+
+        if self._velocity != 100:
+            _velocity_rate: float = stretch.calc_velocity_rate(self._velovity)
+            self._fixed_frames = int(input_fix_frames * _velocity_rate)
+            vel_f0, vel_sp, vel_ap = stretch.world_stretch(self._fixed_frames,
+                                                           self._f0[:input_fix_frames],
+                                                           self._sp[:input_fix_frames],
+                                                           self._ap[:input_fix_frames])
+        else:
+            self._fixed_frames = input_fix_frames
+            vel_f0 = self._f0[:input_fix_frames]
+            vel_sp = self._sp[:input_fix_frames]
+            vel_ap = self._ap[:input_fix_frames]
+
+        if self.flags.params["e"].flag:
+            s_f0, s_sp, s_ap = stretch.world_stretch(self._target_frames - self._fixed_frames,
+                                                     self._f0[input_fix_frames:],
+                                                     self._sp[input_fix_frames:],
+                                                     self._ap[input_fix_frames:])
+        else:
+            s_f0, s_sp, s_ap = stretch.world_loop(self._target_frames - self._fixed_frames,
+                                                  self._f0[input_fix_frames:],
+                                                  self._sp[input_fix_frames:],
+                                                  self._ap[input_fix_frames:])
+
+        self._f0 = np.concatenate()[vel_f0, s_f0], axis=0)
+        self._sp = np.concatenate()[vel_sp, s_sp], axis=0)
+        self._ap = np.concatenate()[vel_ap, s_ap], axis=0)
