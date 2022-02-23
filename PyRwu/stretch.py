@@ -89,3 +89,68 @@ def world_stretch(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndar
                 new_ap[i-leaves]=ap[i]
     return new_f0, new_sp, new_ap
 
+def world_loop(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    '''
+
+    | worldデータを全体を引き延ばす方式で伸縮します。
+    | 元データが[ABCDE]を2倍に引き延ばすとき[ABCDEDCBAB]となります。
+
+    Parameters
+    ----------
+    target_frames: int
+        伸縮後のworldフレーム数
+
+    f0: np.ndarray of float64
+        
+        | wavのf0(音高)データの1次元配列。
+        | settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。
+
+    sp: np.ndarray of float64
+
+        | wavのスペクトル包絡(声質)データの2次元配列。
+        | 1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。
+        | 2次元目は周波数軸で、fft_sizeに基づき決定する。
+
+    ap: np.ndarray of float64
+
+        | wavの非周期性指標データの2次元配列。
+        | 1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。
+        | 2次元目は周波数軸で、fft_sizeに基づき決定する。
+
+    Returns
+    -------
+    new_f0: np.ndarray of float64
+        
+        | wavのf0(音高)データの1次元配列。
+
+    new_sp: np.ndarray of float64
+
+        | wavのスペクトル包絡(声質)データの2次元配列。
+
+    new_ap: np.ndarray of float64
+
+        | wavの非周期性指標データの2次元配列。
+
+    '''
+    if target_frames == f0.shape[0]:
+        return f0, sp, ap
+    elif target_frames < f0.shape[0]:
+        return f0[:target_frame], sp[:target_frames], ap[:target_frames]
+
+    new_f0 = np.concatenate([f0,np.flipud(f0)[1:]],axis=0)
+    new_sp = np.concatenate([sp,np.flipud(sp)[1:]],axis=0)
+    new_ap = np.concatenate([ap,np.flipud(ap)[1:]],axis=0)
+    
+    i=0
+    while new_f0.shape[0] < target_frames:
+        if i==0:
+            new_f0 = np.concatenate([new_f0,f0[1:]],axis=0)
+            new_sp = np.concatenate([new_sp,sp[1:]],axis=0)
+            new_ap = np.concatenate([new_ap,ap[1:]],axis=0)
+            i=1
+        else:
+            new_f0 = np.concatenate([new_f0,np.flipud(f0)[1:]],axis=0)
+            new_sp = np.concatenate([new_sp,np.flipud(sp)[1:]],axis=0)
+            new_ap = np.concatenate([new_ap,np.flipud(ap)[1:]],axis=0)
+            i=0
+    return f0[:target_frame], sp[:target_frames], ap[:target_frames]

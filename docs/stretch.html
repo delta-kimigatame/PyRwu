@@ -77,6 +77,47 @@
 <p>stretch</p>
 <p>音声データの時間伸縮を扱います。</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="stretch.world_loop">
+<span class="sig-prename descclassname"><span class="pre">stretch.</span></span><span class="sig-name descname"><span class="pre">world_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#stretch.world_loop" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldデータを全体を引き延ばす方式で伸縮します。</div>
+<div class="line">元データが[ABCDE]を2倍に引き延ばすとき[ABCDEDCBAB]となります。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_frames</strong> (<em>int</em>) -- 伸縮後のworldフレーム数</p></li>
+<li><p><strong>f0</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavのf0(音高)データの1次元配列。</div>
+<div class="line">settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+</div>
+</p></li>
+<li><p><strong>sp</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavのスペクトル包絡(声質)データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+</p></li>
+<li><p><strong>ap</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavの非周期性指標データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>new_f0</strong> (<em>np.ndarray of float64</em>) -- | wavのf0(音高)データの1次元配列。</p></li>
+<li><p><strong>new_sp</strong> (<em>np.ndarray of float64</em>) -- | wavのスペクトル包絡(声質)データの2次元配列。</p></li>
+<li><p><strong>new_ap</strong> (<em>np.ndarray of float64</em>) -- | wavの非周期性指標データの2次元配列。</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="stretch.world_stretch">
 <span class="sig-prename descclassname"><span class="pre">stretch.</span></span><span class="sig-name descname"><span class="pre">world_stretch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#stretch.world_stretch" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">
