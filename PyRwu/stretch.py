@@ -135,7 +135,7 @@ def world_loop(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray
     if target_frames == f0.shape[0]:
         return f0, sp, ap
     elif target_frames < f0.shape[0]:
-        return f0[:target_frame], sp[:target_frames], ap[:target_frames]
+        return f0[:target_frames], sp[:target_frames], ap[:target_frames]
 
     new_f0 = np.concatenate([f0,np.flipud(f0)[1:]],axis=0)
     new_sp = np.concatenate([sp,np.flipud(sp)[1:]],axis=0)
@@ -153,4 +153,4 @@ def world_loop(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray
             new_sp = np.concatenate([new_sp,np.flipud(sp)[1:]],axis=0)
             new_ap = np.concatenate([new_ap,np.flipud(ap)[1:]],axis=0)
             i=0
-    return f0[:target_frame], sp[:target_frames], ap[:target_frames]
+    return new_f0[:target_frames], new_sp[:target_frames], new_ap[:target_frames]
