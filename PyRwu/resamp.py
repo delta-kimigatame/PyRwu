@@ -124,6 +124,11 @@ class Resamp:
     modulation: int, default 0
         モジュレーション。0～200(省略可)
 
+    tempo: str, default "!120"
+
+        | ピッチのテンポ
+        | 数字の頭に!がついた文字列
+
     pitchbend: str, default ""
 
         | ピッチベンド。(省略可)
@@ -148,6 +153,7 @@ class Resamp:
     _end_ms: float
     _volume: int
     _modulation: int
+    _tempo: str
     _pitchbend: str
 
     _input_data: np.ndarray
@@ -217,6 +223,10 @@ class Resamp:
         return self._modulation
     
     @property
+    def tempo(self) -> str:
+        return self._tempo
+
+    @property
     def pitchbend(self) -> str:
         return self._pitchbend
     
@@ -262,7 +272,7 @@ class Resamp:
     
     def __init__(self, input_path: str, output_path: str, target_tone: str, velocity: 100,
                  flag_value: str="", offset: float=0, target_ms: float=0, fixed_ms: float=0,
-                 end_ms: float=0, volume: int=100, modulation: int=0, pitchbend: str=""):
+                 end_ms: float=0, volume: int=100, modulation: int=0, tempo: str="!120", pitchbend: str=""):
         self._input_path = input_path
         self._output_path = output_path
         self._target_tone = target_tone
@@ -274,6 +284,7 @@ class Resamp:
         self._end_ms = end_ms
         self._volume = volume
         self._modulation = modulation
+        self._tempo = tempo
         self._pitchbend = pitchbend
 
     def parseFlags(self):

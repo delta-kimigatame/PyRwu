@@ -47,6 +47,8 @@
 <li class="toctree-l1"><a class="reference internal" href="resamp.html">resamp module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
 
@@ -87,10 +89,10 @@ wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプ�
 <h2>Usage<a class="headerlink" href="#usage" title="このヘッドラインへのパーマリンク"></a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">usage</span><span class="p">:</span> <span class="n">PyRwu</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">flag</span><span class="p">]</span>
 <span class="go">                input_path output_path target_tone velocity [flags] [offset] [target_ms] [fixed_ms] [end_ms]</span>
-<span class="go">                [volume] [modulation] [pitchbend]</span>
+<span class="go">                [volume] [modulation] [tempo] [pitchbend]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">param input_path</dt>
 <dd class="field-odd"><p>原音のファイル名</p>
 </dd>
@@ -104,9 +106,11 @@ wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプ�
 <dd class="field-even"><p>str</p>
 </dd>
 <dt class="field-odd">param target_tone</dt>
-<dd class="field-odd"><p>音高名(A4=440Hz)。
-半角上げは#もしくは♯
-半角下げはbもしくは♭で与えられます。</p>
+<dd class="field-odd"><div class="line-block">
+<div class="line">音高名(A4=440Hz)。</div>
+<div class="line">半角上げは#もしくは♯</div>
+<div class="line">半角下げはbもしくは♭で与えられます。</div>
+</div>
 </dd>
 <dt class="field-even">type target_tone</dt>
 <dd class="field-even"><p>str</p>
@@ -130,8 +134,10 @@ wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプ�
 <dd class="field-even"><p>float, default 0</p>
 </dd>
 <dt class="field-odd">param target_ms</dt>
-<dd class="field-odd"><p>出力ファイルの長さ(ms)
-UTAUでは通常50ms単位に丸めた値が渡される。</p>
+<dd class="field-odd"><div class="line-block">
+<div class="line">出力ファイルの長さ(ms)</div>
+<div class="line">UTAUでは通常50ms単位に丸めた値が渡される。</div>
+</div>
 </dd>
 <dt class="field-even">type target_ms</dt>
 <dd class="field-even"><p>float, default 0</p>
@@ -143,9 +149,11 @@ UTAUでは通常50ms単位に丸めた値が渡される。</p>
 <dd class="field-even"><p>float, default 0</p>
 </dd>
 <dt class="field-odd">param end_ms</dt>
-<dd class="field-odd"><p>入力ファイルの読み込み終了位置(ms)(省略可 default:0)
-正の数の場合、ファイル末尾からの時間
-負の数の場合、offsetからの時間</p>
+<dd class="field-odd"><div class="line-block">
+<div class="line">入力ファイルの読み込み終了位置(ms)(省略可 default:0)</div>
+<div class="line">正の数の場合、ファイル末尾からの時間</div>
+<div class="line">負の数の場合、offsetからの時間</div>
+</div>
 </dd>
 <dt class="field-even">type end_ms</dt>
 <dd class="field-even"><p>float, default 0</p>
@@ -162,10 +170,21 @@ UTAUでは通常50ms単位に丸めた値が渡される。</p>
 <dt class="field-even">type modulation</dt>
 <dd class="field-even"><p>int, default 0</p>
 </dd>
+<dt class="field-odd">param tempo</dt>
+<dd class="field-odd"><div class="line-block">
+<div class="line">ピッチのテンポ</div>
+<div class="line">数字の頭に!がついた文字列</div>
+</div>
+</dd>
+<dt class="field-even">type tempo</dt>
+<dd class="field-even"><p>str, default &quot;!120&quot;</p>
+</dd>
 <dt class="field-odd">param pitchbend</dt>
-<dd class="field-odd"><p>ピッチベンド。(省略可)
--2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、
-同じ数字が続く場合ランレングス圧縮したもの</p>
+<dd class="field-odd"><div class="line-block">
+<div class="line">ピッチベンド。(省略可)</div>
+<div class="line">-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、</div>
+<div class="line">同じ数字が続く場合ランレングス圧縮したもの</div>
+</div>
 </dd>
 <dt class="field-even">type pitchbend</dt>
 <dd class="field-even"><p>str, default &quot;&quot;</p>

@@ -10,41 +10,69 @@ Usage
 -----
 >>> usage: PyRwu.py [-h] [--show-flag]
                 input_path output_path target_tone velocity [flags] [offset] [target_ms] [fixed_ms] [end_ms]
-                [volume] [modulation] [pitchbend]
+                [volume] [modulation] [tempo] [pitchbend]
 
 Parameters
 ----------
 input_path: str
+
     原音のファイル名
+
 output_path: str
+
     wavファイルの出力先パス
+
 target_tone: str
-    音高名(A4=440Hz)。
-    半角上げは#もしくは♯ 
-    半角下げはbもしくは♭で与えられます。
+
+    | 音高名(A4=440Hz)。
+    | 半角上げは#もしくは♯ 
+    | 半角下げはbもしくは♭で与えられます。
+
 velocity: int
+
     子音速度
+
 flags: str, default ""
+
     フラグ(省略可)
+
 offset: float, default 0
+
     入力ファイルの読み込み開始位置(ms)
+
 target_ms: float, default 0
-    出力ファイルの長さ(ms)
-    UTAUでは通常50ms単位に丸めた値が渡される。
+
+    | 出力ファイルの長さ(ms)
+    | UTAUでは通常50ms単位に丸めた値が渡される。
+
 fixed_ms: float, default 0
+
     offsetからみて通常伸縮しない長さ(ms)
+
 end_ms: float, default 0
-    入力ファイルの読み込み終了位置(ms)(省略可 default:0)
-    正の数の場合、ファイル末尾からの時間
-    負の数の場合、offsetからの時間
+
+    | 入力ファイルの読み込み終了位置(ms)(省略可 default:0)
+    | 正の数の場合、ファイル末尾からの時間
+    | 負の数の場合、offsetからの時間
+
 volume: int, default 100
+
     音量。0～200(省略可)
+
 modulation: int, default 0
+
     モジュレーション。0～200(省略可)
+
+tempo: str, default "!120"
+
+    | ピッチのテンポ
+    | 数字の頭に!がついた文字列
+
 pitchbend: str, default ""
-    ピッチベンド。(省略可)
-    -2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、
-    同じ数字が続く場合ランレングス圧縮したもの
+
+    | ピッチベンド。(省略可)
+    | -2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、
+    | 同じ数字が続く場合ランレングス圧縮したもの
 '''
 
 import sys
@@ -85,6 +113,7 @@ if __name__ == "__main__":
                         "負の数の場合、offsetからの時間", type=float, nargs="?", default=0)
     parser.add_argument("volume", help="音量。0～200(省略可 default:100)", type=int, nargs="?", default=100)
     parser.add_argument("modulation", help="モジュレーション。0～200(省略可 default:0)", type=int, nargs="?", default=0)
+    parser.add_argument("tempo", help="ピッチのテンポ。数字の頭に!がついた文字列(省略可 default:\"!120\")", type=int, nargs="?", default="!120")
     parser.add_argument("pitchbend", help="ピッチベンド。(省略可 default:\"\")"+
                         "-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、" + 
                         "同じ数字が続く場合ランレングス圧縮したもの", type=str, nargs="?", default="")
