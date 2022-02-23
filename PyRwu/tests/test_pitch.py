@@ -1,6 +1,8 @@
 ﻿import unittest
 import math
 
+import numpy as np
+
 import pitch
 
 class TestGetFrqFromStr(unittest.TestCase):
@@ -40,3 +42,13 @@ class TestDecodeRunLength(unittest.TestCase):
         
     def test_twice(self):
         self.assertEqual(pitch.decodeRunLength("AA#3#BBAA#5#CCAA#3#"),"AAAAAAAABBAAAAAAAAAAAACCAAAAAAAA")
+
+class TestDecodeBase64(unittest.TestCase):
+    def test_zero(self):
+        np.testing.assert_array_equal(pitch.decodeBase64(pitch.decodeRunLength("AA#6#")), np.array([0,0,0,0,0,0,0]))
+        
+    def test_max(self):
+        np.testing.assert_array_equal(pitch.decodeBase64(pitch.decodeRunLength("AA#6#f/#3#")), np.array([0,0,0,0,0,0,0,2047,2047,2047,2047]))
+        
+    def test_min(self):
+        np.testing.assert_array_equal(pitch.decodeBase64(pitch.decodeRunLength("AA#6#gA#3#")), np.array([0,0,0,0,0,0,0,-2048,-2048,-2048,-2048]))

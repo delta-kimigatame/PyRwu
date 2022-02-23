@@ -78,6 +78,45 @@
 <p>pitch</p>
 <p>音高関係のデータを扱います</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="pitch.decodeBase64">
+<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">decodeBase64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#pitch.decodeBase64" title="この定義へのパーマリンク"></a></dt>
+<dd><p>base64文字列をデコードし、-2048～2047のndarrayを返します。</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) -- Base64でエンコードされた文字列</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>decode_data</strong> -- | -2047 ～ 2048の整数列
+| データ数は、与えられたvalueの半分になります。</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>np.ndarray of int16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pitch.decodeBase64Core">
+<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">decodeBase64Core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#pitch.decodeBase64Core" title="この定義へのパーマリンク"></a></dt>
+<dd><p>base64文字をデコードします。</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) -- <div class="line-block">
+<div class="line">1文字の文字列</div>
+<div class="line">2文字以上でも2文字目以降は無視されます。</div>
+</div>
+</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>decode_value</strong></p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pitch.decodeRunLength">
 <span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">decodeRunLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pitch.decodeRunLength" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">
