@@ -41,6 +41,9 @@
     <Compile Include="tests\test_flags.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tests\test_stretch.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests\test_wave_io.py">
       <SubType>Code</SubType>
     </Compile>

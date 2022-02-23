@@ -8,5 +8,6 @@ PyRwu
    flags
    resamp
    settings
+   stretch
    tests
    wave_io

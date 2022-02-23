@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>stretch module &mdash; PyRwu 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="settings module" href="settings.html" />
+    <link rel="prev" title="flags module" href="flags.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyRwu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PyRwu.html">PyRwu module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resamp.html">resamp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">stretch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyRwu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>stretch module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/stretch.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-stretch">
+<span id="stretch-module"></span><h1>stretch module<a class="headerlink" href="#module-stretch" title="このヘッドラインへのパーマリンク"></a></h1>
+<p>stretch</p>
+<p>音声データの時間伸縮を扱います。</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="stretch.world_stretch">
+<span class="sig-prename descclassname"><span class="pre">stretch.</span></span><span class="sig-name descname"><span class="pre">world_stretch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_frames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#stretch.world_stretch" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldデータを全体を引き延ばす方式で伸縮します。</div>
+<div class="line">元データが[ABCDE]を2倍に引き延ばすとき[AABBCCDDEE]となります。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_frames</strong> (<em>int</em>) -- 伸縮後のworldフレーム数</p></li>
+<li><p><strong>f0</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavのf0(音高)データの1次元配列。</div>
+<div class="line">settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+</div>
+</p></li>
+<li><p><strong>sp</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavのスペクトル包絡(声質)データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+</p></li>
+<li><p><strong>ap</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">wavの非周期性指標データの2次元配列。</div>
+<div class="line">1次元目は時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+<div class="line">2次元目は周波数軸で、fft_sizeに基づき決定する。</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>new_f0</strong> (<em>np.ndarray of float64</em>) -- | wavのf0(音高)データの1次元配列。</p></li>
+<li><p><strong>new_sp</strong> (<em>np.ndarray of float64</em>) -- | wavのスペクトル包絡(声質)データの2次元配列。</p></li>
+<li><p><strong>new_ap</strong> (<em>np.ndarray of float64</em>) -- | wavの非周期性指標データの2次元配列。</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flags.html" class="btn btn-neutral float-left" title="flags module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="settings.html" class="btn btn-neutral float-right" title="settings module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, delta_kimigatame.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

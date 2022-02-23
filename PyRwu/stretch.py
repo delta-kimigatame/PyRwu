@@ -60,7 +60,7 @@ def world_stretch(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndar
 
     if target_frames > f0.shape[0]:
         #伸ばす
-        multinunm: int = int(target_frames / f0.shape[0]) + 1
+        multinum: int = int(target_frames / f0.shape[0]) + 1
         border: int = f0.shape[0] - (multinum*f0.shape[0] - target_frames)
         #0～borderの要素はmultinum回、border～の要素はmultinum-1回繰り返す
         for i in range(f0.shape[0]):
@@ -79,11 +79,11 @@ def world_stretch(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndar
         border:float = 0
         leaves:int = 0
         for i in range(f0.shape[0]):
+            border = border + leavereat
             if border >= 1:
-                border = border - 1 + leavereat
+                border = border - 1
                 leaves = leaves + 1
             else:
-                border = border + leavereat
                 new_f0[i-leaves]=f0[i]
                 new_sp[i-leaves]=sp[i]
                 new_ap[i-leaves]=ap[i]
