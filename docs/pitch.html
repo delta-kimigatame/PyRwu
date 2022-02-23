@@ -78,6 +78,30 @@
 <p>pitch</p>
 <p>音高関係のデータを扱います</p>
 <dl class="py function">
+<dt class="sig sig-object py" id="pitch.decodeRunLength">
+<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">decodeRunLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pitch.decodeRunLength" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">UTAUピッチ用のランレングス圧縮を展開します。</div>
+<div class="line">2文字一組とし、#num#はひとつ前の組の繰り返し回数を表します。</div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; AAABAC → [AA, AB, AC]
+&gt;&gt;&gt; AA#3# → [AA, AA, AA, AA]
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) -- ランレングス圧縮された文字列</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>decode_data</strong> -- 展開後の文字列</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="pitch.getFrqFromStr">
 <span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">getFrqFromStr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#pitch.getFrqFromStr" title="この定義へのパーマリンク"></a></dt>
 <dd><p>settings.TONE_NUMとsettings.A4FRQと与えられた文字列から周波数を返す。</p>

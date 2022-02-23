@@ -30,3 +30,13 @@ class TestGetFrqFromStr(unittest.TestCase):
         
     def test_getfrq_c1(self):
         self.assertEqual(32.703, round(pitch.getFrqFromStr("C1"),3))
+
+class TestDecodeRunLength(unittest.TestCase):
+    def test_simple(self):
+        self.assertEqual(pitch.decodeRunLength("AA#3#"),"AAAAAAAA")
+        
+    def test_sandwich(self):
+        self.assertEqual(pitch.decodeRunLength("AA#3#BBAA#5#"),"AAAAAAAABBAAAAAAAAAAAA")
+        
+    def test_twice(self):
+        self.assertEqual(pitch.decodeRunLength("AA#3#BBAA#5#CCAA#3#"),"AAAAAAAABBAAAAAAAAAAAACCAAAAAAAA")
