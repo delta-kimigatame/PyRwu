@@ -137,8 +137,7 @@ class Resamp:
 
     pitches: np.ndarray of float64
 
-        | 与えられたピッチ配列をworldのパラメータの時間軸にあわせたもの
-        | 時間軸で、settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。
+        | 与えられたピッチ配列を数値配列に変換したもの
 
     '''
 
@@ -425,3 +424,36 @@ class Resamp:
         if self._modulation != 0:
             mod_f0: np.ndarray = np.stack([self._f0, np.full(self._f0.shape[0], self._target_frq)])
             self._f0 = np.average(mod_f0, axis=0, weight=[1-self._modulation, self._modulation])
+
+    def applyPitch(self):
+        '''
+        | self._target_ms, self._tempo, self._framerate, self,_pitchbend, self._tを使用して、self._pitches, self._f0を更新します。
+        
+        Notes
+        -----
+        | ピッチの適用およびピッチに関するフラグの処理を変更したい場合、このメソッドをオーバーライドしてください。
+        
+        Notes
+        -----
+        | UTAUのピッチ数列および、tフラグは1cent単位で与えられます。
+        | 100cent = 半音のため、1オクターブは1200cent
+        | 1オクターブ上がると周波数が2倍になることから、
+        | 音程を1cent上げる処理は、元の周波数 * 2^(1/1200)
+        
+        Raises
+        ------
+        ValueError
+            toneの書式が適正でない場合
+        
+        ValueError
+            tempoに有効な文字列が渡されなかったとき
+        '''
+        self._pitches = pitch.decodeBase64(self._pitchbend)
+        utau_t: np.ndarray = pitch.getPitchRange(self._tempo, self._target_ms, self._framerate)
+        interp_pitch = pitch.interpPitch(self._pitches, utau_t, self_t)
+
+        #tフラグの処理
+        interp_pitch += self.flags.params["t"].value
+
+        #pitchの適用
+        self._f0 = self._f0 * (np.full(self._f0.shape[0], 2) ** (interp_pitch / 1200))
