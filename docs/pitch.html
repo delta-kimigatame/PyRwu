@@ -201,6 +201,30 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pitch.interpPitch">
+<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">interpPitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">utau_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#pitch.interpPitch" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">UTAUピッチ列をworld時間軸に線形補完します。</div>
+<div class="line">UTAUピッチ列が必要長さに満たない場合、後ろ側を0埋めをします。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base</strong> (<em>np.ndarray</em>) -- UTAUピッチ列</p></li>
+<li><p><strong>utau_t</strong> (<em>np.ndarray</em>) -- UTAUピッチのタイミング列</p></li>
+<li><p><strong>world_t</strong> (<em>no.ndarray</em>) -- world時間軸のタイミング列</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>interp_data</strong> -- world時間軸のピッチ列</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

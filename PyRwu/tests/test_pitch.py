@@ -67,3 +67,24 @@ class TestGetPitchRange(unittest.TestCase):
             prange = pitch.getPitchRange("!a100", 30.0, 2500)
         self.assertEqual(cm.exception.args[0], "{} is not utau tempo format.".format("!a100"))
         
+class TestInterpPitch(unittest.TestCase):
+    def test_interp_wide(self):
+        base = np.array([0,4,8,12,16,20], dtype=np.float64)
+        utau_t = np.array([0,2,4,6,8,10], dtype=np.float64)
+        world_t = np.array([0,5,10], dtype=np.float64)
+        interp_data = pitch.interpPitch(base, utau_t, world_t)
+        np.testing.assert_array_equal(interp_data, np.array([0,10,20]) )
+        
+    def test_interp_narrow(self):
+        base = np.array([0,4,8,12,16,20], dtype=np.float64)
+        utau_t = np.array([0,2,4,6,8,10], dtype=np.float64)
+        world_t = np.arange(11, dtype=np.float64)
+        interp_data = pitch.interpPitch(base, utau_t, world_t)
+        np.testing.assert_array_equal(interp_data, np.array([0,2,4,6,8,10,12,14,16,18,20]) )
+        
+    def test_interp_narrow_with_pad(self):
+        base = np.array([0,4,8,12,16,20], dtype=np.float64)
+        utau_t = np.array([0,2,4,6,8,10,12], dtype=np.float64)
+        world_t = np.arange(13, dtype=np.float64)
+        interp_data = pitch.interpPitch(base, utau_t, world_t)
+        np.testing.assert_array_equal(interp_data, np.array([0,2,4,6,8,10,12,14,16,18,20,10,0]) )

@@ -6,6 +6,7 @@
 import re
 
 import numpy as np
+from scipy import interpolate
 
 import settings
 
@@ -162,3 +163,28 @@ def getPitchRange(tempo: str, target_ms: float, framerate: int)-> np.ndarray:
     pitch_length: int = int(nframes / frame_step) + 1
     ms_step: float = frame_step / framerate * 1000
     return np.arange(0, ms_step * (pitch_length + 1), ms_step)[:pitch_length + 1]
+
+def interpPitch(base: np.ndarray, utau_t: np.ndarray, world_t: np.ndarray) -> np.ndarray:
+    '''
+    | UTAUピッチ列をworld時間軸に線形補完します。
+    | UTAUピッチ列が必要長さに満たない場合、後ろ側を0埋めをします。
+
+    Parameters
+    ----------
+    base: np.ndarray
+        UTAUピッチ列
+
+    utau_t: np.ndarray
+        UTAUピッチのタイミング列
+
+    world_t: no.ndarray
+        world時間軸のタイミング列
+
+    Returns
+    -------
+    interp_data: np.ndarray
+        world時間軸のピッチ列
+    '''
+    base = np.pad(base, (0,utau_t.shape[0]-base.shape[0]))
+
+    return interpolate.interp1d(utau_t, base)(world_t)
