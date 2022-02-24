@@ -52,3 +52,18 @@ class TestDecodeBase64(unittest.TestCase):
         
     def test_min(self):
         np.testing.assert_array_equal(pitch.decodeBase64(pitch.decodeRunLength("AA#6#gA#3#")), np.array([0,0,0,0,0,0,0,-2048,-2048,-2048,-2048]))
+
+class TestGetPitchRange(unittest.TestCase):
+    def test_get_pitch_range(self):
+        prange = pitch.getPitchRange("!100", 30.0, 2500)
+        np.testing.assert_array_equal(prange, np.array([0, 6.4, 6.4*2, 6.4*3, 6.4*4, 6.4*5]))
+        
+    def test_get_pitch_range_tempo_float(self):
+        prange = pitch.getPitchRange(100.0, 30.0, 2500)
+        np.testing.assert_array_equal(prange, np.array([0, 6.4, 6.4*2, 6.4*3, 6.4*4, 6.4*5]))
+        
+    def test_bad_tempo(self):
+        with self.assertRaises(ValueError) as cm:
+            prange = pitch.getPitchRange("!a100", 30.0, 2500)
+        self.assertEqual(cm.exception.args[0], "{} is not utau tempo format.".format("!a100"))
+        

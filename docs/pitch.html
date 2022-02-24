@@ -164,6 +164,43 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="pitch.getPitchRange">
+<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">getPitchRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tempo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#pitch.getPitchRange" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">出力長さに対する、UTAUピッチのタイミング列を求めます。</div>
+<div class="line">UTAUピッチ列は、4部音符あたり96個を基本とし、</div>
+<div class="line">ピッチ列の間隔をwaveのフレームで表したとき整数となるようにします。</div>
+<div class="line">全フレーム数をピッチ列間隔で除した数を切り上げた整数になります。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tempo</strong> (<em>str</em>) -- <div class="line-block">
+<div class="line">ピッチのテンポ</div>
+<div class="line">floatに変換可能な文字列もしくは、数字の頭に!がついた文字列</div>
+</div>
+</p></li>
+<li><p><strong>target_ms</strong> (<em>float</em>) -- <div class="line-block">
+<div class="line">出力ファイルの長さ(ms)</div>
+<div class="line">UTAUでは通常50ms単位に丸めた値が渡される。</div>
+</div>
+</p></li>
+<li><p><strong>framerate</strong> (<em>int</em>) -- wavのサンプリング周波数</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>range</strong> -- UTAUピッチのタイミング列を求めます。</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+<dt class="field-even">例外</dt>
+<dd class="field-even"><p><strong>ValueError</strong> -- tempoに有効な文字列が渡されなかったとき</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

@@ -117,3 +117,48 @@ def decodeBase64(value :str) -> np.ndarray:
             decode_data[i] -= 4096
 
     return decode_data
+
+def getPitchRange(tempo: str, target_ms: float, framerate: int)-> np.ndarray:
+    '''
+    | 出力長さに対する、UTAUピッチのタイミング列を求めます。
+    | UTAUピッチ列は、4部音符あたり96個を基本とし、
+    | ピッチ列の間隔をwaveのフレームで表したとき整数となるようにします。
+    | 全フレーム数をピッチ列間隔で除した数を切り上げた整数になります。
+
+    Parameters
+    ----------
+    tempo: str
+
+        | ピッチのテンポ
+        | floatに変換可能な文字列もしくは、数字の頭に!がついた文字列
+
+    target_ms: float
+
+        | 出力ファイルの長さ(ms)
+        | UTAUでは通常50ms単位に丸めた値が渡される。
+        
+    framerate: int
+        wavのサンプリング周波数
+
+    Returns
+    -------
+    range: np.ndarray of float64
+        UTAUピッチのタイミング列を求めます。
+
+    Raises
+    ------
+    ValueError
+        tempoに有効な文字列が渡されなかったとき
+    '''
+    try:
+        bpm: float = float(tempo)
+    except:
+        try:
+            bpm: float = float(tempo[1:])
+        except:
+            raise ValueError("{} is not utau tempo format.".format(tempo))
+    nframes: int = int(target_ms / 1000 * framerate)
+    frame_step: int = int(round(60 / 96 / bpm * framerate,0))
+    pitch_length: int = int(nframes / frame_step) + 1
+    ms_step: float = frame_step / framerate * 1000
+    return np.arange(0, ms_step * (pitch_length + 1), ms_step)[:pitch_length + 1]
