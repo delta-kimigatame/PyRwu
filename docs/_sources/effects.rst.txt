@@ -28,6 +28,14 @@ effects.large\_b\_flag module
    :undoc-members:
    :show-inheritance:
 
+effects.large\_p\_flag module
+-----------------------------
+
+.. automodule:: effects.large_p_flag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 effects.t\_flag module
 ----------------------
 

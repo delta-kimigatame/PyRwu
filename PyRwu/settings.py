@@ -70,7 +70,7 @@ OUT_WAVE_EFFECTS: list of effects.base.EffectBase
     
 '''
 
-from effects import large_b_flag
+from effects import large_b_flag, large_p_flag
 import flags
 import pyworld as pw
 from effects import *
@@ -133,4 +133,4 @@ F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = [large_b_flag.LargeBFlag]
 WORLD_EFFECTS = []
-OUT_WAVE_EFFECTS = []
+OUT_WAVE_EFFECTS = [large_p_flag.LargePFlag]

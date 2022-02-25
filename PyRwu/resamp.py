@@ -489,3 +489,18 @@ class Resamp:
             self._f0, self._sp, self._ap = effect.apply(self)
 
         self._output_data = pw.synthesize(self._f0, self._sp, self._ap, self._framerate, settings.PYWORLD_PERIOD)
+
+    def adjustVolume(self):
+        '''
+        | self._volumeを使用して、self._output_dataを更新します。
+        | また、settings.OUT_WAVE_EFFECTSも適用します。
+
+        Notes
+        -----
+        | 音声合成後のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。
+        '''
+        
+        for effect in settings.OUT_WAVE_EFFECTS:
+            self._output_data = effect.apply(self)
+
+        self._output_data *= self._volume/100

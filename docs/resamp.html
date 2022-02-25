@@ -99,11 +99,11 @@
 </li>
 <li><p>worldパラメータの伸縮(長さ)</p></li>
 <li><p>音高・モジュレーションの適用(ピッチ)</p></li>
-<li><p>ピッチの適用</p></li>
+<li><p>ピッチの適用(tフラグもここで適用)</p></li>
 <li><p>worldパラメーター用の加工処理</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>f0に影響するフラグ(tフラグ)</p></li>
+<li><p>f0に影響するフラグ</p></li>
 <li><p>スペクトル包絡に影響するフラグ(gフラグ)</p></li>
 <li><p>非周期性指標に影響するフラグ(Bフラグ)</p></li>
 </ol>
@@ -428,6 +428,19 @@
 <dd class="field-odd"><p>np.ndarray of float64</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="resamp.Resamp.adjustVolume">
+<span class="sig-name descname"><span class="pre">adjustVolume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.adjustVolume" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">self._volumeを使用して、self._output_dataを更新します。</div>
+<div class="line">また、settings.OUT_WAVE_EFFECTSも適用します。</div>
+</div>
+<p class="rubric">メモ</p>
+<div class="line-block">
+<div class="line">音声合成後のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。</div>
+</div>
 </dd></dl>
 
 <dl class="py property">

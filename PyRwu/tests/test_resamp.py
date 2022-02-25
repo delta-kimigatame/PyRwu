@@ -245,3 +245,97 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.synthesize()
         wave_io.write(output, self.resamp.output_data)
         self.assertTrue(os.path.isfile(output))
+        
+    def test_adjustVolume(self):
+        output = os.path.join("tests","testdata","outputresamp","volume.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        self.resamp.adjustVolume()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_adjustVolume0(self):
+        output = os.path.join("tests","testdata","outputresamp","volume0.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 0, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        self.resamp.adjustVolume()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_adjustVolume_P0(self):
+        output = os.path.join("tests","testdata","outputresamp","volumeP0.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "P0", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        before_max = np.amax(np.abs(self.resamp.output_data))
+        self.resamp.adjustVolume()
+        self.assertEqual(before_max, np.amax(np.abs(self.resamp.output_data)))
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_adjustVolume_P100(self):
+        output = os.path.join("tests","testdata","outputresamp","volumeP100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "P100", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        self.resamp.adjustVolume()
+        self.assertEqual(np.amax(np.abs(self.resamp.output_data)), 0.5)
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_adjustVolume200_P100(self):
+        output = os.path.join("tests","testdata","outputresamp","volume200P100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "P100", 0, 500, 100, 0, 200, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        self.resamp.adjustVolume()
+        self.assertEqual(np.amax(np.abs(self.resamp.output_data)), 1)
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
