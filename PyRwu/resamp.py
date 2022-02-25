@@ -475,4 +475,17 @@ class Resamp:
         | 音声合成前のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。
         
         '''
+
+        for effect in settings.F0_EFFECTS:
+            self._f0 = effect.apply(self)
+            
+        for effect in settings.SP_EFFECTS:
+            self._sp = effect.apply(self)
+            
+        for effect in settings.AP_EFFECTS:
+            self._ap = effect.apply(self)
+            
+        for effect in settings.WORLD_EFFECTS:
+            self._f0. self._sp, self._ap = effect.apply(self)
+
         self._output_data = pw.synthesize(self._f0, self._sp, self._ap, self._framerate, settings.PYWORLD_PERIOD)

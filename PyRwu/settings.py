@@ -47,6 +47,27 @@ PITCH_EFFECTS: list of effects.base.PitchEffectBase
     
     | ピッチ処理時に適用するエフェクトのクラスを指定する。
     
+F0_EFFECTS: list of effects.base.EffectBase
+
+    | synthesizeでf0に適用するエフェクトのクラスを指定する。
+
+SP_EFFECTS: list of effects.base.EffectBase
+
+    | synthesizeでspに適用するエフェクトのクラスを指定する。
+
+AP_EFFECTS: list of effects.base.EffectBase
+
+    | synthesizeでapに適用するエフェクトのクラスを指定する。
+
+WORLD_EFFECTS: list of effects.base.WorldEffectBase
+
+    | synthesizeで適用するエフェクトのうち、f0,sp,apの複数のパラメータを変更するクラスを指定する。
+
+OUT_WAVE_EFFECTS: list of effects.base.EffectBase
+
+    | synthesize後のwaveに適用するエフェクトのクラスを指定する。
+
+    
 '''
 
 import flags
@@ -107,3 +128,8 @@ TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
                   "B":11}
 
 PITCH_EFFECTS = [t_flag.TFlag]
+F0_EFFECTS = []
+SP_EFFECTS = []
+AP_EFFECTS = []
+WORLD_EFFECTS = []
+OUT_WAVE_EFFECTS = []

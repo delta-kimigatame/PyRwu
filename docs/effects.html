@@ -147,6 +147,34 @@
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="effects.base.WorldEffectBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">effects.base.</span></span><span class="sig-name descname"><span class="pre">WorldEffectBase</span></span><a class="headerlink" href="#effects.base.WorldEffectBase" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="line-block">
+<div class="line">f0,sp,apの複数に影響を与える処理の抽象型</div>
+<div class="line">各パラメータを加工する場合、このクラスを継承する。</div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="effects.base.WorldEffectBase.apply">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#effects.base.WorldEffectBase.apply" title="この定義へのパーマリンク"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="resamp.html#resamp.Resamp" title="resamp.Resamp"><em>resamp.Resamp</em></a>) -- 伸縮機の各パラメータ</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>f0</strong> (<em>np.ndarray of float64</em>) -- | 処理後のf0</p></li>
+<li><p><strong>sp</strong> (<em>np.ndarray of float64</em>) -- | 処理後のsp</p></li>
+<li><p><strong>ap</strong> (<em>np.ndarray of float64</em>) -- | 処理後のap</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-effects.t_flag">
 <span id="effects-t-flag-module"></span><h2>effects.t_flag module<a class="headerlink" href="#module-effects.t_flag" title="このヘッドラインへのパーマリンク"></a></h2>
