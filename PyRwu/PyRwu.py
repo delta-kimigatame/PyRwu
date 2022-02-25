@@ -79,6 +79,7 @@ import sys
 import os.path
 import argparse
 
+import resamp
 import settings
 
 class ShowFlagAction(argparse.Action):
@@ -119,3 +120,6 @@ if __name__ == "__main__":
                         "同じ数字が続く場合ランレングス圧縮したもの", type=str, nargs="?", default="")
     parser.add_argument("--show-flag", action=ShowFlagAction)
     args = parser.parse_args()
+
+    resamp.Resamp(args.input_path, args.output_path, args.target_tone, args.velocity, args.flags, args.offset, args.target_ms, args.fixed_ms, 
+                  args.end_ms, args.volume, args.modulation, args.tempo, args.pitchbend).resamp()
