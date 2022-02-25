@@ -113,7 +113,7 @@ if __name__ == "__main__":
                         "負の数の場合、offsetからの時間", type=float, nargs="?", default=0)
     parser.add_argument("volume", help="音量。0～200(省略可 default:100)", type=int, nargs="?", default=100)
     parser.add_argument("modulation", help="モジュレーション。0～200(省略可 default:0)", type=int, nargs="?", default=0)
-    parser.add_argument("tempo", help="ピッチのテンポ。数字の頭に!がついた文字列(省略可 default:\"!120\")", type=int, nargs="?", default="!120")
+    parser.add_argument("tempo", help="ピッチのテンポ。数字の頭に!がついた文字列(省略可 default:\"!120\")", type=str, nargs="?", default="!120")
     parser.add_argument("pitchbend", help="ピッチベンド。(省略可 default:\"\")"+
                         "-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、" + 
                         "同じ数字が続く場合ランレングス圧縮したもの", type=str, nargs="?", default="")
