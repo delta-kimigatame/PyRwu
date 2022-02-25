@@ -47,6 +47,9 @@
     <Compile Include="tests\test_pitch.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="tests\test_resamp.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests\test_stretch.py">
       <SubType>Code</SubType>
     </Compile>

@@ -351,7 +351,7 @@ class Resamp:
         self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
         self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
         self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
-        self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor, frame_period=frame_period)
+        self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
         self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
 
     def stretch(self):
@@ -402,10 +402,11 @@ class Resamp:
         self._f0 = np.concatenate([vel_f0, s_f0], axis=0)
         self._sp = np.concatenate([vel_sp, s_sp], axis=0)
         self._ap = np.concatenate([vel_ap, s_ap], axis=0)
+        self._t = np.arange(0, self._target_frames * settings.PYWORLD_PERIOD, settings.PYWORLD_PERIOD)
 
     def pitchShift(self):
         '''
-        | self._tone, self._modulationを使用して、self._target_frq,self._f0を更新します。
+        | self._target_tone, self._modulationを使用して、self._target_frq,self._f0を更新します。
 
         Notes
         -----
@@ -419,15 +420,17 @@ class Resamp:
         '''
 
         average_frq: float = np.average(self._f0)
-        self._target_frq = pitch.getFrqFromStr(self._tone)
-        self._f0 = self._f0 / average_frq * self._target_frq
+        self._target_frq = pitch.getFrqFromStr(self._target_tone)
+        
+        if average_frq != 0:
+            self._f0 = self._f0 / average_frq * self._target_frq
         if self._modulation != 0:
             mod_f0: np.ndarray = np.stack([self._f0, np.full(self._f0.shape[0], self._target_frq)])
             self._f0 = np.average(mod_f0, axis=0, weight=[1-self._modulation, self._modulation])
 
     def applyPitch(self):
         '''
-        | self._target_ms, self._tempo, self._framerate, self,_pitchbend, self._tを使用して、self._pitches, self._f0を更新します。
+        | self._target_ms, self._tempo, self._framerate, self,_pitchbendを使用して、self._pitches, self._f0を更新します。
         
         Notes
         -----
@@ -448,12 +451,25 @@ class Resamp:
         ValueError
             tempoに有効な文字列が渡されなかったとき
         '''
-        self._pitches = pitch.decodeBase64(self._pitchbend)
+        self._pitches = pitch.decodeBase64(pitch.decodeRunLength(self._pitchbend))
         utau_t: np.ndarray = pitch.getPitchRange(self._tempo, self._target_ms, self._framerate)
-        interp_pitch = pitch.interpPitch(self._pitches, utau_t, self_t)
+        interp_pitch = pitch.interpPitch(self._pitches, utau_t, self._t)
 
         #tフラグの処理
         interp_pitch += self.flags.params["t"].value
 
         #pitchの適用
         self._f0 = self._f0 * (np.full(self._f0.shape[0], 2) ** (interp_pitch / 1200))
+
+    def synthesize(self):
+        '''
+        | self._f0, self._sp, self._ap, self._fs, settings.PYWORLD_PERIODを使用して、
+        | self._output_dataを更新します。
+        | また、合成処理前に適用されるフラグについても適用します。
+        
+        Notes
+        -----
+        | 音声合成前のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。
+        
+        '''
+        pass

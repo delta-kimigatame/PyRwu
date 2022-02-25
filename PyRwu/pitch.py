@@ -36,7 +36,7 @@ def getFrqFromStr(tone: str) -> float:
     except:
         raise ValueError("{} is not tone-name.".format(tone))
     base_notenum: int = settings.TONE_NUM["A"] + 60
-    return settings.A4FRQ * 2 ** ((notenum - base_notenum)/12)
+    return settings.A4FRQ * (2 ** ((notenum - base_notenum)/12))
     
 def decodeRunLength(value :str) -> str:
     '''
@@ -185,6 +185,9 @@ def interpPitch(base: np.ndarray, utau_t: np.ndarray, world_t: np.ndarray) -> np
     interp_data: np.ndarray
         world時間軸のピッチ列
     '''
-    base = np.pad(base, (0,utau_t.shape[0]-base.shape[0]))
+    if(utau_t.shape[0] > base.shape[0]):
+        base = np.pad(base, (0,utau_t.shape[0]-base.shape[0]))
+    else:
+        base = base[:utau_t.shape[0]]
 
     return interpolate.interp1d(utau_t, base)(world_t)
