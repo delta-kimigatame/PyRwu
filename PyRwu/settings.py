@@ -67,7 +67,9 @@ OUT_WAVE_EFFECTS: list of effects.base.EffectBase
 
     | synthesize後のwaveに適用するエフェクトのクラスを指定する。
 
-    
+OUTPUT_BITDEPTH: int, default 16
+
+    | 出力するwavのビット深度。8, 16, 24, 32のいずれかでなければなりません。
 '''
 
 from effects import large_b_flag, large_p_flag
@@ -134,3 +136,5 @@ SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = [large_b_flag.LargeBFlag]
 WORLD_EFFECTS = []
 OUT_WAVE_EFFECTS = [large_p_flag.LargePFlag]
+
+OUTPUT_BITDEPTH = 16

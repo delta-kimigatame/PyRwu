@@ -339,3 +339,32 @@ class TestResampInnit(unittest.TestCase):
         self.assertEqual(np.amax(np.abs(self.resamp.output_data)), 1)
         wave_io.write(output, self.resamp.output_data)
         self.assertTrue(os.path.isfile(output))
+
+    def test_output(self):
+        output = os.path.join("tests","testdata","outputresamp","output.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        self.resamp.adjustVolume()
+        self.resamp.output()
+        self.assertTrue(os.path.isfile(output))
+
+        
+    def test_resamp(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))

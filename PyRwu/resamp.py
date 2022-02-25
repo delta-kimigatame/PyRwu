@@ -504,3 +504,26 @@ class Resamp:
             self._output_data = effect.apply(self)
 
         self._output_data *= self._volume/100
+
+    def output(self):
+        '''
+        | self._output_dataをself._output_pathに書き出します。
+        '''
+
+        wave_io.write(self.output_path, self._output_data, self._framerate, settings.OUTPUT_BITDEPTH // 8)
+
+    def resamp(self):
+        '''
+
+        | UTAUのresamplerに求められる処理をすべて順番に実行します。
+        | 実行の順番はモジュールの説明に記載のある通りです。
+
+        '''
+        self.parseFlags()
+        self.getInputData()
+        self.stretch()
+        self.pitchShift()
+        self.applyPitch()
+        self.synthesize()
+        self.adjustVolume()
+        self.output()
