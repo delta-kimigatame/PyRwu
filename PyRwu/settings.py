@@ -113,6 +113,14 @@ FLAGS.add(flags.Flag("e",
                                    "通常はループ方式で、このフラグを設定するとストレッチ式になる。"],
                      isBool=True,
                      default_bool=False))
+FLAGS.add(flags.Flag("A",
+                     descriptions=["ピッチ変動にあわせて音量が変化します。",
+                                    "1～100では、基準より高いとき音量が小さくなります。",
+                                    "-1～-100では、基準より低いとき音量が小さくなります。"],
+                     isBool=False,
+                     min=-100,
+                     max=100,
+                     default_value=0))
 
 
 PYWORLD_PERIOD: float = pw.default_frame_period
@@ -135,6 +143,8 @@ F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = [large_b_flag.LargeBFlag]
 WORLD_EFFECTS = []
-OUT_WAVE_EFFECTS = [large_p_flag.LargePFlag]
+OUT_WAVE_EFFECTS = [large_a_flag.LargeAFlag,
+                    large_p_flag.LargePFlag,
+                    ]
 
 OUTPUT_BITDEPTH = 16

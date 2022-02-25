@@ -20,6 +20,14 @@ effects.g\_flag module
    :undoc-members:
    :show-inheritance:
 
+effects.large\_a\_flag module
+-----------------------------
+
+.. automodule:: effects.large_a_flag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 effects.large\_b\_flag module
 -----------------------------
 

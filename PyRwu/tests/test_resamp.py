@@ -368,3 +368,26 @@ class TestResampInnit(unittest.TestCase):
                       "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_A100(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_a100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "A100", 0, 500, 100, 0, 100, 0, "!120", "6q7A7W7r8B8W8q8/9S9l94+J+a+p+4/F/R/c/l/t/0/5/9//AA#10#ABADAGAJANARAUAYAaAcAcAbAWARALAF///4/y/t/o/k/g/e/d/d/e/h/k/o/t/z/5AAAGAMASAXAbAfAhAjAjAiAgAdAZAUAOAIAC/9/5/2/0#2#/2/4/7/+AA")
+        #低音からしゃくりあげ、最後にビブラートがかかるピッチ
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+        
+    def test_resamp_A_negative100(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_-a100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "A-100", 0, 500, 100, 0, 100, 0, "!120", "6q7A7W7r8B8W8q8/9S9l94+J+a+p+4/F/R/c/l/t/0/5/9//AA#10#ABADAGAJANARAUAYAaAcAcAbAWARALAF///4/y/t/o/k/g/e/d/d/e/h/k/o/t/z/5AAAGAMASAXAbAfAhAjAjAiAgAdAZAUAOAIAC/9/5/2/0#2#/2/4/7/+AA")
+        #低音からしゃくりあげ、最後にビブラートがかかるピッチ
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
