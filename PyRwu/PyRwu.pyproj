@@ -28,6 +28,7 @@
     <Compile Include="effects\base.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="effects\large_b_flag.py" />
     <Compile Include="effects\g_flag.py">
       <SubType>Code</SubType>
     </Compile>

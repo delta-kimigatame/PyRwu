@@ -70,6 +70,7 @@ OUT_WAVE_EFFECTS: list of effects.base.EffectBase
     
 '''
 
+from effects import large_b_flag
 import flags
 import pyworld as pw
 from effects import *
@@ -78,7 +79,7 @@ FLAGS = flags.Flags()
 FLAGS.add(flags.Flag("B",
                      descriptions=["息成分の強さ(ブレシネス)。大きいほど息っぽい",
                                     "0～49ではB0の時非周期性指標が全て0になるように乗算します。",
-                                    "51～100ではB100の時非周期性指標が全て1になるように加算します。"],
+                                    "51～100ではB100の時、1000Hz～5000Hz帯の非周期性指標が全て1になるように加算します。"],
                      isBool=False,
                      min=0,
                      max=100,
@@ -130,6 +131,6 @@ TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
 PITCH_EFFECTS = [t_flag.TFlag]
 F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
-AP_EFFECTS = []
+AP_EFFECTS = [large_b_flag.LargeBFlag]
 WORLD_EFFECTS = []
 OUT_WAVE_EFFECTS = []

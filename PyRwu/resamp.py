@@ -486,6 +486,6 @@ class Resamp:
             self._ap = effect.apply(self)
             
         for effect in settings.WORLD_EFFECTS:
-            self._f0. self._sp, self._ap = effect.apply(self)
+            self._f0, self._sp, self._ap = effect.apply(self)
 
         self._output_data = pw.synthesize(self._f0, self._sp, self._ap, self._framerate, settings.PYWORLD_PERIOD)

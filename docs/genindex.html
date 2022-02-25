@@ -81,6 +81,7 @@
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
@@ -108,8 +109,6 @@
       </ul></li>
       <li><a href="settings.html#settings.AP_EFFECTS">AP_EFFECTS (settings モジュール)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="effects.html#effects.base.EffectBase.apply">apply() (effects.base.EffectBase の静的メソッド)</a>
 
       <ul>
@@ -119,9 +118,13 @@
 </li>
         <li><a href="effects.html#effects.g_flag.GFlag.apply">(effects.g_flag.GFlag の静的メソッド)</a>
 </li>
+        <li><a href="effects.html#effects.large_b_flag.LargeBFlag.apply">(effects.large_b_flag.LargeBFlag の静的メソッド)</a>
+</li>
         <li><a href="effects.html#effects.t_flag.TFlag.apply">(effects.t_flag.TFlag の静的メソッド)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="resamp.html#resamp.Resamp.applyPitch">applyPitch() (resamp.Resamp のメソッド)</a>
 </li>
   </ul></td>
@@ -186,13 +189,20 @@
         <li><a href="effects.html#module-effects.base">モジュール</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     effects.g_flag
 
       <ul>
         <li><a href="effects.html#module-effects.g_flag">モジュール</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    effects.large_b_flag
+
+      <ul>
+        <li><a href="effects.html#module-effects.large_b_flag">モジュール</a>
 </li>
       </ul></li>
       <li>
@@ -319,6 +329,14 @@
         <li><a href="flags.html#flags.Flag.isBool">(flags.Flag の属性)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="effects.html#effects.large_b_flag.LargeBFlag">LargeBFlag (effects.large_b_flag のクラス)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -654,10 +672,10 @@
       </ul></li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_end_negative_offset">test_read_44100_16_mono_end_negative_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_end_offset">test_read_44100_16_mono_end_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_offset">test_read_44100_16_mono_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_range">test_read_44100_16_mono_range() (tests.test_wave_io.TestWaveRead のメソッド)</a>
@@ -727,6 +745,10 @@
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_stretch_data_short_with_e_flag">test_stretch_data_short_with_e_flag() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_synthesize">test_synthesize() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_synthesize_B0">test_synthesize_B0() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_synthesize_B100">test_synthesize_B100() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_synthesize_g_minus">test_synthesize_g_minus() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
@@ -880,6 +902,8 @@
         <li><a href="effects.html#module-effects.base">effects.base</a>
 </li>
         <li><a href="effects.html#module-effects.g_flag">effects.g_flag</a>
+</li>
+        <li><a href="effects.html#module-effects.large_b_flag">effects.large_b_flag</a>
 </li>
         <li><a href="effects.html#module-effects.t_flag">effects.t_flag</a>
 </li>

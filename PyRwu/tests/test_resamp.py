@@ -211,3 +211,37 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.synthesize()
         wave_io.write(output, self.resamp.output_data)
         self.assertTrue(os.path.isfile(output))
+        
+    def test_synthesize_B0(self):
+        output = os.path.join("tests","testdata","outputresamp","synthesize_b0.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "B0", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_synthesize_B100(self):
+        output = os.path.join("tests","testdata","outputresamp","synthesize_B100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "B100", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
