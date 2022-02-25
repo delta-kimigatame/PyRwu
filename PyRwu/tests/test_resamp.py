@@ -1,8 +1,10 @@
 ﻿import unittest
+import os
 import os.path
 import numpy as np
 
 import resamp
+import wave_io
 
 class TestResampInnit(unittest.TestCase):
     def test_init(self):
@@ -156,3 +158,56 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.applyPitch()
         np.testing.assert_array_equal(self.resamp.pitches[0],1100)
         self.assertEqual(round(np.average(self.resamp.f0),3), 880)
+
+    def test_synthesize(self):
+        output = os.path.join("tests","testdata","outputresamp","synthesize.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+
+        
+    def test_synthesize_g_minus(self):
+        output = os.path.join("tests","testdata","outputresamp","synthesize_g_minus.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "g-30", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))
+
+        
+    def test_synthesize_g_plus(self):
+        output = os.path.join("tests","testdata","outputresamp","synthesize_g_plus.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A3", 100, "g+30", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.parseFlags()
+        self.resamp.getInputData()
+        self.resamp.stretch()
+        self.resamp.pitchShift()
+        self.resamp.applyPitch()
+        self.assertFalse(os.path.isfile(output))
+        self.resamp.synthesize()
+        wave_io.write(output, self.resamp.output_data)
+        self.assertTrue(os.path.isfile(output))

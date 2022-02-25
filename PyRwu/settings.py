@@ -129,7 +129,7 @@ TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
 
 PITCH_EFFECTS = [t_flag.TFlag]
 F0_EFFECTS = []
-SP_EFFECTS = []
+SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = []
 WORLD_EFFECTS = []
 OUT_WAVE_EFFECTS = []
