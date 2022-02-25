@@ -100,7 +100,8 @@ def write(output_path: str,data: np.ndarray, framerate:int=44100, sampwidth: int
     OSError
         wavを書き出しする際、書き込み権限がなかった時。
     '''
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    if os.path.dirname(output_path) !="":
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
     byte_data: bytes = b""
     data = data * 2**(sampwidth*8-1)
     if sampwidth==1:

@@ -365,3 +365,5 @@ FodyWeavers.xsd
 /PyRwu/test.wav
 /PyRwu/tests/testdata/outputwav
 /PyRwu/tests/testdata/outputresamp
+/PyRwu/temp.wav
+/PyRwu/log.txt
