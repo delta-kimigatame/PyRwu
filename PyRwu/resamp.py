@@ -6,6 +6,7 @@ import wave_io
 import stretch
 import pitch
 import settings
+
 class Resamp:
     '''Resamp
 
@@ -456,7 +457,9 @@ class Resamp:
         interp_pitch = pitch.interpPitch(self._pitches, utau_t, self._t)
 
         #tフラグの処理
-        interp_pitch += self.flags.params["t"].value
+        #interp_pitch += self.flags.params["t"].value
+        for effect in settings.PITCH_EFFECTS:
+            interp_pitch = effect.apply(self, interp_pitch)
 
         #pitchの適用
         self._f0 = self._f0 * (np.full(self._f0.shape[0], 2) ** (interp_pitch / 1200))
@@ -472,4 +475,4 @@ class Resamp:
         | 音声合成前のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。
         
         '''
-        pass
+        self._output_data = pw.synthesize(self._f0, self._sp, self._ap, self._framerate, settings.PYWORLD_PERIOD)

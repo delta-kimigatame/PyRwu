@@ -16,6 +16,7 @@ Welcome to PyRwu's documentation!
    flags
    stretch
    pitch
+   effects
    settings
 
 

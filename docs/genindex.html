@@ -43,6 +43,7 @@
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
 
@@ -99,12 +100,20 @@
 </li>
       <li><a href="flags.html#flags.Flags.add">add() (flags.Flags のメソッド)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="resamp.html#id0">ap (resamp.Resamp のプロパティ)</a>
 
       <ul>
         <li><a href="resamp.html#resamp.Resamp.ap">(resamp.Resamp の属性)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="effects.html#effects.base.EffectBase.apply">apply() (effects.base.EffectBase の静的メソッド)</a>
+
+      <ul>
+        <li><a href="effects.html#effects.base.PitchEffectBase.apply">(effects.base.PitchEffectBase の静的メソッド)</a>
+</li>
+        <li><a href="effects.html#effects.t_flag.TFlag.apply">(effects.t_flag.TFlag の静的メソッド)</a>
 </li>
       </ul></li>
       <li><a href="resamp.html#resamp.Resamp.applyPitch">applyPitch() (resamp.Resamp のメソッド)</a>
@@ -155,6 +164,31 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="effects.html#effects.base.EffectBase">EffectBase (effects.base のクラス)</a>
+</li>
+      <li>
+    effects
+
+      <ul>
+        <li><a href="effects.html#module-effects">モジュール</a>
+</li>
+      </ul></li>
+      <li>
+    effects.base
+
+      <ul>
+        <li><a href="effects.html#module-effects.base">モジュール</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    effects.t_flag
+
+      <ul>
+        <li><a href="effects.html#module-effects.t_flag">モジュール</a>
+</li>
+      </ul></li>
       <li><a href="resamp.html#id1">end_ms (resamp.Resamp のプロパティ)</a>
 
       <ul>
@@ -355,20 +389,24 @@
         <li><a href="pitch.html#module-pitch">モジュール</a>
 </li>
       </ul></li>
+      <li><a href="settings.html#settings.PITCH_EFFECTS">PITCH_EFFECTS (settings モジュール)</a>
+</li>
       <li><a href="resamp.html#id14">pitchbend (resamp.Resamp のプロパティ)</a>
 
       <ul>
         <li><a href="resamp.html#resamp.Resamp.pitchbend">(resamp.Resamp の属性)</a>
 </li>
       </ul></li>
+      <li><a href="effects.html#effects.base.PitchEffectBase">PitchEffectBase (effects.base のクラス)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="resamp.html#id15">pitches (resamp.Resamp のプロパティ)</a>
 
       <ul>
         <li><a href="resamp.html#resamp.Resamp.pitches">(resamp.Resamp の属性)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="resamp.html#resamp.Resamp.pitchShift">pitchShift() (resamp.Resamp のメソッド)</a>
 </li>
       <li>
@@ -449,6 +487,8 @@
       </ul></li>
       <li><a href="resamp.html#resamp.Resamp.stretch">stretch() (resamp.Resamp のメソッド)</a>
 </li>
+      <li><a href="resamp.html#resamp.Resamp.synthesize">synthesize() (resamp.Resamp のメソッド)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -487,6 +527,14 @@
         <li><a href="resamp.html#resamp.Resamp.tempo">(resamp.Resamp の属性)</a>
 </li>
       </ul></li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_applyPitch">test_applyPitch() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_applyPitch_2">test_applyPitch_2() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_applyPitch_with_t_flag">test_applyPitch_with_t_flag() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetPitchRange.test_bad_tempo">test_bad_tempo() (tests.test_pitch.TestGetPitchRange のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_flags.TestFlag.test_change_bool">test_change_bool() (tests.test_flags.TestFlag のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlag.test_change_bool_missing_reason_not_bool">test_change_bool_missing_reason_not_bool() (tests.test_flags.TestFlag のメソッド)</a>
@@ -501,21 +549,65 @@
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlag.test_default_init">test_default_init() (tests.test_flags.TestFlag のメソッド)</a>
 </li>
+      <li><a href="tests.html#tests.test_pitch.TestGetPitchRange.test_get_pitch_range">test_get_pitch_range() (tests.test_pitch.TestGetPitchRange のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetPitchRange.test_get_pitch_range_tempo_float">test_get_pitch_range_tempo_float() (tests.test_pitch.TestGetPitchRange のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_flags.TestFlags.test_getDetail">test_getDetail() (tests.test_flags.TestFlags のメソッド)</a>
 </li>
-      <li><a href="tests.html#tests.test_flags.TestFlag.test_init">test_init() (tests.test_flags.TestFlag のメソッド)</a>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a3">test_getfrq_a3() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
 </li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a4">test_getfrq_a4() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a5">test_getfrq_a5() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_c1">test_getfrq_c1() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_c4">test_getfrq_c4() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6">test_getfrq_csharp6() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6_zen">test_getfrq_csharp6_zen() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6">test_getfrq_Dflat6() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6_zen">test_getfrq_Dflat6_zen() (tests.test_pitch.TestGetFrqFromStr のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_flags.TestFlag.test_init">test_init() (tests.test_flags.TestFlag のメソッド)</a>
+
+      <ul>
+        <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_init">(tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      </ul></li>
       <li><a href="tests.html#tests.test_flags.TestFlag.test_init_bool">test_init_bool() (tests.test_flags.TestFlag のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlag.test_init_bool_and_default">test_init_bool_and_default() (tests.test_flags.TestFlag のメソッド)</a>
 </li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_input_data">test_input_data() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_input_data_with_FileNotFoundError">test_input_data_with_FileNotFoundError() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_input_data_with_TypeError">test_input_data_with_TypeError() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_input_file_not_found">test_input_file_not_found() (tests.test_wave_io.TestWaveRead のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestInterpPitch.test_interp_narrow">test_interp_narrow() (tests.test_pitch.TestInterpPitch のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestInterpPitch.test_interp_narrow_with_pad">test_interp_narrow_with_pad() (tests.test_pitch.TestInterpPitch のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestInterpPitch.test_interp_wide">test_interp_wide() (tests.test_pitch.TestInterpPitch のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeBase64.test_max">test_max() (tests.test_pitch.TestDecodeBase64 のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeBase64.test_min">test_min() (tests.test_pitch.TestDecodeBase64 のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_not_wav_raise_error">test_not_wav_raise_error() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_bool_simple">test_parse_bool_simple() (tests.test_flags.TestFlags のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_bool_with_number">test_parse_bool_with_number() (tests.test_flags.TestFlags のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_parse_flag">test_parse_flag() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_multi">test_parse_multi() (tests.test_flags.TestFlags のメソッド)</a>
 </li>
@@ -531,20 +623,22 @@
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags.test_parse_range_simple">test_parse_range_simple() (tests.test_flags.TestFlags のメソッド)</a>
 </li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_pitch_shift">test_pitch_shift() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono">test_read_44100_16_mono() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 
       <ul>
         <li><a href="tests.html#tests.test_wave_io.TestWaveWrite.test_read_44100_16_mono">(tests.test_wave_io.TestWaveWrite のメソッド)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_end_negative_offset">test_read_44100_16_mono_end_negative_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_end_offset">test_read_44100_16_mono_end_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_offset">test_read_44100_16_mono_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_range">test_read_44100_16_mono_range() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_stereo">test_read_44100_16_stereo() (tests.test_wave_io.TestWaveRead のメソッド)</a>
@@ -579,6 +673,10 @@
         <li><a href="tests.html#tests.test_wave_io.TestWaveWrite.test_read_96000_32_mono">(tests.test_wave_io.TestWaveWrite のメソッド)</a>
 </li>
       </ul></li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeRunLength.test_sandwich">test_sandwich() (tests.test_pitch.TestDecodeRunLength のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeRunLength.test_simple">test_simple() (tests.test_pitch.TestDecodeRunLength のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_stretch.TestWorldLoop.test_stretch_0_5">test_stretch_0_5() (tests.test_stretch.TestWorldLoop のメソッド)</a>
 
       <ul>
@@ -599,15 +697,39 @@
         <li><a href="tests.html#tests.test_stretch.TestWorldStretch.test_stretch_2">(tests.test_stretch.TestWorldStretch のメソッド)</a>
 </li>
       </ul></li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_stretch_data_long">test_stretch_data_long() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_stretch_data_long_with_e_flag">test_stretch_data_long_with_e_flag() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_stretch_data_short">test_stretch_data_short() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_stretch_data_short_with_e_flag">test_stretch_data_short_with_e_flag() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeRunLength.test_twice">test_twice() (tests.test_pitch.TestDecodeRunLength のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_stretch.TestVelocity.test_velocity_0">test_velocity_0() (tests.test_stretch.TestVelocity のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_stretch.TestVelocity.test_velocity_100">test_velocity_100() (tests.test_stretch.TestVelocity のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_stretch.TestVelocity.test_velocity_200">test_velocity_200() (tests.test_stretch.TestVelocity のメソッド)</a>
 </li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeBase64.test_zero">test_zero() (tests.test_pitch.TestDecodeBase64 のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeBase64">TestDecodeBase64 (tests.test_pitch のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestDecodeRunLength">TestDecodeRunLength (tests.test_pitch のクラス)</a>
+</li>
       <li><a href="tests.html#tests.test_flags.TestFlag">TestFlag (tests.test_flags のクラス)</a>
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags">TestFlags (tests.test_flags のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr">TestGetFrqFromStr (tests.test_pitch のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestGetPitchRange">TestGetPitchRange (tests.test_pitch のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_pitch.TestInterpPitch">TestInterpPitch (tests.test_pitch のクラス)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit">TestResampInnit (tests.test_resamp のクラス)</a>
 </li>
       <li>
     tests
@@ -621,6 +743,20 @@
 
       <ul>
         <li><a href="tests.html#module-tests.test_flags">モジュール</a>
+</li>
+      </ul></li>
+      <li>
+    tests.test_pitch
+
+      <ul>
+        <li><a href="tests.html#module-tests.test_pitch">モジュール</a>
+</li>
+      </ul></li>
+      <li>
+    tests.test_resamp
+
+      <ul>
+        <li><a href="tests.html#module-tests.test_resamp">モジュール</a>
 </li>
       </ul></li>
       <li>
@@ -646,6 +782,8 @@
       <li><a href="tests.html#tests.test_stretch.TestWorldLoop">TestWorldLoop (tests.test_stretch のクラス)</a>
 </li>
       <li><a href="tests.html#tests.test_stretch.TestWorldStretch">TestWorldStretch (tests.test_stretch のクラス)</a>
+</li>
+      <li><a href="effects.html#effects.t_flag.TFlag">TFlag (effects.t_flag のクラス)</a>
 </li>
       <li><a href="settings.html#settings.TONE_NUM">TONE_NUM (settings モジュール)</a>
 </li>
@@ -706,6 +844,12 @@
     モジュール
 
       <ul>
+        <li><a href="effects.html#module-effects">effects</a>
+</li>
+        <li><a href="effects.html#module-effects.base">effects.base</a>
+</li>
+        <li><a href="effects.html#module-effects.t_flag">effects.t_flag</a>
+</li>
         <li><a href="flags.html#module-flags">flags</a>
 </li>
         <li><a href="pitch.html#module-pitch">pitch</a>
@@ -721,6 +865,10 @@
         <li><a href="tests.html#module-tests">tests</a>
 </li>
         <li><a href="tests.html#module-tests.test_flags">tests.test_flags</a>
+</li>
+        <li><a href="tests.html#module-tests.test_pitch">tests.test_pitch</a>
+</li>
+        <li><a href="tests.html#module-tests.test_resamp">tests.test_resamp</a>
 </li>
         <li><a href="tests.html#module-tests.test_stretch">tests.test_stretch</a>
 </li>

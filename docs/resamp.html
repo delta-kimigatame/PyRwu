@@ -46,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
 
@@ -438,7 +439,7 @@
 <dt class="sig sig-object py" id="resamp.Resamp.applyPitch">
 <span class="sig-name descname"><span class="pre">applyPitch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.applyPitch" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">
-<div class="line">self._target_ms, self._tempo, self._framerate, self,_pitchbend, self._tを使用して、self._pitches, self._f0を更新します。</div>
+<div class="line">self._target_ms, self._tempo, self._framerate, self,_pitchbendを使用して、self._pitches, self._f0を更新します。</div>
 </div>
 <p class="rubric">メモ</p>
 <div class="line-block">
@@ -589,7 +590,7 @@
 <dt class="sig sig-object py" id="resamp.Resamp.pitchShift">
 <span class="sig-name descname"><span class="pre">pitchShift</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.pitchShift" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">
-<div class="line">self._tone, self._modulationを使用して、self._target_frq,self._f0を更新します。</div>
+<div class="line">self._target_tone, self._modulationを使用して、self._target_frq,self._f0を更新します。</div>
 </div>
 <p class="rubric">メモ</p>
 <div class="line-block">
@@ -628,6 +629,20 @@
 <p class="rubric">メモ</p>
 <div class="line-block">
 <div class="line">音声の伸縮方法を変更したい場合、このメソッドをオーバーライドしてください。</div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="resamp.Resamp.synthesize">
+<span class="sig-name descname"><span class="pre">synthesize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#resamp.Resamp.synthesize" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">self._f0, self._sp, self._ap, self._fs, settings.PYWORLD_PERIODを使用して、</div>
+<div class="line">self._output_dataを更新します。</div>
+<div class="line">また、合成処理前に適用されるフラグについても適用します。</div>
+</div>
+<p class="rubric">メモ</p>
+<div class="line-block">
+<div class="line">音声合成前のフラグ処理を変更したい場合、このメソッドをオーバーライドしてください。</div>
 </div>
 </dd></dl>
 

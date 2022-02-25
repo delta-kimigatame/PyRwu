@@ -12,6 +12,22 @@ tests.test\_flags module
    :undoc-members:
    :show-inheritance:
 
+tests.test\_pitch module
+------------------------
+
+.. automodule:: tests.test_pitch
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.test\_resamp module
+-------------------------
+
+.. automodule:: tests.test_resamp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.test\_stretch module
 --------------------------
 

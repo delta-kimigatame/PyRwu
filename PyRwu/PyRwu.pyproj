@@ -25,6 +25,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="effects\base.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="effects\t_flag.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="effects\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="flags.py">
       <SubType>Code</SubType>
     </Compile>
@@ -87,6 +96,7 @@
     <Content Include="tests\testdata\inputwav\stereo44_1-16.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="effects\" />
     <Folder Include="tests\" />
     <Folder Include="tests\testdata\" />
     <Folder Include="tests\testdata\inputwav\" />

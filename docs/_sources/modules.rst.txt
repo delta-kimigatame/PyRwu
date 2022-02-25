@@ -5,6 +5,7 @@ PyRwu
    :maxdepth: 4
 
    PyRwu
+   effects
    flags
    pitch
    resamp

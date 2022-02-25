@@ -44,6 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
 
@@ -192,6 +193,218 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="tests.test_flags.TestFlags.test_parse_range_simple">
 <span class="sig-name descname"><span class="pre">test_parse_range_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_flags.TestFlags.test_parse_range_simple" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.test_pitch">
+<span id="tests-test-pitch-module"></span><h2>tests.test_pitch module<a class="headerlink" href="#module-tests.test_pitch" title="このヘッドラインへのパーマリンク"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeBase64">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_pitch.</span></span><span class="sig-name descname"><span class="pre">TestDecodeBase64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeBase64" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeBase64.test_max">
+<span class="sig-name descname"><span class="pre">test_max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeBase64.test_max" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeBase64.test_min">
+<span class="sig-name descname"><span class="pre">test_min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeBase64.test_min" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeBase64.test_zero">
+<span class="sig-name descname"><span class="pre">test_zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeBase64.test_zero" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeRunLength">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_pitch.</span></span><span class="sig-name descname"><span class="pre">TestDecodeRunLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeRunLength" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeRunLength.test_sandwich">
+<span class="sig-name descname"><span class="pre">test_sandwich</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeRunLength.test_sandwich" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeRunLength.test_simple">
+<span class="sig-name descname"><span class="pre">test_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeRunLength.test_simple" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestDecodeRunLength.test_twice">
+<span class="sig-name descname"><span class="pre">test_twice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestDecodeRunLength.test_twice" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_pitch.</span></span><span class="sig-name descname"><span class="pre">TestGetFrqFromStr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6">
+<span class="sig-name descname"><span class="pre">test_getfrq_Dflat6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6_zen">
+<span class="sig-name descname"><span class="pre">test_getfrq_Dflat6_zen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_Dflat6_zen" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_a3">
+<span class="sig-name descname"><span class="pre">test_getfrq_a3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a3" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_a4">
+<span class="sig-name descname"><span class="pre">test_getfrq_a4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a4" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_a5">
+<span class="sig-name descname"><span class="pre">test_getfrq_a5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_a5" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_c1">
+<span class="sig-name descname"><span class="pre">test_getfrq_c1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_c1" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_c4">
+<span class="sig-name descname"><span class="pre">test_getfrq_c4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_c4" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6">
+<span class="sig-name descname"><span class="pre">test_getfrq_csharp6</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6_zen">
+<span class="sig-name descname"><span class="pre">test_getfrq_csharp6_zen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetFrqFromStr.test_getfrq_csharp6_zen" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetPitchRange">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_pitch.</span></span><span class="sig-name descname"><span class="pre">TestGetPitchRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetPitchRange" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetPitchRange.test_bad_tempo">
+<span class="sig-name descname"><span class="pre">test_bad_tempo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetPitchRange.test_bad_tempo" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetPitchRange.test_get_pitch_range">
+<span class="sig-name descname"><span class="pre">test_get_pitch_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetPitchRange.test_get_pitch_range" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestGetPitchRange.test_get_pitch_range_tempo_float">
+<span class="sig-name descname"><span class="pre">test_get_pitch_range_tempo_float</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestGetPitchRange.test_get_pitch_range_tempo_float" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_pitch.TestInterpPitch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_pitch.</span></span><span class="sig-name descname"><span class="pre">TestInterpPitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestInterpPitch" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestInterpPitch.test_interp_narrow">
+<span class="sig-name descname"><span class="pre">test_interp_narrow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestInterpPitch.test_interp_narrow" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestInterpPitch.test_interp_narrow_with_pad">
+<span class="sig-name descname"><span class="pre">test_interp_narrow_with_pad</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestInterpPitch.test_interp_narrow_with_pad" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_pitch.TestInterpPitch.test_interp_wide">
+<span class="sig-name descname"><span class="pre">test_interp_wide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_pitch.TestInterpPitch.test_interp_wide" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.test_resamp">
+<span id="tests-test-resamp-module"></span><h2>tests.test_resamp module<a class="headerlink" href="#module-tests.test_resamp" title="このヘッドラインへのパーマリンク"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_resamp.</span></span><span class="sig-name descname"><span class="pre">TestResampInnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.case.TestCase</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_applyPitch">
+<span class="sig-name descname"><span class="pre">test_applyPitch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_applyPitch" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_applyPitch_2">
+<span class="sig-name descname"><span class="pre">test_applyPitch_2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_applyPitch_2" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_applyPitch_with_t_flag">
+<span class="sig-name descname"><span class="pre">test_applyPitch_with_t_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_applyPitch_with_t_flag" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_init">
+<span class="sig-name descname"><span class="pre">test_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_init" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_input_data">
+<span class="sig-name descname"><span class="pre">test_input_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_input_data" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_input_data_with_FileNotFoundError">
+<span class="sig-name descname"><span class="pre">test_input_data_with_FileNotFoundError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_input_data_with_FileNotFoundError" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_input_data_with_TypeError">
+<span class="sig-name descname"><span class="pre">test_input_data_with_TypeError</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_input_data_with_TypeError" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_parse_flag">
+<span class="sig-name descname"><span class="pre">test_parse_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_parse_flag" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_pitch_shift">
+<span class="sig-name descname"><span class="pre">test_pitch_shift</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_pitch_shift" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_stretch_data_long">
+<span class="sig-name descname"><span class="pre">test_stretch_data_long</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_stretch_data_long" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_stretch_data_long_with_e_flag">
+<span class="sig-name descname"><span class="pre">test_stretch_data_long_with_e_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_stretch_data_long_with_e_flag" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_stretch_data_short">
+<span class="sig-name descname"><span class="pre">test_stretch_data_short</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_stretch_data_short" title="この定義へのパーマリンク"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_resamp.TestResampInnit.test_stretch_data_short_with_e_flag">
+<span class="sig-name descname"><span class="pre">test_stretch_data_short_with_e_flag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tests.test_resamp.TestResampInnit.test_stretch_data_short_with_e_flag" title="この定義へのパーマリンク"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

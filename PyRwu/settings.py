@@ -42,10 +42,16 @@ TONE_NUM: dict
     | notenumはC1=24、C#1=25...B7=107で、以下の式で与えられる。
 
     >>> notenum = (octave+1) * 12 + TONE_NUM[key]
+
+PITCH_EFFECTS: list of effects.base.PitchEffectBase
+    
+    | ピッチ処理時に適用するエフェクトのクラスを指定する。
+    
 '''
 
 import flags
 import pyworld as pw
+from effects import *
 
 FLAGS = flags.Flags()
 FLAGS.add(flags.Flag("B",
@@ -99,3 +105,5 @@ TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
                   "G":7, "G#":8, "G♯":8, "Ab":8, "A♭":8,
                   "A":9, "A#":10, "A♯":10, "Bb":10, "B♭":10,
                   "B":11}
+
+PITCH_EFFECTS = [t_flag.TFlag]
