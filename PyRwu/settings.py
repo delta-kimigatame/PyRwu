@@ -122,10 +122,24 @@ FLAGS.add(flags.Flag("A",
                      max=100,
                      default_value=0))
 FLAGS.add(flags.Flag("gw",
-                     descriptions=["うなり声、グロウル"],
+                     descriptions=["うなり声、グロウル",
+                                   "グロウルが"],
                      isBool=False,
                      min=0,
                      max=500,
+                     default_value=0))
+FLAGS.add(flags.Flag("gws",
+                     descriptions=["ノート前半部分のグロウルがかからない時間を5ms単位で指定します。",
+                                   "負の数を指定するとノート末尾からの時間になります。"],
+                     isBool=False,
+                     min=-1000,
+                     max=1000,
+                     default_value=0))
+FLAGS.add(flags.Flag("gwa",
+                     descriptions=["gwフラグのアタックタイムを5ms単位で指定します。"],
+                     isBool=False,
+                     min=0,
+                     max=1000,
                      default_value=0))
 
 

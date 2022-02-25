@@ -412,3 +412,44 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
         
+        
+    def test_resamp_gw100_gwa50(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw100gwa50.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw100gwa50", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_gw100_gws25_gwa10(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw100gws25gwa10.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw100gws25gwa10", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_gw100_gws_negative75_gwa10(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw100gws-75gwa10.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw100gws25gwa10", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_gw100_gws_and_gwa_overflow(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw100gws100gwa100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw100gws100gwa100", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
