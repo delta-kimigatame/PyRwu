@@ -121,6 +121,12 @@ FLAGS.add(flags.Flag("A",
                      min=-100,
                      max=100,
                      default_value=0))
+FLAGS.add(flags.Flag("gw",
+                     descriptions=["うなり声、グロウル"],
+                     isBool=False,
+                     min=0,
+                     max=500,
+                     default_value=0))
 
 
 PYWORLD_PERIOD: float = pw.default_frame_period
@@ -138,7 +144,8 @@ TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
                   "A":9, "A#":10, "A♯":10, "Bb":10, "B♭":10,
                   "B":11}
 
-PITCH_EFFECTS = [t_flag.TFlag]
+PITCH_EFFECTS = [t_flag.TFlag,
+                 gw_flag.GwFlag]
 F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = [large_b_flag.LargeBFlag]

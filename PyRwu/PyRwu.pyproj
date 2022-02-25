@@ -34,6 +34,7 @@
     <Compile Include="effects\g_flag.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="effects\gw_flag.py" />
     <Compile Include="effects\t_flag.py">
       <SubType>Code</SubType>
     </Compile>

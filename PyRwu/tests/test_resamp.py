@@ -391,3 +391,24 @@ class TestResampInnit(unittest.TestCase):
         #低音からしゃくりあげ、最後にビブラートがかかるピッチ
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_gw100(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw100", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_gw500(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_gw500.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "gw500", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        

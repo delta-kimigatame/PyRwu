@@ -50,6 +50,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.base">effects.base module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.g_flag">effects.g_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-effects.gw_flag">effects.gw_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.large_a_flag">effects.large_a_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.large_b_flag">effects.large_b_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.large_p_flag">effects.large_p_flag module</a></li>
@@ -200,6 +201,40 @@
 </dd>
 <dt class="field-even">戻り値</dt>
 <dd class="field-even"><p><strong>new_values</strong> -- | 処理後の値</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-effects.gw_flag">
+<span id="effects-gw-flag-module"></span><h2>effects.gw_flag module<a class="headerlink" href="#module-effects.gw_flag" title="このヘッドラインへのパーマリンク"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="effects.gw_flag.GwFlag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">effects.gw_flag.</span></span><span class="sig-name descname"><span class="pre">GwFlag</span></span><a class="headerlink" href="#effects.gw_flag.GwFlag" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#effects.base.PitchEffectBase" title="effects.base.PitchEffectBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">effects.base.PitchEffectBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="effects.gw_flag.GwFlag.apply">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#effects.gw_flag.GwFlag.apply" title="この定義へのパーマリンク"></a></dt>
+<dd><p>うなり声、グロウル</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<a class="reference internal" href="resamp.html#resamp.Resamp" title="resamp.Resamp"><em>resamp.Resamp</em></a>) -- 伸縮機の各パラメータ</p></li>
+<li><p><strong>pitches</strong> (<em>np.ndarray of float64</em>) -- <div class="line-block">
+<div class="line">world時間軸のピッチ数列(cent単位)</div>
+<div class="line">settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>pitches</strong> -- | world時間軸のピッチ数列(cent単位)
+| settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</p>
 </dd>
 <dt class="field-odd">戻り値の型</dt>
 <dd class="field-odd"><p>np.ndarray of float64</p>
