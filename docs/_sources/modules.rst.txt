@@ -8,6 +8,7 @@ PyRwu
    effects
    flags
    pitch
+   release
    resamp
    settings
    stretch

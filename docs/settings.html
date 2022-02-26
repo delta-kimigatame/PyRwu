@@ -151,11 +151,12 @@
 <div class="line">worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)</div>
 <div class="line">値が0の場合、音声のあるフレームを全て有声と判定します。</div>
 <div class="line">値が0超の場合、一部のフレームを無声音として判断します。</div>
-<div class="line">初期値0.85はharvestと組み合わせる前提で調整されています。</div>
+<div class="line">本来の初期値0.85はharvestと組み合わせる前提で調整されていますが、</div>
+<div class="line">UTAUでの合成では1回でも判定ミスがあるとストレスなので0にしています。</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float, default 0.85</p>
+<dd class="field-odd"><p>float, default 0</p>
 </dd>
 </dl>
 </dd></dl>
