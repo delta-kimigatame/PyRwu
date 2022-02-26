@@ -377,7 +377,7 @@ class Resamp:
         input_fix_frames: int = int(self._fixed_ms / settings.PYWORLD_PERIOD)
 
         if self._velocity != 100:
-            _velocity_rate: float = stretch.calc_velocity_rate(self._velovity)
+            _velocity_rate: float = stretch.calc_velocity_rate(self._velocity)
             self._fixed_frames = int(input_fix_frames * _velocity_rate)
             vel_f0, vel_sp, vel_ap = stretch.world_stretch(self._fixed_frames,
                                                            self._f0[:input_fix_frames],
@@ -399,11 +399,11 @@ class Resamp:
                                                   self._f0[input_fix_frames:],
                                                   self._sp[input_fix_frames:],
                                                   self._ap[input_fix_frames:])
-
-        self._f0 = np.concatenate([vel_f0, s_f0], axis=0)
-        self._sp = np.concatenate([vel_sp, s_sp], axis=0)
-        self._ap = np.concatenate([vel_ap, s_ap], axis=0)
-        self._t = np.arange(0, self._target_frames * settings.PYWORLD_PERIOD, settings.PYWORLD_PERIOD)
+            
+        self._f0 = np.concatenate([vel_f0, s_f0], axis=0)[:self._target_frames]
+        self._sp = np.concatenate([vel_sp, s_sp], axis=0)[:self._target_frames]
+        self._ap = np.concatenate([vel_ap, s_ap], axis=0)[:self._target_frames]
+        self._t = np.arange(0, self._f0.shape[0] * settings.PYWORLD_PERIOD, settings.PYWORLD_PERIOD)[:self._target_frames]
 
     def pitchShift(self):
         '''
