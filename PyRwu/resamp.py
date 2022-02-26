@@ -427,7 +427,7 @@ class Resamp:
             self._f0 = self._f0 / average_frq * self._target_frq
         if self._modulation != 100:
             mod_f0: np.ndarray = np.stack([self._f0, np.full(self._f0.shape[0], self._target_frq)])
-            self._f0 = np.average(mod_f0, axis=0, weights=[1-self._modulation/100, self._modulation/100])
+            self._f0 = np.average(mod_f0, axis=0, weights=[self._modulation/100, 1-self._modulation/100])
 
     def applyPitch(self):
         '''
