@@ -105,22 +105,32 @@ if __name__ == "__main__":
                         "半角上げは#もしくは♯" + 
                         "半角下げはbもしくは♭で与えられます。", type=str)
     parser.add_argument("velocity", help="子音速度", type=int)
-    parser.add_argument("flags", help="フラグ(省略可 default:\"\")。詳細は--show-flags参照", type=str, nargs="?", default="")
-    parser.add_argument("offset", help="入力ファイルの読み込み開始位置(ms)(省略可 default:0)", type=float, nargs="?", default=0)
+    parser.add_argument("flags", help="フラグ(省略可 default:\"\")。詳細は--show-flags参照", nargs="?", default="")
+    parser.add_argument("offset", help="入力ファイルの読み込み開始位置(ms)(省略可 default:0)", nargs="?", default=0)
     parser.add_argument("target_ms", help="出力ファイルの長さ(ms)(省略可 default:0)"+
-                        "UTAUでは通常50ms単位に丸めた値が渡される。", type=int, nargs="?", default=0)
-    parser.add_argument("fixed_ms", help="offsetからみて通常伸縮しない長さ(ms)", type=float, nargs="?", default=0)
+                        "UTAUでは通常50ms単位に丸めた値が渡される。", nargs="?", default=0)
+    parser.add_argument("fixed_ms", help="offsetからみて通常伸縮しない長さ(ms)", nargs="?", default=0)
     parser.add_argument("end_ms", help="入力ファイルの読み込み終了位置(ms)(省略可 default:0)"+
                         "正の数の場合、ファイル末尾からの時間" + 
-                        "負の数の場合、offsetからの時間", type=float, nargs="?", default=0)
-    parser.add_argument("volume", help="音量。0～200(省略可 default:100)", type=int, nargs="?", default=100)
-    parser.add_argument("modulation", help="モジュレーション。0～200(省略可 default:0)", type=int, nargs="?", default=0)
-    parser.add_argument("tempo", help="ピッチのテンポ。数字の頭に!がついた文字列(省略可 default:\"!120\")", type=str, nargs="?", default="!120")
+                        "負の数の場合、offsetからの時間", nargs="?", default=0)
+    parser.add_argument("volume", help="音量。0～200(省略可 default:100)", nargs="?", default=100)
+    parser.add_argument("modulation", help="モジュレーション。0～200(省略可 default:0)", nargs="?", default=0)
+    parser.add_argument("tempo", help="ピッチのテンポ。数字の頭に!がついた文字列(省略可 default:\"!120\")", nargs="?", default="!120")
     parser.add_argument("pitchbend", help="ピッチベンド。(省略可 default:\"\")"+
                         "-2048～2047までの12bitの2進数をbase64で2文字の文字列に変換し、" + 
-                        "同じ数字が続く場合ランレングス圧縮したもの", type=str, nargs="?", default="")
+                        "同じ数字が続く場合ランレングス圧縮したもの", nargs="?", default="")
     parser.add_argument("--show-flag", action=ShowFlagAction)
     args = parser.parse_args()
 
-    resamp.Resamp(args.input_path, args.output_path, args.target_tone, args.velocity, args.flags, args.offset, args.target_ms, args.fixed_ms, 
-                  args.end_ms, args.volume, args.modulation, args.tempo, args.pitchbend).resamp()
+    if args.pitchbend == "": #flagsに値がないとき、引数がずれてしまうので補正する。
+        args.pitchbend = args.tempo
+        args.tempo = args.modulation
+        args.modulation = args.volume
+        args.volume = args.end_ms
+        args.end_ms = args.fixed_ms
+        args.fixed_ms = args.target_ms
+        args.target_ms = args.offset
+        args.offset = args.flags
+        args.flags = ""
+    resamp.Resamp(args.input_path, args.output_path, args.target_tone, args.velocity, args.flags, float(args.offset), int(args.target_ms), float(args.fixed_ms), 
+                    float(args.end_ms), int(args.volume), int(args.modulation), args.tempo, args.pitchbend).resamp()
