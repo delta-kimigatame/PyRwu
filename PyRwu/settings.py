@@ -26,12 +26,13 @@ PYWORLD_Q1:float default -0.15
     | worldでスペクトル包絡抽出時の補正値
     | 通常は変更不要
     
-PYWORLD_THRESHOLD: float, default 0.85
+PYWORLD_THRESHOLD: float, default 0
 
     | worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)
     | 値が0の場合、音声のあるフレームを全て有声と判定します。
     | 値が0超の場合、一部のフレームを無声音として判断します。
-    | 初期値0.85はharvestと組み合わせる前提で調整されています。
+    | 本来の初期値0.85はharvestと組み合わせる前提で調整されていますが、
+    | UTAUでの合成では1回でも判定ミスがあるとストレスなので0にしています。
 
 A4FRQ: float, default 440
     基準となる音高
@@ -147,7 +148,7 @@ PYWORLD_PERIOD: float = pw.default_frame_period
 PYWORLD_F0_FLOOR: float = pw.default_f0_floor
 PYWORLD_F0_CEIL: float = pw.default_f0_ceil
 PYWORLD_Q1: float = -0.15
-PYWORLD_THRESHOLD: float = 0.85
+PYWORLD_THRESHOLD: float = 0
 
 A4FRQ: float = 440.0
 TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
