@@ -79,6 +79,7 @@ import sys
 import os.path
 import argparse
 
+sys.path.append(os.path.dirname(__file__)) #embeddable pythonにimpot用のパスを追加
 import resamp
 import settings
 
