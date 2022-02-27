@@ -369,6 +369,20 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
         
+        
+    def test_resamp_nocache(self):
+        npz = os.path.join("tests","testdata","inputwav","a.npz")
+        if os.path.isfile(npz):
+            os.remove(npz)
+        output = os.path.join("tests","testdata","outputresamp","resamp.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+
     def test_resamp_A100(self):
         output = os.path.join("tests","testdata","outputresamp","resamp_a100.wav")
         if os.path.isfile(output):

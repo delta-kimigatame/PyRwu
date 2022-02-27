@@ -34,6 +34,13 @@ PYWORLD_THRESHOLD: float, default 0
     | 本来の初期値0.85はharvestと組み合わせる前提で調整されていますが、
     | UTAUでの合成では1回でも判定ミスがあるとストレスなので0にしています。
 
+USE_PYWORLD_CACHE: bool, default False
+
+    | wavファイルと同一個所に、.npzファイルがあれば、wavの読み込み・f0,sp,apの解析を省略します。
+    | Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。
+
+    | 実装しましたが、期待したほど高速化しない上にnpzファイルのサイズが大きいため、Falseにしておきます。
+
 A4FRQ: float, default 440
     基準となる音高
 
@@ -71,6 +78,10 @@ OUT_WAVE_EFFECTS: list of effects.base.EffectBase
 OUTPUT_BITDEPTH: int, default 16
 
     | 出力するwavのビット深度。8, 16, 24, 32のいずれかでなければなりません。
+
+DEFAULT_FRAMERATE: int, default 44100
+
+    | 扱うデータのサンプル周波数
 '''
 
 from effects import large_b_flag, large_p_flag
@@ -150,6 +161,8 @@ PYWORLD_F0_CEIL: float = pw.default_f0_ceil
 PYWORLD_Q1: float = -0.15
 PYWORLD_THRESHOLD: float = 0
 
+USE_PYWORLD_CACHE: bool = False
+
 A4FRQ: float = 440.0
 TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,
                   "D":2, "D#":3, "D♯":3, "Eb":3, "E♭":3,
@@ -169,4 +182,5 @@ OUT_WAVE_EFFECTS = [large_a_flag.LargeAFlag,
                     large_p_flag.LargePFlag,
                     ]
 
-OUTPUT_BITDEPTH = 16
+OUTPUT_BITDEPTH: int = 16
+DEFAULT_FRAMERATE: int = 44100

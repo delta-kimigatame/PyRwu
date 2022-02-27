@@ -1,4 +1,6 @@
-﻿import numpy as np
+﻿import os.path
+
+import numpy as np
 import pyworld as pw
 
 import flags
@@ -349,11 +351,37 @@ class Resamp:
             input_pathで指定したファイルがwavではなかったとき
         '''
 
-        self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
-        self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
-        self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
-        self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
-        self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+        if settings.USE_PYWORLD_CACHE:
+            npz_path: str = os.path.splitext(self._input_path)[0]+".npz"
+            if os.path.isfile(npz_path):
+                loaded_array = np.load(npz_path)
+                start_frame: int = int(self._offset/frame_period)
+                self._f0 = loaded_array["f0"]
+                self._sp = loaded_array["sp"]
+                self._ap = loaded_array["ap"]
+            else:
+                self._input_data, self._framerate = wave_io.read(self._input_path,0 , 0)
+                self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
+                self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
+                self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
+                self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+                np.savez_compressed(npz_path, f0=self._f0, sp=self._sp, ap=self._ap)
+            start_frame: int = int(self._offset/frame_period)
+            if self._end_ms >=0:
+                end_frame: int = self._f0.shape[0]-int(self._end_ms/frame_period)
+            else:
+                end_frame: int = start_frame -int(self._end_ms/frame_period)
+            self._f0 = self._f0 [start_frame:end_frame]
+            self._sp = self._sp[start_frame:end_frame]
+            self._ap = self._ap[start_frame:end_frame]
+            self._framerate = settings.DEFAULT_FRAMERATE
+
+        else:
+            self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
+            self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
+            self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
+            self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
+            self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
 
     def stretch(self):
         '''
