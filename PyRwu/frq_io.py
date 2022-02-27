@@ -8,6 +8,7 @@ import os.path
 from typing import Tuple
 
 import numpy as np
+import pyworld as pw
 
 import pitch
 
@@ -63,3 +64,19 @@ def read(input_path: str, offset: float, end_ms: float, framerate: int, world_pe
     world_t: np.ndarray= np.arange(0, frq_t[-1], world_period/1000)
     data: np.ndarray = pitch.interp1d(frq_t, world_t, base_data)
     return data, world_t
+
+def write(wav_data: np.ndarray, output_path: str, framerate: int):
+        f0, t = pw.harvest(wav_data, framerate, frame_period=1000/44100*256)
+        f0 = pw.stonemask(wav_data, f0, t, framerate)
+        amp = np.zeros_like(f0)
+        for i in range(amp.shape[0]):
+            amp[i] = np.average(np.abs(wav_data[i*256:(i+1)*256]))
+        frq_avg = np.array(np.average(f0))
+        with open(output_path, "wb") as fw:
+            fw.write(b"FREQ0003")
+            fw.write((256).to_bytes(4,"little"))
+            fw.write(np.array(np.average(f0), dtype=np.float64).tobytes())
+            fw.write(b"PyRwu           ")
+            fw.write(f0.shape[0].to_bytes(4,"little"))
+            fw.write(np.concatenate([[f0],[amp]]).T.tobytes())
+
