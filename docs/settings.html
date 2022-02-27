@@ -162,6 +162,23 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="settings.USE_PYWORLD_CACHE">
+<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">USE_PYWORLD_CACHE</span></span><a class="headerlink" href="#settings.USE_PYWORLD_CACHE" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">wavファイルと同一個所に、.npzファイルがあれば、wavの読み込み・f0,sp,apの解析を省略します。</div>
+<div class="line">Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。</div>
+</div>
+<div class="line-block">
+<div class="line">実装しましたが、期待したほど高速化しない上にnpzファイルのサイズが大きいため、Falseにしておきます。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="settings.A4FRQ">
 <span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">A4FRQ</span></span><a class="headerlink" href="#settings.A4FRQ" title="この定義へのパーマリンク"></a></dt>
 <dd><p>基準となる音高</p>
@@ -276,6 +293,19 @@
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>int, default 16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="settings.DEFAULT_FRAMERATE">
+<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_FRAMERATE</span></span><a class="headerlink" href="#settings.DEFAULT_FRAMERATE" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">扱うデータのサンプル周波数</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int, default 44100</p>
 </dd>
 </dl>
 </dd></dl>

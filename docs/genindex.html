@@ -89,6 +89,7 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  | <a href="#モ"><strong>モ</strong></a>
@@ -163,6 +164,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="settings.html#settings.DEFAULT_FRAMERATE">DEFAULT_FRAMERATE (settings モジュール)</a>
+</li>
       <li><a href="flags.html#id1">default_value (flags.Flag のプロパティ)</a>
 
       <ul>
@@ -281,14 +284,14 @@
         <li><a href="flags.html#flags.Flag.flag">(flags.Flag の属性)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="resamp.html#id5">flag_value (resamp.Resamp のプロパティ)</a>
 
       <ul>
         <li><a href="resamp.html#resamp.Resamp.flag_value">(resamp.Resamp の属性)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     flags
 
@@ -310,6 +313,13 @@
 
       <ul>
         <li><a href="resamp.html#resamp.Resamp.framerate">(resamp.Resamp の属性)</a>
+</li>
+      </ul></li>
+      <li>
+    frq_io
+
+      <ul>
+        <li><a href="frq_io.html#module-frq_io">モジュール</a>
 </li>
       </ul></li>
   </ul></td>
@@ -352,6 +362,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pitch.html#pitch.interp1d">interp1d() (pitch モジュール)</a>
+</li>
       <li><a href="pitch.html#pitch.interpPitch">interpPitch() (pitch モジュール)</a>
 </li>
       <li><a href="flags.html#id4">isBool (flags.Flag のプロパティ)</a>
@@ -510,8 +522,12 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="wave_io.html#wave_io.read">read() (wave_io モジュール)</a>
+      <li><a href="frq_io.html#frq_io.read">read() (frq_io モジュール)</a>
+
+      <ul>
+        <li><a href="wave_io.html#wave_io.read">(wave_io モジュール)</a>
 </li>
+      </ul></li>
       <li>
     release
 
@@ -738,8 +754,6 @@
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_offset">test_read_44100_16_mono_offset() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_mono_range">test_read_44100_16_mono_range() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_16_stereo">test_read_44100_16_stereo() (tests.test_wave_io.TestWaveRead のメソッド)</a>
@@ -748,6 +762,8 @@
         <li><a href="tests.html#tests.test_wave_io.TestWaveWrite.test_read_44100_16_stereo">(tests.test_wave_io.TestWaveWrite のメソッド)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="tests.html#tests.test_wave_io.TestWaveRead.test_read_44100_24_mono">test_read_44100_24_mono() (tests.test_wave_io.TestWaveRead のメソッド)</a>
 
       <ul>
@@ -774,6 +790,8 @@
         <li><a href="tests.html#tests.test_wave_io.TestWaveWrite.test_read_96000_32_mono">(tests.test_wave_io.TestWaveWrite のメソッド)</a>
 </li>
       </ul></li>
+      <li><a href="tests.html#tests.test_frq_io.TestFrqRead.test_read_frq">test_read_frq() (tests.test_frq_io.TestFrqRead のメソッド)</a>
+</li>
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_resamp">test_resamp() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_resamp_A100">test_resamp_A100() (tests.test_resamp.TestResampInnit のメソッド)</a>
@@ -791,6 +809,8 @@
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_resamp_gw100_gws_negative75_gwa10">test_resamp_gw100_gws_negative75_gwa10() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_resamp_gw500">test_resamp_gw500() (tests.test_resamp.TestResampInnit のメソッド)</a>
+</li>
+      <li><a href="tests.html#tests.test_resamp.TestResampInnit.test_resamp_nocache">test_resamp_nocache() (tests.test_resamp.TestResampInnit のメソッド)</a>
 </li>
       <li><a href="tests.html#tests.test_pitch.TestDecodeRunLength.test_sandwich">test_sandwich() (tests.test_pitch.TestDecodeRunLength のメソッド)</a>
 </li>
@@ -852,6 +872,8 @@
 </li>
       <li><a href="tests.html#tests.test_flags.TestFlags">TestFlags (tests.test_flags のクラス)</a>
 </li>
+      <li><a href="tests.html#tests.test_frq_io.TestFrqRead">TestFrqRead (tests.test_frq_io のクラス)</a>
+</li>
       <li><a href="tests.html#tests.test_pitch.TestGetFrqFromStr">TestGetFrqFromStr (tests.test_pitch のクラス)</a>
 </li>
       <li><a href="tests.html#tests.test_pitch.TestGetPitchRange">TestGetPitchRange (tests.test_pitch のクラス)</a>
@@ -872,6 +894,13 @@
 
       <ul>
         <li><a href="tests.html#module-tests.test_flags">モジュール</a>
+</li>
+      </ul></li>
+      <li>
+    tests.test_frq_io
+
+      <ul>
+        <li><a href="tests.html#module-tests.test_frq_io">モジュール</a>
 </li>
       </ul></li>
       <li>
@@ -915,6 +944,14 @@
       <li><a href="effects.html#effects.t_flag.TFlag">TFlag (effects.t_flag のクラス)</a>
 </li>
       <li><a href="settings.html#settings.TONE_NUM">TONE_NUM (settings モジュール)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="settings.html#settings.USE_PYWORLD_CACHE">USE_PYWORLD_CACHE (settings モジュール)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -995,6 +1032,8 @@
 </li>
         <li><a href="flags.html#module-flags">flags</a>
 </li>
+        <li><a href="frq_io.html#module-frq_io">frq_io</a>
+</li>
         <li><a href="pitch.html#module-pitch">pitch</a>
 </li>
         <li><a href="PyRwu.html#module-PyRwu">PyRwu</a>
@@ -1010,6 +1049,8 @@
         <li><a href="tests.html#module-tests">tests</a>
 </li>
         <li><a href="tests.html#module-tests.test_flags">tests.test_flags</a>
+</li>
+        <li><a href="tests.html#module-tests.test_frq_io">tests.test_frq_io</a>
 </li>
         <li><a href="tests.html#module-tests.test_pitch">tests.test_pitch</a>
 </li>

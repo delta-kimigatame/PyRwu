@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>frq_io module &mdash; PyRwu 1.0.0 ドキュメント</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PyRwu
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PyRwu.html">PyRwu module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resamp.html">resamp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyRwu</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>frq_io module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/frq_io.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-frq_io">
+<span id="frq-io-module"></span><h1>frq_io module<a class="headerlink" href="#module-frq_io" title="このヘッドラインへのパーマリンク"></a></h1>
+<p>frq_io</p>
+<p>frqのIO関係のデータを扱います。</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="frq_io.read">
+<span class="sig-prename descclassname"><span class="pre">frq_io.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">framerate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#frq_io.read" title="この定義へのパーマリンク"></a></dt>
+<dd><p>frqファイルを読み込み、指定された区間のworld時間軸のf0列に変換して返します。</p>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> (<em>str</em>) -- <div class="line-block">
+<div class="line">frqファイルのパス</div>
+<div class="line">事前にファイルがあることを確認すること</div>
+</div>
+</p></li>
+<li><p><strong>offset</strong> (<em>float</em><em>, </em><em>default 0</em>) -- 入力ファイルの読み込み開始位置(ms)</p></li>
+<li><p><strong>end_ms</strong> (<em>float</em><em>, </em><em>default 0</em>) -- <div class="line-block">
+<div class="line">入力ファイルの読み込み終了位置(ms)(省略可 default:0)</div>
+<div class="line">正の数の場合、ファイル末尾からの時間</div>
+<div class="line">負の数の場合、offsetからの時間</div>
+</div>
+</p></li>
+<li><p><strong>framerate</strong> (<em>int</em>) -- <div class="line-block">
+<div class="line">wavのサンプリング周波数</div>
+</div>
+</p></li>
+<li><p><strong>world_period</strong> (<em>float</em>) -- <div class="line-block">
+<div class="line">worldデータの1フレーム当たりの時間(ms)</div>
+<div class="line">初期設定では5.0</div>
+</div>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray or np.float64</em>) -- 指定された区間のf0のデータ。1次元</p></li>
+<li><p><strong>t</strong> (<em>np.ndarray</em>) -- worldの時間配列。0からworld_period間隔の等差数列</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, delta_kimigatame.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

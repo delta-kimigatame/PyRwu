@@ -13,6 +13,7 @@ Welcome to PyRwu's documentation!
    PyRwu
    resamp
    wave_io
+   frq_io_
    flags
    stretch
    pitch

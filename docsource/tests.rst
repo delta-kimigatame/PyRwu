@@ -12,6 +12,14 @@ tests.test\_flags module
    :undoc-members:
    :show-inheritance:
 
+tests.test\_frq\_io module
+--------------------------
+
+.. automodule:: tests.test_frq_io
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.test\_pitch module
 ------------------------
 

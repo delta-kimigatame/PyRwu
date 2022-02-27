@@ -7,6 +7,7 @@ PyRwu
    PyRwu
    effects
    flags
+   frq_io
    pitch
    release
    resamp
