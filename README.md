@@ -11,6 +11,7 @@
     PyWORLD(https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder)
 
 * 改造や組み込みを歓迎しますが、それらのためのドキュメントは準備中です。
+* 合成処理時に、worldの解析結果のうち最も時間がかかる非周期性指標をwavフォルダと同じ場所に.d4cの拡張子で生成します。ファイルサイズがwavの20倍ぐらいあります。
 * 兄弟プロジェクト
 
     PyWavTool(https://github.com/delta-kimigatame/PyWavTool)
