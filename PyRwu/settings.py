@@ -40,6 +40,14 @@ USE_PYWORLD_CACHE: bool, default False
     | Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。
 
     | 実装しましたが、期待したほど高速化しない上にnpzファイルのサイズが大きいため、Falseにしておきます。
+    
+
+USE_D4C_FILE: bool, default True
+
+    | wavファイルと同一個所に、.d4cファイルがあれば、apの解析を省略します。
+    | Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。
+
+    | d4cファイルは、wavの20倍程度の容量になります。ファイルサイズが気になる場合は、Falseにしてください。
 
 A4FRQ: float, default 440
     基準となる音高
@@ -162,6 +170,7 @@ PYWORLD_Q1: float = -0.15
 PYWORLD_THRESHOLD: float = 0
 
 USE_PYWORLD_CACHE: bool = False
+USE_D4C_FILE: bool = True
 
 A4FRQ: float = 440.0
 TONE_NUM: dict = {"C":0, "C#":1, "C♯":1, "Db":1, "D♭":1,

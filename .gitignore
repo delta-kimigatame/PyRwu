@@ -369,3 +369,5 @@ FodyWeavers.xsd
 /PyRwu/log.txt
 /PyRwu/tests/testdata/inputwav/mono44_1-16.npz
 /PyRwu/tests/testdata/inputwav/a.npz
+/PyRwu/tests/testdata/inputwav/a_wav.d4c
+/PyRwu/tests/testdata/inputwav/mono44_1-16_wav.d4c

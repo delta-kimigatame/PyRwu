@@ -354,34 +354,11 @@ class Resamp:
         '''
 
         if settings.USE_PYWORLD_CACHE:
-            npz_path: str = os.path.splitext(self._input_path)[0]+".npz"
-            if os.path.isfile(npz_path):
-                loaded_array = np.load(npz_path)
-                #print(time.time())
-                start_frame: int = int(self._offset/frame_period)
-                self._f0 = loaded_array["f0"]
-                self._sp = loaded_array["sp"]
-                self._ap = loaded_array["ap"]
-            else:
-                self._input_data, self._framerate = wave_io.read(self._input_path,0 , 0)
-                self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
-                self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
-                self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
-                self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
-                np.savez_compressed(npz_path, f0=self._f0, sp=self._sp, ap=self._ap)
-            start_frame: int = int(self._offset/frame_period)
-            if self._end_ms >=0:
-                end_frame: int = self._f0.shape[0]-int(self._end_ms/frame_period)
-            else:
-                end_frame: int = start_frame -int(self._end_ms/frame_period)
-            self._f0 = self._f0 [start_frame:end_frame]
-            self._sp = self._sp[start_frame:end_frame]
-            self._ap = self._ap[start_frame:end_frame]
-            self._framerate = settings.DEFAULT_FRAMERATE
-            #print(time.time())
+            self._getInputFromNpz(f0_floor, f0_ceil, frame_period, q1, threshold)
 
         else:
             frq_path: str = os.path.splitext(self._input_path)[0]+"_wav.frq"
+
             #print(time.time())
             self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
             #print(time.time())
@@ -394,8 +371,145 @@ class Resamp:
             #print(time.time())
             self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
             #print(time.time())
-            self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+
+            self._getAp(f0_floor, f0_ceil, frame_period, threshold)
+
             #print(time.time())
+
+    def _getAp(self,
+               f0_floor: float=settings.PYWORLD_F0_FLOOR,
+               f0_ceil: float=settings.PYWORLD_F0_CEIL,
+               frame_period: float=settings.PYWORLD_PERIOD,
+               threshold: float=settings.PYWORLD_THRESHOLD):
+        '''
+        | 入力された音声データからworldパラメータを取得し、 self._apを更新します。
+        | settings.USE_D4CがFalseの場合、必要な範囲のみself._apを生成します。
+        | settings.USE_D4CがTrueの場合、wav全体のapを生成し、d4cファイルとして書き出すことで、2回目以降を高速化します。
+
+        Parameters
+        ----------
+        f0_floor: float, default settings.PYWORLD_F0_FLOOR
+
+            | worldでの分析するf0の下限
+            | デフォルトでは71.0
+
+        f0_ceil: float, default settings.PYWORLD_F0_CEIL
+
+            | worldでの分析するf0の上限
+            | デフォルトでは800.0
+
+        frame_period: float, default settings.PYWORLD_PERIOD
+
+            | worldデータの1フレーム当たりの時間(ms)
+            | 初期設定では5.0
+
+        threshold: float, default settings.PYWORLD_THRESHOLD
+
+            | worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)
+            | 値が0の場合、音声のあるフレームを全て有声と判定します。
+            | 値が0超の場合、一部のフレームを無声音として判断します。
+            | 初期値0.85はharvestと組み合わせる前提で調整されています。
+        
+        Raises
+        ------
+        FileNotFoundError
+            input_pathにファイルがなかったとき
+        TypeError
+            input_pathで指定したファイルがwavではなかったとき
+        '''
+        d4c_path: str = os.path.splitext(self._input_path)[0]+"_wav.d4c"
+        if not settings.USE_D4C_FILE:
+            self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+        elif os.path.isfile(d4c_path):
+            size: int =int(pw.get_cheaptrick_fft_size(self._framerate, f0_floor)/2) + 1
+            self._ap = np.fromfile(d4c_path, np.float64)
+            self._ap = self._ap.reshape(int(self._ap.shape[0] / size), size)
+            start_frame: int = int(self._offset/frame_period)
+            self._ap = self._ap[start_frame:][:self._f0.shape[0]]
+        else:
+            input_data, framerate = wave_io.read(self._input_path,0 , 0)
+            f0, t = pw.harvest(input_data, framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
+            f0 = pw.stonemask(input_data, f0, t, framerate)
+            self._ap = pw.d4c(input_data, f0, t, framerate, threshold=threshold)
+            self._ap.tofile(d4c_path)
+            start_frame: int = int(self._offset/frame_period)
+            self._ap = self._ap[start_frame:][:self._f0.shape[0]]
+
+    def _getInputFromNpz(self,
+                         f0_floor: float=settings.PYWORLD_F0_FLOOR,
+                         f0_ceil: float=settings.PYWORLD_F0_CEIL,
+                         frame_period: float=settings.PYWORLD_PERIOD,
+                         q1: float=settings.PYWORLD_Q1,
+                         threshold: float=settings.PYWORLD_THRESHOLD):
+        '''
+        | 保存されているnpzファイルを読み込み、self._framerate, self._f0, self._sp, self._apを更新します。
+        | npzファイルが存在しない場合、self._input_dataからwavの全範囲を読み込み、npzファイルを作成します。
+
+        Notes
+        -----
+        | この処理は期待するほど高速ではない上、npzファイルが非常に大きくなるため、通常使用しませんが、一応残してあります。
+
+        Parameters
+        ----------
+        f0_floor: float, default settings.PYWORLD_F0_FLOOR
+
+            | worldでの分析するf0の下限
+            | デフォルトでは71.0
+
+        f0_ceil: float, default settings.PYWORLD_F0_CEIL
+
+            | worldでの分析するf0の上限
+            | デフォルトでは800.0
+
+        frame_period: float, default settings.PYWORLD_PERIOD
+
+            | worldデータの1フレーム当たりの時間(ms)
+            | 初期設定では5.0
+            
+        q1: float, default settings.PYWORLD_Q1
+
+            | worldでスペクトル包絡抽出時の補正値
+            | 通常は変更不要
+            | 初期設定では-15.0
+
+        threshold: float, default settings.PYWORLD_THRESHOLD
+
+            | worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)
+            | 値が0の場合、音声のあるフレームを全て有声と判定します。
+            | 値が0超の場合、一部のフレームを無声音として判断します。
+            | 初期値0.85はharvestと組み合わせる前提で調整されています。
+        
+        Raises
+        ------
+        FileNotFoundError
+            input_pathにファイルがなかったとき
+        TypeError
+            input_pathで指定したファイルがwavではなかったとき
+        '''
+        npz_path: str = os.path.splitext(self._input_path)[0]+".npz"
+        if os.path.isfile(npz_path):
+            loaded_array = np.load(npz_path)
+            start_frame: int = int(self._offset/frame_period)
+            self._f0 = loaded_array["f0"]
+            self._sp = loaded_array["sp"]
+            self._ap = loaded_array["ap"]
+        else:
+            self._input_data, self._framerate = wave_io.read(self._input_path,0 , 0)
+            self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
+            self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
+            self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
+            self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+            np.savez_compressed(npz_path, f0=self._f0, sp=self._sp, ap=self._ap)
+        start_frame: int = int(self._offset/frame_period)
+        if self._end_ms >=0:
+            end_frame: int = self._f0.shape[0]-int(self._end_ms/frame_period)
+        else:
+            end_frame: int = start_frame -int(self._end_ms/frame_period)
+        self._f0 = self._f0 [start_frame:end_frame]
+        self._sp = self._sp[start_frame:end_frame]
+        self._ap = self._ap[start_frame:end_frame]
+        self._framerate = settings.DEFAULT_FRAMERATE
+
 
     def stretch(self):
         '''

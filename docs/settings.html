@@ -178,138 +178,78 @@
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.A4FRQ">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">A4FRQ</span></span><a class="headerlink" href="#settings.A4FRQ" title="この定義へのパーマリンク"></a></dt>
-<dd><p>基準となる音高</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>float, default 440</p>
+<p>USE_D4C_FILE: bool, default True</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">wavファイルと同一個所に、.d4cファイルがあれば、apの解析を省略します。</div>
+<div class="line">Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。</div>
+</div>
+<div class="line-block">
+<div class="line">d4cファイルは、wavの20倍程度の容量になります。ファイルサイズが気になる場合は、Falseにしてください。</div>
+</div>
+</div></blockquote>
+<dl class="simple">
+<dt>A4FRQ: float, default 440</dt><dd><p>基準となる音高</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.TONE_NUM">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">TONE_NUM</span></span><a class="headerlink" href="#settings.TONE_NUM" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+<p>TONE_NUM: dict</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">UTAUから渡される音高名をnotenumに変換するための辞書</div>
 <div class="line">notenumはC1=24、C#1=25...B7=107で、以下の式で与えられる。</div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notenum</span> <span class="o">=</span> <span class="p">(</span><span class="n">octave</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">+</span> <span class="n">TONE_NUM</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.PITCH_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">PITCH_EFFECTS</span></span><a class="headerlink" href="#settings.PITCH_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>PITCH_EFFECTS: list of effects.base.PitchEffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">ピッチ処理時に適用するエフェクトのクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.PitchEffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.F0_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">F0_EFFECTS</span></span><a class="headerlink" href="#settings.F0_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>F0_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">synthesizeでf0に適用するエフェクトのクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.EffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.SP_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">SP_EFFECTS</span></span><a class="headerlink" href="#settings.SP_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>SP_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">synthesizeでspに適用するエフェクトのクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.EffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.AP_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">AP_EFFECTS</span></span><a class="headerlink" href="#settings.AP_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>AP_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">synthesizeでapに適用するエフェクトのクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.EffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.WORLD_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">WORLD_EFFECTS</span></span><a class="headerlink" href="#settings.WORLD_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>WORLD_EFFECTS: list of effects.base.WorldEffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">synthesizeで適用するエフェクトのうち、f0,sp,apの複数のパラメータを変更するクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.WorldEffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.OUT_WAVE_EFFECTS">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">OUT_WAVE_EFFECTS</span></span><a class="headerlink" href="#settings.OUT_WAVE_EFFECTS" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>OUT_WAVE_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">synthesize後のwaveに適用するエフェクトのクラスを指定する。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list of effects.base.EffectBase</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.OUTPUT_BITDEPTH">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">OUTPUT_BITDEPTH</span></span><a class="headerlink" href="#settings.OUTPUT_BITDEPTH" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>OUTPUT_BITDEPTH: int, default 16</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">出力するwavのビット深度。8, 16, 24, 32のいずれかでなければなりません。</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int, default 16</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="settings.DEFAULT_FRAMERATE">
-<span class="sig-prename descclassname"><span class="pre">settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_FRAMERATE</span></span><a class="headerlink" href="#settings.DEFAULT_FRAMERATE" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
+</div></blockquote>
+<p>DEFAULT_FRAMERATE: int, default 44100</p>
+<blockquote>
+<div><div class="line-block">
 <div class="line">扱うデータのサンプル周波数</div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int, default 44100</p>
-</dd>
-</dl>
-</dd></dl>
-
+</div></blockquote>
 </section>
 
 
