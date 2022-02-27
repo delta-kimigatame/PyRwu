@@ -1,9 +1,11 @@
 ﻿import os.path
+import time
 
 import numpy as np
 import pyworld as pw
 
 import flags
+import frq_io
 import wave_io
 import stretch
 import pitch
@@ -355,6 +357,7 @@ class Resamp:
             npz_path: str = os.path.splitext(self._input_path)[0]+".npz"
             if os.path.isfile(npz_path):
                 loaded_array = np.load(npz_path)
+                #print(time.time())
                 start_frame: int = int(self._offset/frame_period)
                 self._f0 = loaded_array["f0"]
                 self._sp = loaded_array["sp"]
@@ -375,13 +378,24 @@ class Resamp:
             self._sp = self._sp[start_frame:end_frame]
             self._ap = self._ap[start_frame:end_frame]
             self._framerate = settings.DEFAULT_FRAMERATE
+            #print(time.time())
 
         else:
+            frq_path: str = os.path.splitext(self._input_path)[0]+"_wav.frq"
+            #print(time.time())
             self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
-            self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
-            self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
+            #print(time.time())
+            if os.path.isfile(frq_path):
+                self._f0, self._t = frq_io.read(frq_path, self._offset, self._end_ms, self._framerate, frame_period) 
+            else:
+                self._f0, self._t = pw.harvest(self._input_data, self._framerate, f0_floor=f0_floor, f0_ceil=f0_ceil, frame_period=frame_period)
+                #print(time.time())
+                self._f0 = pw.stonemask(self._input_data, self._f0, self._t, self._framerate)
+            #print(time.time())
             self._sp = pw.cheaptrick(self._input_data, self._f0, self._t, self._framerate, q1=q1, f0_floor=f0_floor)
+            #print(time.time())
             self._ap = pw.d4c(self._input_data, self._f0, self._t, self._framerate, threshold=threshold)
+            #print(time.time())
 
     def stretch(self):
         '''
@@ -547,11 +561,20 @@ class Resamp:
         | 実行の順番はモジュールの説明に記載のある通りです。
 
         '''
+        #print(time.time())
         self.parseFlags()
+        #print(time.time())
         self.getInputData()
+        #print(time.time())
         self.stretch()
+        #print(time.time())
         self.pitchShift()
+        #print(time.time())
         self.applyPitch()
+        #print(time.time())
         self.synthesize()
+        #print(time.time())
         self.adjustVolume()
+        #print(time.time())
         self.output()
+        #print(time.time())
