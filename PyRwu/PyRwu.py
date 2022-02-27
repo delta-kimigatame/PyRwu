@@ -78,6 +78,7 @@ pitchbend: str, default ""
 import sys
 import os.path
 import argparse
+import time
 
 sys.path.append(os.path.dirname(__file__)) #embeddable pythonにimpot用のパスを追加
 import resamp
@@ -97,6 +98,7 @@ class ShowFlagAction(argparse.Action):
         parser.exit()
 
 if __name__ == "__main__":
+    #print(time.time())
     parser = argparse.ArgumentParser(
         description="This module is Resampler for UTAU powered by world")
     parser.add_argument("input_path", help="原音のファイル名", type=str)
@@ -132,5 +134,9 @@ if __name__ == "__main__":
         args.target_ms = args.offset
         args.offset = args.flags
         args.flags = ""
+        
+    #print(time.time())
     resamp.Resamp(args.input_path, args.output_path, args.target_tone, args.velocity, args.flags, float(args.offset), int(args.target_ms), float(args.fixed_ms), 
                     float(args.end_ms), int(args.volume), int(args.modulation), args.tempo, args.pitchbend).resamp()
+    
+    #print(time.time())
