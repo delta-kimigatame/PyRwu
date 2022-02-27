@@ -362,6 +362,10 @@ class Resamp:
             #print(time.time())
             self._input_data, self._framerate = wave_io.read(self._input_path, self._offset, self._end_ms)
             #print(time.time())
+            if not os.path.isfile(frq_path):
+                input_data, framerate = wave_io.read(self._input_path,0 , 0)
+                frq_io.write(input_data, frq_path, framerate)
+
             if os.path.isfile(frq_path):
                 self._f0, self._t = frq_io.read(frq_path, self._offset, self._end_ms, self._framerate, frame_period) 
             else:
