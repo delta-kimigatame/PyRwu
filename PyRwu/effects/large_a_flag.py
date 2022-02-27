@@ -1,7 +1,7 @@
 ﻿import numpy as np
-from scipy import interpolate
 
 import effects.base
+import pitch
 
 class LargeAFlag(effects.base.WorldEffectBase):
     @staticmethod
@@ -43,7 +43,8 @@ class LargeAFlag(effects.base.WorldEffectBase):
         else:
             pitches: np.ndarray = params.pitches[:wave_t.shape[0]]
         
-        effect: np.ndarray = interpolate.interp1d(wave_t, pitches)(np.arange(nframes)) / 100
+        effect: np.ndarray = pitch.interp1d(wave_t, np.arange(nframes),pitches)/ 100
+
         effect_max: int = np.amax(np.abs(effect))
         if effect_max > 1:
             effect = effect / effect_max
