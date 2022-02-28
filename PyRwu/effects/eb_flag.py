@@ -44,7 +44,6 @@ class EBFlag(effects.base.WorldEffectBase):
             effect[start+i] = effect[start+i] * i/atack
         if start != 0:
             effect[:start] = 0
-        print (effect)
         ap = ap + effect
             
         return ap
