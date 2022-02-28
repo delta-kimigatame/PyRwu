@@ -13,10 +13,11 @@ Welcome to PyRwu's documentation!
    PyRwu
    resamp
    wave_io
-   frq_io_
+   frq_io
    flags
    stretch
    pitch
+   interpolate
    effects
    settings
 

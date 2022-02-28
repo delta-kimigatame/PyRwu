@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="effects package" href="effects.html" />
+    <link rel="next" title="interpolate module" href="interpolate.html" />
     <link rel="prev" title="stretch module" href="stretch.html" /> 
 </head>
 
@@ -43,9 +43,11 @@
 <li class="toctree-l1"><a class="reference internal" href="PyRwu.html">PyRwu module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resamp.html">resamp module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frq_io.html">frq_io module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolate.html">interpolate module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
@@ -203,29 +205,6 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="pitch.interp1d">
-<span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">interp1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#pitch.interp1d" title="この定義へのパーマリンク"></a></dt>
-<dd><div class="line-block">
-<div class="line">tに従属するvalueを、new_t間隔で線形補完したarrayを返します。</div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">パラメータ</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>t</strong> (<em>np.ndarray of float64</em>) -- valueのデータ間隔。等間隔である必要があります。</p></li>
-<li><p><strong>new_t</strong> (<em>np.ndarray of float64</em>) -- 新しいデータの間隔。等間隔である必要があります。</p></li>
-<li><p><strong>value</strong> (<em>np.ndarray of float64</em>) -- 現在のデータ</p></li>
-</ul>
-</dd>
-<dt class="field-even">戻り値</dt>
-<dd class="field-even"><p><strong>new_value</strong> -- valueをnew_t間隔で線形保管したデータ</p>
-</dd>
-<dt class="field-odd">戻り値の型</dt>
-<dd class="field-odd"><p>np.ndarray of float64</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="pitch.interpPitch">
 <span class="sig-prename descclassname"><span class="pre">pitch.</span></span><span class="sig-name descname"><span class="pre">interpPitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">utau_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#pitch.interpPitch" title="この定義へのパーマリンク"></a></dt>
 <dd><div class="line-block">
@@ -256,7 +235,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="stretch.html" class="btn btn-neutral float-left" title="stretch module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="effects.html" class="btn btn-neutral float-right" title="effects package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="interpolate.html" class="btn btn-neutral float-right" title="interpolate module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

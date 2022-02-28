@@ -205,8 +205,8 @@ PITCH_EFFECTS = [t_flag.TFlag,
 F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
 AP_EFFECTS = [large_b_flag.LargeBFlag,
-              eb_flag.EBFlag]
-WORLD_EFFECTS = []
+              ]
+WORLD_EFFECTS = [eb_flag.EBFlag]
 OUT_WAVE_EFFECTS = [large_a_flag.LargeAFlag,
                     large_p_flag.LargePFlag,
                     ]

@@ -8,6 +8,7 @@ PyRwu
    effects
    flags
    frq_io
+   interpolate
    pitch
    release
    resamp

@@ -48,6 +48,9 @@
     <Compile Include="frq_io.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="interpolate.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pitch.py">
       <SubType>Code</SubType>
     </Compile>
