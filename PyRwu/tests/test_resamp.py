@@ -467,3 +467,43 @@ class TestResampInnit(unittest.TestCase):
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
         
+    def test_resamp_eb100(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_eb100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "eb100e", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+
+        
+    def test_resamp_eb100_eba50(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_eb100_eba50.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "eb100eba50e", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_eb100_eba10_ebs25(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_eb100_eba10_ebs25.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "eb100eba10ebs25e", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_eb100_eba10_ebs_negative75(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_eb100_eba10_ebs-75.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "eb100eba10ebs-75e", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))

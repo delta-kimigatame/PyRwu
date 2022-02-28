@@ -92,7 +92,7 @@ DEFAULT_FRAMERATE: int, default 44100
     | 扱うデータのサンプル周波数
 '''
 
-from effects import large_b_flag, large_p_flag
+from effects import eb_flag, large_b_flag, large_p_flag
 import flags
 import pyworld as pw
 from effects import *
@@ -106,6 +106,25 @@ FLAGS.add(flags.Flag("B",
                      min=0,
                      max=100,
                      default_value=50))
+FLAGS.add(flags.Flag("eb",
+                     descriptions=["語尾の息成分の強さ。大きいほど息っぽい"],
+                     isBool=False,
+                     min=0,
+                     max=100,
+                     default_value=0))
+FLAGS.add(flags.Flag("ebs",
+                     descriptions=["ノート前半部分の語尾息がかからない時間を5ms単位で指定します。",
+                                   "負の数を指定するとノート末尾からの時間になります。"],
+                     isBool=False,
+                     min=-1000,
+                     max=1000,
+                     default_value=0))
+FLAGS.add(flags.Flag("eba",
+                     descriptions=["ebフラグのアタックタイムを5ms単位で指定します。"],
+                     isBool=False,
+                     min=0,
+                     max=1000,
+                     default_value=0))
 FLAGS.add(flags.Flag("g",
                      descriptions=["疑似ジェンダー値",
                                     "負の数で女声化・若年化",
@@ -185,7 +204,8 @@ PITCH_EFFECTS = [t_flag.TFlag,
                  gw_flag.GwFlag]
 F0_EFFECTS = []
 SP_EFFECTS = [g_flag.GFlag]
-AP_EFFECTS = [large_b_flag.LargeBFlag]
+AP_EFFECTS = [large_b_flag.LargeBFlag,
+              eb_flag.EBFlag]
 WORLD_EFFECTS = []
 OUT_WAVE_EFFECTS = [large_a_flag.LargeAFlag,
                     large_p_flag.LargePFlag,

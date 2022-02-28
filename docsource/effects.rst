@@ -12,6 +12,14 @@ effects.base module
    :undoc-members:
    :show-inheritance:
 
+effects.eb\_flag module
+-----------------------
+
+.. automodule:: effects.eb_flag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 effects.g\_flag module
 ----------------------
 
