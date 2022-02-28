@@ -10,7 +10,7 @@ from typing import Tuple
 import numpy as np
 import pyworld as pw
 
-import pitch
+import interpolate
 
 def read(input_path: str, offset: float, end_ms: float, framerate: int, world_period: float) -> Tuple[np.ndarray, np.ndarray]:
     '''
@@ -62,7 +62,7 @@ def read(input_path: str, offset: float, end_ms: float, framerate: int, world_pe
         
     frq_t: np.ndarray= np.arange(0, frq_span * (base_data.shape[0]+1), frq_span)[:base_data.shape[0]]
     world_t: np.ndarray= np.arange(0, frq_t[-1], world_period/1000)
-    data: np.ndarray = pitch.interp1d(frq_t, world_t, base_data)
+    data: np.ndarray = interpolate.interp1d(frq_t, world_t, base_data)
     return data, world_t
 
 def write(wav_data: np.ndarray, output_path: str, framerate: int):
