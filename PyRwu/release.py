@@ -8,8 +8,10 @@ PYTHON="python-3.9.10"
 PYTHON_URL="https://www.python.org/ftp/python/3.9.10/python-3.9.10-embed-amd64.zip"
 
 BUILD_DIR = os.path.join("..", "release", "build")
+PATCH_DIR = os.path.join("..", "release", "patch")
 PROJECTNAME = "PyRwu"
 RELEASE_FILE = os.path.join("..", "release", PROJECTNAME + "-" + datetime.datetime.strftime(datetime.datetime.now(), "%Y%m%d"))
+PATCH_FILE = os.path.join("..", "release", PROJECTNAME + "-patch-" + datetime.datetime.strftime(datetime.datetime.now(), "%Y%m%d"))
 EXE_DIR = os.path.join("..", "PyRwuExe", "bin", "Release", "net6.0-windows")
 EXE_DIR_EXTENSIONS = [".exe",".dll",".runtimeconfig.json"]
 SOURCE_FILES = []
@@ -30,17 +32,21 @@ LICENSE=os.path.join("..","LICENSE")
 
 os.makedirs(BUILD_DIR, exist_ok=True)
 os.makedirs(os.path.join(BUILD_DIR, "src"), exist_ok=True)
+os.makedirs(os.path.join(PATCH_DIR, "src"), exist_ok=True)
 
 exe_dir_files = os.listdir(EXE_DIR)
 for file in exe_dir_files:
     for extensions in EXE_DIR_EXTENSIONS:
         if file.endswith(extensions):
             shutil.copy(os.path.join(EXE_DIR, file),os.path.join(BUILD_DIR, file))
+            shutil.copy(os.path.join(EXE_DIR, file),os.path.join(PATCH_DIR, file))
             break
             
 for file in SOURCE_FILES:
     os.makedirs(os.path.join(BUILD_DIR, "src", os.path.dirname(file)), exist_ok=True)
+    os.makedirs(os.path.join(PATCH_DIR, "src", os.path.dirname(file)), exist_ok=True)
     shutil.copy(file, os.path.join(BUILD_DIR, "src", file))
+    shutil.copy(file, os.path.join(PATCH_DIR, "src", file))
 
 if not os.path.isdir(os.path.join(BUILD_DIR,PYTHON)):
     urllib.request.urlretrieve(PYTHON_URL, os.path.join(BUILD_DIR,PYTHON+".zip"))
@@ -49,7 +55,9 @@ if not os.path.isdir(os.path.join(BUILD_DIR,PYTHON)):
 
 if os.path.exists(LICENSE):
     shutil.copy(LICENSE, os.path.join(BUILD_DIR, "license.txt"))
+    shutil.copy(LICENSE, os.path.join(PATCH_DIR, "license.txt"))
 if os.path.exists(README):
-    shutil.copy(README, os.path.join(BUILD_DIR, "readme.txt"))
+    shutil.copy(README, os.path.join(PATCH_DIR, "readme.txt"))
 
 shutil.make_archive(RELEASE_FILE, format="zip", root_dir=BUILD_DIR)
+shutil.make_archive(PATCH_FILE, format="zip", root_dir=PATCH_DIR)
