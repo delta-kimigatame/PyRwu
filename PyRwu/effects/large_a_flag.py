@@ -43,7 +43,7 @@ class LargeAFlag(effects.base.WorldEffectBase):
         else:
             pitches: np.ndarray = params.pitches[:wave_t.shape[0]]
         
-        effect: np.ndarray = pitch.interp1d(wave_t, np.arange(nframes),pitches)/ 100
+        effect: np.ndarray = pitch.interp1d(wave_t, np.arange(params.output_data.shape[0]),pitches)/ 100
 
         effect_max: int = np.amax(np.abs(effect))
         if effect_max > 1:
