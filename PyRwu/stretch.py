@@ -105,11 +105,11 @@ def world_stretch(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndar
             if border >= 1:
                 border = border - 1
                 leaves = leaves + 1
-            else:
+            elif i-leaves < new_f0.shape[0]:
                 new_f0[i-leaves]=f0[i]
                 new_sp[i-leaves]=sp[i]
                 new_ap[i-leaves]=ap[i]
-    return new_f0, new_sp, new_ap
+    return new_f0[:target_frames], new_sp[:target_frames], new_ap[:target_frames]
 
 def world_loop(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     '''
@@ -159,20 +159,8 @@ def world_loop(target_frames:int, f0: np.ndarray, sp: np.ndarray, ap: np.ndarray
     elif target_frames < f0.shape[0]:
         return f0[:target_frames], sp[:target_frames], ap[:target_frames]
 
-    new_f0 = np.concatenate([f0,np.flipud(f0)[1:]],axis=0)
-    new_sp = np.concatenate([sp,np.flipud(sp)[1:]],axis=0)
-    new_ap = np.concatenate([ap,np.flipud(ap)[1:]],axis=0)
+    new_f0 = np.pad(f0, (0, target_frames - f0.shape[0]), "reflect")
+    new_sp = np.pad(sp, [(0, target_frames - sp.shape[0]),(0,0)], "reflect")
+    new_ap = np.pad(ap, [(0, target_frames - ap.shape[0]),(0,0)], "reflect")
     
-    i=0
-    while new_f0.shape[0] < target_frames:
-        if i==0:
-            new_f0 = np.concatenate([new_f0,f0[1:]],axis=0)
-            new_sp = np.concatenate([new_sp,sp[1:]],axis=0)
-            new_ap = np.concatenate([new_ap,ap[1:]],axis=0)
-            i=1
-        else:
-            new_f0 = np.concatenate([new_f0,np.flipud(f0)[1:]],axis=0)
-            new_sp = np.concatenate([new_sp,np.flipud(sp)[1:]],axis=0)
-            new_ap = np.concatenate([new_ap,np.flipud(ap)[1:]],axis=0)
-            i=0
-    return new_f0[:target_frames], new_sp[:target_frames], new_ap[:target_frames]
+    return new_f0, new_sp[:target_frames], new_ap[:target_frames]
