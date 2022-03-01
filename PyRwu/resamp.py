@@ -549,20 +549,25 @@ class Resamp:
             vel_sp = self._sp[:input_fix_frames]
             vel_ap = self._ap[:input_fix_frames]
 
-        if self.flags.params["e"].flag:
-            s_f0, s_sp, s_ap = stretch.world_stretch(self._target_frames - self._fixed_frames,
-                                                     self._f0[input_fix_frames:],
-                                                     self._sp[input_fix_frames:],
-                                                     self._ap[input_fix_frames:])
-        else:
-            s_f0, s_sp, s_ap = stretch.world_loop(self._target_frames - self._fixed_frames,
-                                                  self._f0[input_fix_frames:],
-                                                  self._sp[input_fix_frames:],
-                                                  self._ap[input_fix_frames:])
+        if self._target_frames - self._fixed_frames > 0:
+            if self.flags.params["e"].flag:
+                s_f0, s_sp, s_ap = stretch.world_stretch(self._target_frames - self._fixed_frames,
+                                                         self._f0[input_fix_frames:],
+                                                         self._sp[input_fix_frames:],
+                                                         self._ap[input_fix_frames:])
+            else:
+                s_f0, s_sp, s_ap = stretch.world_loop(self._target_frames - self._fixed_frames,
+                                                      self._f0[input_fix_frames:],
+                                                      self._sp[input_fix_frames:],
+                                                      self._ap[input_fix_frames:])
             
-        self._f0 = np.concatenate([vel_f0, s_f0], axis=0)[:self._target_frames]
-        self._sp = np.concatenate([vel_sp, s_sp], axis=0)[:self._target_frames]
-        self._ap = np.concatenate([vel_ap, s_ap], axis=0)[:self._target_frames]
+            self._f0 = np.concatenate([vel_f0, s_f0], axis=0)[:self._target_frames]
+            self._sp = np.concatenate([vel_sp, s_sp], axis=0)[:self._target_frames]
+            self._ap = np.concatenate([vel_ap, s_ap], axis=0)[:self._target_frames]
+        else:
+            self._f0 = vel_f0[:self._target_frames]
+            self._sp = vel_sp[:self._target_frames]
+            self._ap = vel_ap[:self._target_frames]
         self._t = np.arange(0, self._f0.shape[0] * settings.PYWORLD_PERIOD, settings.PYWORLD_PERIOD)[:self._target_frames]
 
     def pitchShift(self):
