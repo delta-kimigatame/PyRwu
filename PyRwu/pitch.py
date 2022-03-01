@@ -88,7 +88,7 @@ def decodeBase64Core(value :str) -> int:
         return value - ord("a") + 26
     elif  value >= ord("0") and value <= ord("9"):
         return value - ord("0") + 52
-    elif value=="+":
+    elif value==ord("+"):
         return 62
     else:
         return 63
@@ -186,7 +186,7 @@ def interpPitch(base: np.ndarray, utau_t: np.ndarray, world_t: np.ndarray) -> np
         world時間軸のピッチ列
     '''
     if(utau_t.shape[0] > base.shape[0]):
-        base = np.pad(base, (0,utau_t.shape[0]-base.shape[0]))
+        base = np.pad(base, (0, utau_t.shape[0]-base.shape[0]))
     else:
         base = base[:utau_t.shape[0]]
         
