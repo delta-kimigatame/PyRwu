@@ -28,6 +28,7 @@
     <Compile Include="effects\base.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="effects\vf_flag.py" />
     <Compile Include="effects\large_a_flag.py" />
     <Compile Include="effects\eb_flag.py" />
     <Compile Include="effects\large_p_flag.py" />
@@ -52,6 +53,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="pitch.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="psutil_lab.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PyRwu.py" />

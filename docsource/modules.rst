@@ -10,6 +10,7 @@ PyRwu
    frq_io
    interpolate
    pitch
+   psutil_lab
    release
    resamp
    settings

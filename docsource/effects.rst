@@ -68,6 +68,14 @@ effects.t\_flag module
    :undoc-members:
    :show-inheritance:
 
+effects.vf\_flag module
+-----------------------
+
+.. automodule:: effects.vf_flag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

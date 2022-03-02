@@ -58,6 +58,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.large_b_flag">effects.large_b_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.large_p_flag">effects.large_p_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects.t_flag">effects.t_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-effects.vf_flag">effects.vf_flag module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-effects">Module contents</a></li>
 </ul>
 </li>
@@ -393,6 +394,38 @@
 <dt class="field-even">戻り値</dt>
 <dd class="field-even"><p><strong>pitches</strong> -- | world時間軸のピッチ数列(cent単位)
 | settings.PYWORLD_PERIOD(デフォルト5ms)毎に生成される。</p>
+</dd>
+<dt class="field-odd">戻り値の型</dt>
+<dd class="field-odd"><p>np.ndarray of float64</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-effects.vf_flag">
+<span id="effects-vf-flag-module"></span><h2>effects.vf_flag module<a class="headerlink" href="#module-effects.vf_flag" title="このヘッドラインへのパーマリンク"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="effects.vf_flag.VfFlag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">effects.vf_flag.</span></span><span class="sig-name descname"><span class="pre">VfFlag</span></span><a class="headerlink" href="#effects.vf_flag.VfFlag" title="この定義へのパーマリンク"></a></dt>
+<dd><p>ベースクラス: <a class="reference internal" href="#effects.base.WorldEffectBase" title="effects.base.WorldEffectBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">effects.base.WorldEffectBase</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="effects.vf_flag.VfFlag.apply">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#effects.vf_flag.VfFlag.apply" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">疑似エッジ</div>
+<div class="line">vfフラグでエッジがかかる長さを5ms単位で指定します。</div>
+<div class="line">vfフラグが正の場合冒頭から、負の場合固定範囲の末尾からです。</div>
+<div class="line">vfwフラグは、エッジ1回の長さを1000フレームに対する割合で指定します。</div>
+<div class="line">vfpは、エッジ1回あたりの無音部分の長さをエッジ部分の長さに対する割合で指定します。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">パラメータ</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="resamp.html#resamp.Resamp" title="resamp.Resamp"><em>resamp.Resamp</em></a>) -- 伸縮機の各パラメータ</p>
+</dd>
+<dt class="field-even">戻り値</dt>
+<dd class="field-even"><p><strong>new_values</strong> -- | 処理後の値</p>
 </dd>
 <dt class="field-odd">戻り値の型</dt>
 <dd class="field-odd"><p>np.ndarray of float64</p>

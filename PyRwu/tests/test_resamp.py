@@ -507,3 +507,54 @@ class TestResampInnit(unittest.TestCase):
                       "A4", 100, "eb100eba10ebs-75e", 0, 500, 100, 0, 100, 0, "!120", "AA#5#")
         self.resamp.resamp()
         self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_vf100(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_vf100.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "vf100e", 0, 1000, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+
+    def test_resamp_vf100_vfw200(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_vf100vfw200.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "vf100vfw200e", 0, 1000, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+
+    def test_resamp_vf30_vfw200(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_vf30vfw200.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "vf30vfw200e", 0, 1000, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+    def test_resamp_vfn30(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_vfn30vfw200.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "vf-30e", 0, 1000, 100, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))
+        
+        
+    def test_resamp_vfn10(self):
+        output = os.path.join("tests","testdata","outputresamp","resamp_vfn10.wav")
+        if os.path.isfile(output):
+            os.remove(output)
+        self.resamp = resamp.Resamp(os.path.join("tests","testdata","inputwav","a.wav"),
+                      output,
+                      "A4", 100, "vf-10vfp0e", 0, 1000, 200, 0, 100, 0, "!120", "AA#5#")
+        self.resamp.resamp()
+        self.assertTrue(os.path.isfile(output))

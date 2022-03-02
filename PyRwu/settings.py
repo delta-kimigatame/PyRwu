@@ -92,7 +92,7 @@ DEFAULT_FRAMERATE: int, default 44100
     | 扱うデータのサンプル周波数
 '''
 
-from effects import eb_flag, large_b_flag, large_p_flag
+from effects import eb_flag, large_b_flag, large_p_flag, vf_flag
 import flags
 import pyworld as pw
 from effects import *
@@ -180,6 +180,24 @@ FLAGS.add(flags.Flag("gwa",
                      min=0,
                      max=1000,
                      default_value=0))
+FLAGS.add(flags.Flag("vf",
+                     descriptions=["疑似エッジ。","エッジがかかる長さを5ms単位で指定します。"],
+                     isBool=False,
+                     min=-500,
+                     max=500,
+                     default_value=0))
+FLAGS.add(flags.Flag("vfw",
+                     descriptions=["疑似エッジのエッジ1回あたりの長さ。%指定"],
+                     isBool=False,
+                     min=0,
+                     max=300,
+                     default_value=100))
+FLAGS.add(flags.Flag("vfp",
+                     descriptions=["疑似エッジのエッジ1回あたりの無音の長さ。%指定"],
+                     isBool=False,
+                     min=0,
+                     max=100,
+                     default_value=20))
 
 
 PYWORLD_PERIOD: float = pw.default_frame_period
@@ -208,6 +226,7 @@ AP_EFFECTS = [large_b_flag.LargeBFlag,
               ]
 WORLD_EFFECTS = [eb_flag.EBFlag]
 OUT_WAVE_EFFECTS = [large_a_flag.LargeAFlag,
+                    vf_flag.VfFlag,
                     large_p_flag.LargePFlag,
                     ]
 
