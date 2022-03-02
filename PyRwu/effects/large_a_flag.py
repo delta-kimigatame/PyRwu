@@ -31,7 +31,10 @@ class LargeAFlag(effects.base.WorldEffectBase):
             bpm: float = float(params.tempo)
         except:
             try:
-                bpm: float = float(params.tempo[1:])
+                if params.tempo[:2]=="0Q":
+                    bpm: float = float(params.tempo[2:])
+                else:
+                    bpm: float = float(params.tempo[1:])
             except:
                 raise ValueError("{} is not utau tempo format.".format(params.tempo))
         nframes: int = int(params.target_ms / 1000 * params.framerate)
