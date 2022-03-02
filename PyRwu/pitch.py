@@ -155,7 +155,10 @@ def getPitchRange(tempo: str, target_ms: float, framerate: int)-> np.ndarray:
         bpm: float = float(tempo)
     except:
         try:
-            bpm: float = float(tempo[1:])
+            if tempo[:2]=="0Q":
+                bpm: float = float(tempo[2:])
+            else:
+                bpm: float = float(tempo[1:])
         except:
             raise ValueError("{} is not utau tempo format.".format(tempo))
     nframes: int = int(target_ms / 1000 * framerate)
