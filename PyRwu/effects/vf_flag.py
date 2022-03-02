@@ -48,7 +48,7 @@ class VfFlag(effects.base.WorldEffectBase):
         sicle_length: int = edge_length + pad_length
         n: int = int(length / sicle_length)
         for i in range(n):
-            effects[vfs + i*sicle_length:vfs + i*sicle_length + edge_length] = np.arange(1, 0 , -1/edge_length) * i/n
+            effects[vfs + i*sicle_length:vfs + i*sicle_length + edge_length] = np.arange(1, 0 , -1/edge_length) * 1/(2 ** n-i)
             effects[vfs + i*sicle_length + edge_length:vfs + (i+1) * sicle_length] = 0
 
         lasteffect: np.ndarray = np.arange(0, 1 , 1/(length-n*sicle_length))[:length -n*sicle_length]
