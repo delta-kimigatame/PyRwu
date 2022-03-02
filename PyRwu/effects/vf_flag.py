@@ -40,7 +40,7 @@ class VfFlag(effects.base.WorldEffectBase):
             vfs: int =0
             length: int =int(44100 / 1000 * fixed_ms)
         else:
-            vfs: int = int(fixed_ms + vf * 5)
+            vfs: int = int(44100 / 1000 * (fixed_ms + vf * 5))
             length: int =int(44100 / 1000 * abs(vf) *5)
         effects: np.ndarray = np.ones_like(params.output_data)
         edge_length: int =int(1000 * params.flags.params["vfw"].value / 100)
