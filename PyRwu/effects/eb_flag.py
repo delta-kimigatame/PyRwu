@@ -34,22 +34,20 @@ class EBFlag(effects.base.WorldEffectBase):
         ap: np.ndarray = params.ap.copy()
 
         effect: np.ndarray = np.ones_like(ap) - ap
-        sp_effect: np.ndarray = np.ones_like(sp)
+        sp_effect: np.ndarray = np.ones_like(sp)- value / (params.flags.params["eb"].max + 1)
         mask: np.ndarray = np.zeros_like(ap)
         mask_len: int = int(1000 * (ap.shape[1]-1) / params.framerate)
         effect[:,:mask_len] = mask[:,:mask_len]
         mask_len: int = int(5000 * (ap.shape[1]-1) / params.framerate)
         effect[:,mask_len:] = mask[:,mask_len:]
-        
         effect = effect * value / params.flags.params["eb"].max
         for i in range(atack):
-            effect[start+i] = effect[start+i] * i/atack
-            sp_effect[start + i] = 1- value / 100 * i / atack
+            effect[start+i,:] = effect[start+i,:] * i/atack
+            sp_effect[start + i,:] = 1- value / (params.flags.params["eb"].max + 1) * i / atack
         if start != 0:
             effect[:start] = 0
             sp_effect[:start] = 1
         sp = sp * sp_effect
         ap = ap + effect
-            
         return params.f0, sp, ap
 
