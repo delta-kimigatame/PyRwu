@@ -1,102 +1,128 @@
 # PyRwu
 
-### ����͉�?
-* �����^�Ҋ����ɂ���Č��J����Ă���AWindows�����ɍ쐬���ꂽ�̐������\�t�g�E�F�A�uUTAU�v�ɓ�������Ă���Awav�t�@�C���L�k�p�\�t�gresampler.exe�̌݊��v���W�F�N�g�ł��B
+### これは何?
+* 飴屋／菖蒲氏によって公開されている、Windows向けに作成された歌声合成ソフトウェア「UTAU」に同梱されている、wavファイル伸縮用ソフトresampler.exeの互換プロジェクトです。
 
-    UTAU�����T�C�g(http://utau2008.web.fc2.com/)
+    UTAU公式サイト(http://utau2008.web.fc2.com/)
 
-* �v���W�F�N�g����Py Resampler by world for utau�̗���PyRwu(�ς��那)�Ɠǂ݂܂��B
-* ���������̃R�A�ȕ�����PyWORLD���g�p���Ă��܂��B
+* プロジェクト名はPy Resampler by world for utauの略でPyRwu(ぱいるぅ)と読みます。
+* 音声処理のコアな部分はPyWORLDを使用しています。
 
     PyWORLD(https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder)
 
-* ������g�ݍ��݂����}���܂����A�����̂��߂̃h�L�������g�͏������ł��B
-* �����������ɁAworld�̉�͌��ʂ̂����ł����Ԃ��������������w�W��wav�t�H���_�Ɠ����ꏊ��.d4c�̊g���q�Ő������܂��B�t�@�C���T�C�Y��wav��20�{���炢����܂��B
-* �Z��v���W�F�N�g
+* 改造や組み込みを歓迎しますが、それらのためのドキュメントは準備中です。
+* 合成処理時に、worldの解析結果のうち最も時間がかかる非周期性指標をwavフォルダと同じ場所に.d4cの拡張子で生成します。ファイルサイズがwavの20倍ぐらいあります。
+* 兄弟プロジェクト
 
     PyWavTool(https://github.com/delta-kimigatame/PyWavTool)
 
 ***
 
-### �Ɛӎ���
-* �{�\�t�g�E�F�A���g�p���Đ����������Ȃ�s��ɂ��Ă��A��҂͐ӔC�𕉂��܂���B
-* ��҂́A�{�\�t�g�E�F�A�̕s����C������ӔC�𕉂��܂���B
+### 免責事項
+* 本ソフトウェアを使用して生じたいかなる不具合についても、作者は責任を負いません。
+* 作者は、本ソフトウェアの不具合を修正する責任を負いません。
 
 ***
 
-### �g�p�ł���t���O
-�g�p�ł���t���O��
+### モジュールの使い方
+#### インストール
+``` pip install PyRwu```
+
+#### 使い方
+```#Python
+import PyRwu
+
+resamp = PyRwu.Resamp("input_path.wav","output_path.wav",
+                      "C4", #音高名
+                      100, #子音速度
+                      "B50",  #フラグ
+                      0, #offset_ms(原音設定のオフセット/左ブランク)
+                      500, #target_ms
+                      0, #fixed_ms_(原音設定の子音部/固定範囲)
+                      0, #end_ms(原音設定の右ブランク)
+                      100, #音量
+                      0, #モジュレーション
+                      "!20", #テンポ。!ではじまる 
+                      "AA#5#") #-2048 ～ 2047のピッチの値列をBas64エンコードしてランレングス圧縮したもの
+resamp.resamp()
+
+```
+
+***
+
+### 使用できるフラグ
+使用できるフラグは
 
 ```PyRwuExe.Exe --show-flags```
 
-�ł��m�F�ł��܂��B
+でも確認できます。
 
-    B       0 �` 100         default:50
-            �������̋���(�u���V�l�X)�B�傫���قǑ����ۂ�
-            0�`49�ł�B0�̎���������w�W���S��0�ɂȂ�悤�ɏ�Z���܂��B
-            51�`100�ł�B100�̎��A1000Hz�`5000Hz�т̔�������w�W���S��1�ɂȂ�悤�ɉ��Z���܂��B
+    B       0 ～ 100         default:50
+            息成分の強さ(ブレシネス)。大きいほど息っぽい
+            0～49ではB0の時非周期性指標が全て0になるように乗算します。
+            51～100ではB100の時、1000Hz～5000Hz帯の非周期性指標が全て1になるように加算します。
 
-    eb      0 �` 100         default:0
-            ����̑������̋����B�傫���قǑ����ۂ�
+    eb      0 ～ 100         default:0
+            語尾の息成分の強さ。大きいほど息っぽい
 
-    ebs     -1000 �` 1000    default:0
-            �m�[�g�O�������̌������������Ȃ����Ԃ�5ms�P�ʂŎw�肵�܂��B
-            ���̐����w�肷��ƃm�[�g��������̎��ԂɂȂ�܂��B
+    ebs     -1000 ～ 1000    default:0
+            ノート前半部分の語尾息がかからない時間を5ms単位で指定します。
+            負の数を指定するとノート末尾からの時間になります。
 
-    eba     0 �` 1000        default:0
-            eb�t���O�̃A�^�b�N�^�C����5ms�P�ʂŎw�肵�܂��B
+    eba     0 ～ 1000        default:0
+            ebフラグのアタックタイムを5ms単位で指定します。
 
-    g       -100 �` 100      default:0
-            �^���W�F���_�[�l
-            ���̐��ŏ������E��N��
-            ���̐��Œj�����E��l�����܂��B
+    g       -100 ～ 100      default:0
+            疑似ジェンダー値
+            負の数で女声化・若年化
+            正の数で男声化・大人化します。
 
-    t       -100 �` 100      default:0
-            �����̕␳�B1cent�P��
+    t       -100 ～ 100      default:0
+            音程の補正。1cent単位
 
-    P       0 �` 100         default:86
-            �s�[�N�R���v���b�T�[�B
-            P100�̎�volume�K�p�O�̉��ʍő�l��-6dB�ɂȂ�悤�ɐ��K��
-            P0�̎��͉������Ȃ��B
+    P       0 ～ 100         default:86
+            ピークコンプレッサー。
+            P100の時volume適用前の音量最大値が-6dBになるように正規化
+            P0の時は何もしない。
 
     e                        default:False
-            wav�̐L�k���@�B
-            �ʏ�̓��[�v�����ŁA���̃t���O��ݒ肷��ƃX�g���b�`���ɂȂ�B
+            wavの伸縮方法。
+            通常はループ方式で、このフラグを設定するとストレッチ式になる。
 
-    A       -100 �` 100      default:0
-            �s�b�`�ϓ��ɂ��킹�ĉ��ʂ��ω����܂��B
-            1�`100�ł́A���荂���Ƃ����ʂ��������Ȃ�܂��B
-            -1�`-100�ł́A����Ⴂ�Ƃ����ʂ��������Ȃ�܂��B
+    A       -100 ～ 100      default:0
+            ピッチ変動にあわせて音量が変化します。
+            1～100では、基準より高いとき音量が小さくなります。
+            -1～-100では、基準より低いとき音量が小さくなります。
 
-    gw      0 �` 500         default:0
-            ���Ȃ萺�A�O���E��
-            �O���E����
+    gw      0 ～ 500         default:0
+            うなり声、グロウル
+            グロウルが
 
-    gws     -1000 �` 1000    default:0
-            �m�[�g�O�������̃O���E����������Ȃ����Ԃ�5ms�P�ʂŎw�肵�܂��B
-            ���̐����w�肷��ƃm�[�g��������̎��ԂɂȂ�܂��B
+    gws     -1000 ～ 1000    default:0
+            ノート前半部分のグロウルがかからない時間を5ms単位で指定します。
+            負の数を指定するとノート末尾からの時間になります。
 
-    gwa     0 �` 1000        default:0
-            gw�t���O�̃A�^�b�N�^�C����5ms�P�ʂŎw�肵�܂��B
+    gwa     0 ～ 1000        default:0
+            gwフラグのアタックタイムを5ms単位で指定します。
 
-    vf      -500 �` 500      default:0
-            �^���G�b�W�B
-            �G�b�W�������钷����5ms�P�ʂŎw�肵�܂��B
+    vf      -500 ～ 500      default:0
+            疑似エッジ。
+            エッジがかかる長さを5ms単位で指定します。
 
-    vfw     0 �` 300         default:100
-            �^���G�b�W�̃G�b�W1�񂠂���̒����B%�w��
+    vfw     0 ～ 300         default:100
+            疑似エッジのエッジ1回あたりの長さ。%指定
 
-    vfp     0 �` 100         default:20
-            �^���G�b�W�̃G�b�W1�񂠂���̖����̒����B%�w��
-
-***
-
-### �Z�p�d�l
-* �S�̂̏����̗���ɂ��Ă�(https://delta-kimigatame.github.io/PyRwu/resamp.html)
-* �e��ݒ荀�ڂɂ��Ă�(https://delta-kimigatame.github.io/PyRwu/settings.html)
+    vfp     0 ～ 100         default:20
+            疑似エッジのエッジ1回あたりの無音の長さ。%指定
 
 ***
 
-### �����N
+### 技術仕様
+* 全体の処理の流れについては(https://delta-kimigatame.github.io/PyRwu/resamp.html)
+* 各種設定項目については(https://delta-kimigatame.github.io/PyRwu/settings.html)
+
+***
+
+### リンク
 * twitter(https://twitter.com/delta_kuro)
 * github(https://github.com/delta-kimigatame/MakeOtoTemp)
