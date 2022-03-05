@@ -1,9 +1,11 @@
 ﻿import os.path
 import time
+import sys
 
 import numpy as np
 import pyworld as pw
 
+sys.path.append(os.path.dirname(__file__)) #PyPIでのimpot用のパスを追加
 import flags
 import frq_io
 import wave_io

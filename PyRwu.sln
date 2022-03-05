@@ -13,10 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docsource\index.rst = docsource\index.rst
 		docsource\make.bat = docsource\make.bat
 		docsource\Makefile = docsource\Makefile
+		release\PYPI\pyproject.toml = release\PYPI\pyproject.toml
 		README.md = README.md
+		release\PYPI\setup.cfg = release\PYPI\setup.cfg
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PyRwuExe", "PyRwuExe\PyRwuExe.csproj", "{DAA4FE7F-F2BE-4730-96C3-6A6F0F052496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PyRwuExe", "PyRwuExe\PyRwuExe.csproj", "{DAA4FE7F-F2BE-4730-96C3-6A6F0F052496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

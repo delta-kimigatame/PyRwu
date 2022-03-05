@@ -55,9 +55,6 @@
     <Compile Include="pitch.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="psutil_lab.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PyRwu.py" />
     <Compile Include="release.py" />
     <Compile Include="resamp.py">
@@ -91,6 +88,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="wave_io.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="__init__.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
