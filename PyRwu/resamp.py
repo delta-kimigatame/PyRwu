@@ -1,6 +1,7 @@
 ﻿import os.path
 import time
 import sys
+from logging import INFO, getLogger,StreamHandler
 
 import numpy as np
 import pyworld as pw
@@ -12,6 +13,12 @@ import wave_io
 import stretch
 import pitch
 import settings
+
+logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(INFO)
+logger.setLevel(INFO)
+logger.addHandler(handler)
 
 class Resamp:
     '''Resamp
@@ -292,6 +299,10 @@ class Resamp:
         self._modulation = modulation
         self._tempo = tempo
         self._pitchbend = pitchbend
+        logger.info('input:' + input_path)
+        logger.info('cache:' + output_path)
+        logger.info('target_tone:' + target_tone)
+        logger.info('target_length:' + str(target_ms) + "ms")
 
     def parseFlags(self):
         '''
