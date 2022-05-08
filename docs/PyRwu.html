@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyRwu module &mdash; PyRwu 1.0.0 ドキュメント</title>
+  <title>PyRwu package &mdash; PyRwu 1.0.0 ドキュメント</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="resamp module" href="resamp.html" />
+    <link rel="next" title="PyRwu.effects package" href="PyRwu.effects.html" />
     <link rel="prev" title="Welcome to PyRwu&#39;s documentation!" href="index.html" /> 
 </head>
 
@@ -40,15 +40,37 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PyRwu module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PyRwu package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyRwu.effects.html">PyRwu.effects package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PyRwu.tests.html">PyRwu.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-pyrwu-module">PyRwu.PyRwu module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-pyrwuiniquity-module">PyRwu.PyRwuIniquity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-flags-module">PyRwu.flags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-frq-io-module">PyRwu.frq_io module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-interpolate-module">PyRwu.interpolate module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-pitch-module">PyRwu.pitch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-release-module">PyRwu.release module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-PyRwu.resamp">PyRwu.resamp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-PyRwu.settings">PyRwu.settings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-stretch-module">PyRwu.stretch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyrwu-wave-io-module">PyRwu.wave_io module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-PyRwu">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="resamp.html">resamp module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wave_io.html">wave_io module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frq_io.html">frq_io module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flags.html">flags module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stretch.html">stretch module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pitch.html">pitch module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interpolate.html">interpolate module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="effects.html">effects package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="settings.html">settings module</a></li>
 </ul>
@@ -67,7 +89,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>PyRwu module</li>
+      <li>PyRwu package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/PyRwu.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -77,8 +99,253 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-PyRwu">
-<span id="pyrwu-module"></span><h1>PyRwu module<a class="headerlink" href="#module-PyRwu" title="このヘッドラインへのパーマリンク"></a></h1>
+  <section id="pyrwu-package">
+<h1>PyRwu package<a class="headerlink" href="#pyrwu-package" title="このヘッドラインへのパーマリンク"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="このヘッドラインへのパーマリンク"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PyRwu.effects.html">PyRwu.effects package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-base-module">PyRwu.effects.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-eb-flag-module">PyRwu.effects.eb_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-g-flag-module">PyRwu.effects.g_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-gw-flag-module">PyRwu.effects.gw_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-large-a-flag-module">PyRwu.effects.large_a_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-large-b-flag-module">PyRwu.effects.large_b_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-large-p-flag-module">PyRwu.effects.large_p_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-t-flag-module">PyRwu.effects.t_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#pyrwu-effects-vf-flag-module">PyRwu.effects.vf_flag module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.effects.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PyRwu.tests.html">PyRwu.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-flags-module">PyRwu.tests.test_flags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-frq-io-module">PyRwu.tests.test_frq_io module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-pitch-module">PyRwu.tests.test_pitch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-resamp-module">PyRwu.tests.test_resamp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-stretch-module">PyRwu.tests.test_stretch module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#pyrwu-tests-test-wave-io-module">PyRwu.tests.test_wave_io module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyRwu.tests.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-pyrwu-module">
+<h2>PyRwu.PyRwu module<a class="headerlink" href="#pyrwu-pyrwu-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-pyrwuiniquity-module">
+<h2>PyRwu.PyRwuIniquity module<a class="headerlink" href="#pyrwu-pyrwuiniquity-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-flags-module">
+<h2>PyRwu.flags module<a class="headerlink" href="#pyrwu-flags-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-frq-io-module">
+<h2>PyRwu.frq_io module<a class="headerlink" href="#pyrwu-frq-io-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-interpolate-module">
+<h2>PyRwu.interpolate module<a class="headerlink" href="#pyrwu-interpolate-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-pitch-module">
+<h2>PyRwu.pitch module<a class="headerlink" href="#pyrwu-pitch-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-release-module">
+<h2>PyRwu.release module<a class="headerlink" href="#pyrwu-release-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="module-PyRwu.resamp">
+<span id="pyrwu-resamp-module"></span><h2>PyRwu.resamp module<a class="headerlink" href="#module-PyRwu.resamp" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="module-PyRwu.settings">
+<span id="pyrwu-settings-module"></span><h2>PyRwu.settings module<a class="headerlink" href="#module-PyRwu.settings" title="このヘッドラインへのパーマリンク"></a></h2>
+<p>Settings
+各種定数や初期値の設定</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.FLAGS">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">FLAGS</span></span><a class="headerlink" href="#PyRwu.settings.FLAGS" title="この定義へのパーマリンク"></a></dt>
+<dd><p>使用するフラグの設定。</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="flags.html#flags.Flags" title="flags.Flags">flags.Flags</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.PYWORLD_F0_FLOOR">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">PYWORLD_F0_FLOOR</span></span><a class="headerlink" href="#PyRwu.settings.PYWORLD_F0_FLOOR" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldでの分析するf0の下限</div>
+<div class="line">デフォルトでは71.0</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default pw.default_f0_floor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.PYWORLD_F0_CEIL">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">PYWORLD_F0_CEIL</span></span><a class="headerlink" href="#PyRwu.settings.PYWORLD_F0_CEIL" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldでの分析するf0の上限</div>
+<div class="line">デフォルトでは800.0</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default pw.default_f0_ceil</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.PYWORLD_PERIOD">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">PYWORLD_PERIOD</span></span><a class="headerlink" href="#PyRwu.settings.PYWORLD_PERIOD" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldデータの1フレーム当たりの時間(ms)</div>
+<div class="line">デフォルトでは5.0</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default pw.default_frame_period</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.PYWORLD_Q1">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">PYWORLD_Q1</span></span><a class="headerlink" href="#PyRwu.settings.PYWORLD_Q1" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldでスペクトル包絡抽出時の補正値</div>
+<div class="line">通常は変更不要</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float default -0.15</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.PYWORLD_THRESHOLD">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">PYWORLD_THRESHOLD</span></span><a class="headerlink" href="#PyRwu.settings.PYWORLD_THRESHOLD" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">worldで非周期性指標抽出時に、有声/無声を決定する閾値(0 ～ 1)</div>
+<div class="line">値が0の場合、音声のあるフレームを全て有声と判定します。</div>
+<div class="line">値が0超の場合、一部のフレームを無声音として判断します。</div>
+<div class="line">本来の初期値0.85はharvestと組み合わせる前提で調整されていますが、</div>
+<div class="line">UTAUでの合成では1回でも判定ミスがあるとストレスなので0にしています。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float, default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="PyRwu.settings.USE_PYWORLD_CACHE">
+<span class="sig-prename descclassname"><span class="pre">PyRwu.settings.</span></span><span class="sig-name descname"><span class="pre">USE_PYWORLD_CACHE</span></span><a class="headerlink" href="#PyRwu.settings.USE_PYWORLD_CACHE" title="この定義へのパーマリンク"></a></dt>
+<dd><div class="line-block">
+<div class="line">wavファイルと同一個所に、.npzファイルがあれば、wavの読み込み・f0,sp,apの解析を省略します。</div>
+<div class="line">Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。</div>
+</div>
+<div class="line-block">
+<div class="line">実装しましたが、期待したほど高速化しない上にnpzファイルのサイズが大きいため、Falseにしておきます。</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>USE_D4C_FILE: bool, default True</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">wavファイルと同一個所に、.d4cファイルがあれば、apの解析を省略します。</div>
+<div class="line">Trueにすると、2回目以降の処理が早くなりますが、設定ファイルが存在しない1回目はより時間がかかるようになります。</div>
+</div>
+<div class="line-block">
+<div class="line">d4cファイルは、wavの20倍程度の容量になります。ファイルサイズが気になる場合は、Falseにしてください。</div>
+</div>
+</div></blockquote>
+<dl class="simple">
+<dt>A4FRQ: float, default 440</dt><dd><p>基準となる音高</p>
+</dd>
+</dl>
+<p>TONE_NUM: dict</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">UTAUから渡される音高名をnotenumに変換するための辞書</div>
+<div class="line">notenumはC1=24、C#1=25...B7=107で、以下の式で与えられる。</div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">notenum</span> <span class="o">=</span> <span class="p">(</span><span class="n">octave</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">+</span> <span class="n">TONE_NUM</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>PITCH_EFFECTS: list of effects.base.PitchEffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ピッチ処理時に適用するエフェクトのクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>F0_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">synthesizeでf0に適用するエフェクトのクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>SP_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">synthesizeでspに適用するエフェクトのクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>AP_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">synthesizeでapに適用するエフェクトのクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>WORLD_EFFECTS: list of effects.base.WorldEffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">synthesizeで適用するエフェクトのうち、f0,sp,apの複数のパラメータを変更するクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>OUT_WAVE_EFFECTS: list of effects.base.EffectBase</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">synthesize後のwaveに適用するエフェクトのクラスを指定する。</div>
+</div>
+</div></blockquote>
+<p>OUTPUT_BITDEPTH: int, default 16</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">出力するwavのビット深度。8, 16, 24, 32のいずれかでなければなりません。</div>
+</div>
+</div></blockquote>
+<p>DEFAULT_FRAMERATE: int, default 44100</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">扱うデータのサンプル周波数</div>
+</div>
+</div></blockquote>
+</section>
+<section id="pyrwu-stretch-module">
+<h2>PyRwu.stretch module<a class="headerlink" href="#pyrwu-stretch-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="pyrwu-wave-io-module">
+<h2>PyRwu.wave_io module<a class="headerlink" href="#pyrwu-wave-io-module" title="このヘッドラインへのパーマリンク"></a></h2>
+</section>
+<section id="module-PyRwu">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-PyRwu" title="このヘッドラインへのパーマリンク"></a></h2>
 <p>PyRwu</p>
 <p>Py Resampler by World for UTAUの略です。</p>
 <ul class="simple">
@@ -87,7 +354,7 @@ Windows向けに作成された歌声合成ソフトウェア「UTAU」に同梱
 wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプロジェクトです。</p></li>
 </ul>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="このヘッドラインへのパーマリンク"></a></h2>
+<h3>Usage<a class="headerlink" href="#usage" title="このヘッドラインへのパーマリンク"></a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">usage</span><span class="p">:</span> <span class="n">PyRwu</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">flag</span><span class="p">]</span>
 <span class="go">                input_path output_path target_tone velocity [flags] [offset] [target_ms] [fixed_ms] [end_ms]</span>
 <span class="go">                [volume] [modulation] [tempo] [pitchbend]</span>
@@ -200,13 +467,14 @@ wavファイル伸縮用ソフトresampler.exeの代替機能を提供するプ�
 
 </section>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to PyRwu&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="resamp.html" class="btn btn-neutral float-right" title="resamp module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="PyRwu.effects.html" class="btn btn-neutral float-right" title="PyRwu.effects package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

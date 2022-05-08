@@ -11,6 +11,7 @@ Welcome to PyRwu's documentation!
    :caption: Contents:
 
    PyRwu
+   PyRwuIniquity
    resamp
    wave_io
    frq_io
