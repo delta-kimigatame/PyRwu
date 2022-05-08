@@ -56,6 +56,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PyRwu.py" />
+    <Compile Include="PyRwuIniquity.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="release.py" />
     <Compile Include="resamp.py">
       <SubType>Code</SubType>
