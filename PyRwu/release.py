@@ -13,7 +13,7 @@ PYPI_DIR = os.path.join("..", "release", "PYPI")
 PROJECTNAME = "PyRwu"
 RELEASE_FILE = os.path.join("..", "release", PROJECTNAME + "-" + datetime.datetime.strftime(datetime.datetime.now(), "%Y%m%d"))
 PATCH_FILE = os.path.join("..", "release", PROJECTNAME + "-patch-" + datetime.datetime.strftime(datetime.datetime.now(), "%Y%m%d"))
-EXE_DIR = os.path.join("..", "PyRwuExe", "bin", "Release", "net6.0-windows")
+EXE_DIRS = [os.path.join("..", "PyRwuExe", "bin", "Release", "net6.0-windows"),os.path.join("..", "PyRwuDirty", "bin", "Release", "net6.0-windows")]
 EXE_DIR_EXTENSIONS = [".exe",".dll",".runtimeconfig.json"]
 SOURCE_FILES = []
 for pathname, dirnames, filenames in os.walk("."):
@@ -37,13 +37,14 @@ os.makedirs(os.path.join(PATCH_DIR, "src"), exist_ok=True)
 os.makedirs(os.path.join(PYPI_DIR, "src", "PyRwu"), exist_ok=True)
 os.makedirs(os.path.join(PYPI_DIR, "tests"), exist_ok=True)
 
-exe_dir_files = os.listdir(EXE_DIR)
-for file in exe_dir_files:
-    for extensions in EXE_DIR_EXTENSIONS:
-        if file.endswith(extensions):
-            shutil.copy(os.path.join(EXE_DIR, file),os.path.join(BUILD_DIR, file))
-            shutil.copy(os.path.join(EXE_DIR, file),os.path.join(PATCH_DIR, file))
-            break
+for exe_dir in EXE_DIRS:
+    exe_dir_files = os.listdir(exe_dir)
+    for file in exe_dir_files:
+        for extensions in EXE_DIR_EXTENSIONS:
+            if file.endswith(extensions):
+                shutil.copy(os.path.join(exe_dir, file),os.path.join(BUILD_DIR, file))
+                shutil.copy(os.path.join(exe_dir, file),os.path.join(PATCH_DIR, file))
+                break
             
 for file in SOURCE_FILES:
     os.makedirs(os.path.join(BUILD_DIR, "src", os.path.dirname(file)), exist_ok=True)
