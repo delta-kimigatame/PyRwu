@@ -10,7 +10,7 @@ from typing import Tuple
 import numpy as np
 import pyworld as pw
 
-import interpolate
+from . import interpolate
 
 def read(input_path: str, offset: float, end_ms: float, framerate: int, world_period: float) -> Tuple[np.ndarray, np.ndarray]:
     '''

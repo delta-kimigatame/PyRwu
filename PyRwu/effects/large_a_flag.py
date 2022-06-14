@@ -1,9 +1,8 @@
 ﻿import numpy as np
+from . import base
+from .. import interpolate
 
-import effects.base
-import interpolate
-
-class LargeAFlag(effects.base.WorldEffectBase):
+class LargeAFlag(base.WorldEffectBase):
     @staticmethod
     def apply(params) -> np.ndarray:
         '''

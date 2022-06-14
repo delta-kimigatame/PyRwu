@@ -92,10 +92,10 @@ DEFAULT_FRAMERATE: int, default 44100
     | 扱うデータのサンプル周波数
 '''
 
-from effects import eb_flag, large_b_flag, large_p_flag, vf_flag
-import flags
+from .effects import eb_flag, large_b_flag, large_p_flag, vf_flag
+from . import flags
 import pyworld as pw
-from effects import *
+from .effects import *
 
 FLAGS = flags.Flags()
 FLAGS.add(flags.Flag("B",

@@ -1,9 +1,8 @@
 ﻿import numpy as np
+from . import base
+from .. import stretch
 
-import effects.base
-import stretch
-
-class VfFlag(effects.base.WorldEffectBase):
+class VfFlag(base.WorldEffectBase):
     @staticmethod
     def apply(params) -> np.ndarray:
         '''
