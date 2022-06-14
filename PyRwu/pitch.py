@@ -7,8 +7,8 @@ import re
 
 import numpy as np
 
-import interpolate
-import settings
+from . import interpolate
+from . import settings
 
 def getFrqFromStr(tone: str) -> float:
     '''

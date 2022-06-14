@@ -6,13 +6,13 @@ from logging import INFO, getLogger,StreamHandler
 import numpy as np
 import pyworld as pw
 
-sys.path.append(os.path.dirname(__file__)) #PyPIでのimpot用のパスを追加
-import flags
-import frq_io
-import wave_io
-import stretch
-import pitch
-import settings
+#sys.path.append(os.path.dirname(__file__)) #PyPIでのimpot用のパスを追加
+from . import flags
+from . import frq_io
+from . import wave_io
+from . import stretch
+from . import pitch
+from . import settings
 
 logger = getLogger(__name__)
 handler = StreamHandler()

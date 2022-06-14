@@ -1,8 +1,7 @@
 ﻿import numpy as np
+from . import base
 
-import effects.base
-
-class GwFlag(effects.base.PitchEffectBase):
+class GwFlag(base.PitchEffectBase):
     @staticmethod
     def apply(params, pitches: np.ndarray) -> np.ndarray:
         '''

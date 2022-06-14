@@ -1,7 +1,7 @@
 ﻿import numpy as np
-import effects.base
+from . import base
 
-class LargePFlag(effects.base.WorldEffectBase):
+class LargePFlag(base.WorldEffectBase):
     @staticmethod
     def apply(params) -> np.ndarray:
         '''

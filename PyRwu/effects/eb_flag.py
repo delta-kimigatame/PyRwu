@@ -1,7 +1,7 @@
 ﻿import numpy as np
-import effects.base
+from . import base
 
-class EBFlag(effects.base.WorldEffectBase):
+class EBFlag(base.WorldEffectBase):
     @staticmethod
     def apply(params) -> np.ndarray:
         '''
