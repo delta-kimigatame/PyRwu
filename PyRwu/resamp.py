@@ -1,6 +1,7 @@
 ﻿import os.path
 import time
 import sys
+import copy
 from logging import INFO, getLogger,StreamHandler
 
 import numpy as np
@@ -290,6 +291,7 @@ class Resamp:
         self._output_path = output_path
         self._target_tone = target_tone
         self._velocity = velocity
+        self._flags = copy.deepcopy(settings.FLAGS)
         self._flag_value = flag_value
         self._offset = offset
         self._target_ms = target_ms
