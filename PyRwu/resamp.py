@@ -15,11 +15,11 @@ import stretch
 import pitch
 import settings
 
-logger = getLogger(__name__)
+default_logger = getLogger(__name__)
 handler = StreamHandler()
 handler.setLevel(INFO)
-logger.setLevel(INFO)
-logger.addHandler(handler)
+default_logger.setLevel(INFO)
+default_logger.addHandler(handler)
 
 class Resamp:
     '''Resamp
@@ -286,7 +286,9 @@ class Resamp:
     
     def __init__(self, input_path: str, output_path: str, target_tone: str, velocity: 100,
                  flag_value: str="", offset: float=0, target_ms: float=0, fixed_ms: float=0,
-                 end_ms: float=0, volume: int=100, modulation: int=0, tempo: str="!120", pitchbend: str=""):
+                 end_ms: float=0, volume: int=100, modulation: int=0, tempo: str="!120", pitchbend: str="",
+                 *, logger: Logger = None):
+        self.logger = logger or default_logger
         self._input_path = input_path
         self._output_path = output_path
         self._target_tone = target_tone
@@ -301,10 +303,10 @@ class Resamp:
         self._modulation = modulation
         self._tempo = tempo
         self._pitchbend = pitchbend
-        logger.info('input:' + input_path)
-        logger.info('cache:' + output_path)
-        logger.info('target_tone:' + target_tone)
-        logger.info('target_length:' + str(target_ms) + "ms")
+        self.logger.info('input:' + input_path)
+        self.logger.info('cache:' + output_path)
+        self.logger.info('target_tone:' + target_tone)
+        self.logger.info('target_length:' + str(target_ms) + "ms")
 
     def parseFlags(self):
         '''
