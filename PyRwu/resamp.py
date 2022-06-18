@@ -2,7 +2,7 @@
 import time
 import sys
 import copy
-from logging import INFO, getLogger,StreamHandler
+from logging import INFO, getLogger,StreamHandler,Logger
 
 import numpy as np
 import pyworld as pw
@@ -284,7 +284,7 @@ class Resamp:
     def pitches(self) -> np.ndarray:
         return self._pitches
     
-    def __init__(self, input_path: str, output_path: str, target_tone: str, velocity: 100,
+    def __init__(self, input_path: str, output_path: str, target_tone: str, velocity: int,
                  flag_value: str="", offset: float=0, target_ms: float=0, fixed_ms: float=0,
                  end_ms: float=0, volume: int=100, modulation: int=0, tempo: str="!120", pitchbend: str="",
                  *, logger: Logger = None):
